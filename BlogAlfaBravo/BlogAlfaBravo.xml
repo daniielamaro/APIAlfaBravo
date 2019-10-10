@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlogAlfaBravo</name>
+    </assembly>
+    <members>
+        <member name="M:BlogAlfaBravo.Controllers.AlterPostsController.Put(System.String,BlogAlfaBravo.Dominio.Publicacao)">
+            <summary>
+            Altera uma publicação
+            </summary>
+            <response code="200">Publicação alterada com sucesso.</response>
+            <response code="404">Publicação não encontrada com este ID.</response>
+            <remarks>Alteração realizada usando o Id da publicação</remarks>
+        </member>
+        <member name="M:BlogAlfaBravo.Controllers.CreatePostsController.Post(BlogAlfaBravo.Dominio.Publicacao)">
+            <summary>
+            Cria uma nova publicação
+            </summary>
+            <param name="publicacao">Objeto publicacao</param>
+            <response code="200">Publicação criada com sucesso.</response>
+            <response code="400">Publicação com parametros inválidos!</response>
+            <remarks>Publicação criada recebendo um novo objeto publicacao com parametros válidos.</remarks>
+        </member>
+        <member name="M:BlogAlfaBravo.Controllers.DeletePostsController.Delete(System.String)">
+            <summary>
+            Deleta uma publicação
+            </summary>
+            <param name="Id">Id da publicacao</param>
+            <response code="200">Publicação deletada com sucesso.</response>
+            <response code="204">Publicação não encontrada com esse ID.</response>
+            <remarks>Publicação deletada usando o ID como filtro.</remarks>
+        </member>
+        <member name="M:BlogAlfaBravo.Controllers.GetPostsByTitleController.Get(System.String)">
+            <summary>
+            Retorna publicações por titulo.
+            </summary>
+            <param name="titulo">Titulo da publicacao</param>
+            <response code="200">Publicações retornada com sucesso.</response>
+            <response code="204">Nenhuma publicação encontrada contendo esse titulo.</response>
+            <remarks>Retorno de uma lista de publicações usando um titulo como filtro.</remarks>
+        </member>
+        <member name="M:BlogAlfaBravo.Controllers.GetPostsController.Get">
+            <summary>
+            Retorna todas publicações.
+            </summary>
+            <response code="200">Publicações retornada com sucesso.</response>
+            <response code="204">Nenhuma publicação encontrada contendo esse titulo.</response>
+            <remarks>Retorno de uma lista de publicações usando um titulo como filtro.</remarks>
+        </member>
+        <member name="M:BlogAlfaBravo.Controllers.GetUserPostsController.Get(System.String)">
+            <summary>
+            Retorna publicações de um usuário.
+            </summary>
+            <param name="user">Nome do usuário</param>
+            <response code="200">Publicações retornada com sucesso.</response>
+            <response code="204">Nenhuma publicação encontrada contendo esse nome de usuário como autor.</response>
+            <remarks>Retorno de uma lista de publicações usando um nome de usuário como filtro.</remarks>
+        </member>
+    </members>
+</doc>

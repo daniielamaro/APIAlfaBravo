@@ -1,0 +1,67 @@
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.deps.json
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.json
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.dev.json
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.csprojAssemblyReference.cache
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cache
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cs
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfoInputs.cache
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfo.cs
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorTargetAssemblyInfo.cache
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.deps.json
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.json
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.dev.json
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.csprojAssemblyReference.cache
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cache
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cs
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfoInputs.cache
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfo.cs
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorTargetAssemblyInfo.cache
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\DanielGA\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
+C:\Users\DanielGA\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.xml
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.csprojAssemblyReference.cache
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cache
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cs
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfoInputs.cache
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfo.cs
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.deps.json
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.json
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.dev.json
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.xml
+C:\Users\Daniel Amaro\Desktop\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorTargetAssemblyInfo.cache
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.deps.json
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.json
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.runtimeconfig.dev.json
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\bin\Debug\netcoreapp2.1\BlogAlfaBravo.xml
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.csprojAssemblyReference.cache
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cache
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorAssemblyInfo.cs
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfoInputs.cache
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.AssemblyInfo.cs
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.RazorTargetAssemblyInfo.cache
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.dll
+C:\Users\Daniel Amaro\OneDrive\BlogAlfaBravo\BlogAlfaBravo\obj\Debug\netcoreapp2.1\BlogAlfaBravo.pdb
