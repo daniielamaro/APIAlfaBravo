@@ -12,5 +12,15 @@ namespace Domain
         public string Content { get; protected set; }
         public readonly DateTime DateCreated;
         public List<Comment> Comments { get; protected set; }
+
+        public Publication(User autor, string title, string content)
+        {
+            Id = Guid.NewGuid();
+            Autor = autor;
+            Title = title;
+            Content = content;
+            DateCreated = DateTime.Now;
+            Comments = new List<Comment>();
+        }
     }
 }

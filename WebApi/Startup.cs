@@ -43,8 +43,8 @@ namespace WebApi
                         },
                         Description = "API para blogs."
                     });
-                var path = Path.Combine(AppContext.BaseDirectory, "BlogAlfaBravo.xml");
-                //c.IncludeXmlComments(path);
+                var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
+                c.IncludeXmlComments(path);
             });
         }
 
@@ -64,6 +64,7 @@ namespace WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
                 c.DocumentTitle = "API AlfaBravo";
+                c.RoutePrefix = string.Empty;
             });
         }
     }

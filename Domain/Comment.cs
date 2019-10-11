@@ -7,7 +7,14 @@ namespace Domain
     public sealed class Comment
     {
         public readonly Guid Id;
-        public readonly User User;
+        public readonly User Autor;
         public string Content { get; set; }
+
+        public Comment(User autor, string content)
+        {
+            Id = Guid.NewGuid();
+            Autor = autor;
+            Content = content;
+        }
     }
 }

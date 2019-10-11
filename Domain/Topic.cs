@@ -9,5 +9,12 @@ namespace Domain
         public readonly Guid Id;
         public string Name { get; protected set; }
         public List<Publication> RelatedPublications { get; protected set;}
+
+        public Topic(string name)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            RelatedPublications = new List<Publication>();
+        }
     }
 }
