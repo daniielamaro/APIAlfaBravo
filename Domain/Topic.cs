@@ -4,11 +4,10 @@ using System.Text;
 
 namespace Domain
 {
-    public sealed class User
+    public sealed class Topic
     {
         public readonly Guid Id;
         public string Name { get; protected set; }
-        public DateTime Birthdate { get; protected set; }
-        public string Email { get; protected set; }
+        public List<Publication> RelatedPublications { get; protected set;}
     }
 }
