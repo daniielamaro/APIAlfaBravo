@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApi
 {
@@ -27,7 +25,9 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddEntityFrameworkNpgsql().AddDbContext<ApiContext>(options => options.UseNpgsql(Configuration.GetConnectionString("WebApiDB")));
 
             services.AddSwaggerGen(c =>
             {
@@ -49,28 +49,18 @@ namespace WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseMvc();
 
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
-        {
-#if DEBUG
-               // For Debug in Kestrel
-               c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web API V1");
-#else
-               // To deploy on IIS
-               c.SwaggerEndpoint("localhost/swagger/v1/swagger.json", "Web API V1");
-#endif
-            c.RoutePrefix = string.Empty;
-        });
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
+                c.DocumentTitle = "API AlfaBravo";
+                c.RoutePrefix = string.Empty;
+            });
         }
     }
 }
