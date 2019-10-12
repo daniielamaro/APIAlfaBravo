@@ -28,7 +28,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-    
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
@@ -61,11 +61,16 @@ namespace WebApi
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
-                c.DocumentTitle = "API AlfaBravo";
-                c.RoutePrefix = string.Empty;
-            });
+        {
+#if DEBUG
+               // For Debug in Kestrel
+               c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web API V1");
+#else
+               // To deploy on IIS
+               c.SwaggerEndpoint("localhost/swagger/v1/swagger.json", "Web API V1");
+#endif
+            c.RoutePrefix = string.Empty;
+        });
         }
     }
 }

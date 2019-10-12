@@ -14,7 +14,10 @@ namespace WebApi.Controllers
         [HttpGet]
         public ActionResult<List<string>> Get()
         {
+            //ApiContext hehe;
             return Ok();
         }
+
+
     }
 }
