@@ -695,11 +695,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Daniel Amaro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -12,5 +12,6 @@ namespace Domain
         public string Content { get; protected set; }
         public DateTime DateCreated { get; protected set; }
         public List<Comment> Comments { get; protected set; }
+        public Topic Topic { get; protected set; }
     }
 }

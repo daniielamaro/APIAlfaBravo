@@ -3173,11 +3173,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Daniel Amaro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -3198,8 +3198,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\WebApiBlog\\Domain\\Domain.csproj"
+            "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
             }
           }
         }
