@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Domain
 {
+<<<<<<< HEAD
     public sealed class User
     {
         public readonly Guid Id;
@@ -20,5 +21,14 @@ namespace Domain
             Email = email;
             Password = password;
         }
+=======
+    public class User
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Birthdate { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+>>>>>>> ce1d59a9cf740e900a1d9df67b9f5993da6f1a7b
     }
 }
