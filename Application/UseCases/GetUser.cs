@@ -16,9 +16,7 @@ namespace Application.UseCases
 
         public static User ById(Guid Id)
         {
-            var db = new ApiContext();
-
-            return db.Users.Where(x => x.Id == Id).FirstOrDefault();
+            return new ApiContext().Users.Find(Id);
         }
     }
 }

@@ -45,19 +45,21 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<User> Post(string name, string birthdate, string email, string password)
         {
-            return Ok(RegisterUser.Execute(name, birthdate, email, password));
+            User user = RegisterUser.Execute(name, birthdate, email, password);
+            return CreatedAtAction("Get", new { id = user.Id }, user);
         }
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] User user)
         {
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public User Delete(Guid id)
         {
+            return RemoveUser.Execute(id);
         }
     }
 }
