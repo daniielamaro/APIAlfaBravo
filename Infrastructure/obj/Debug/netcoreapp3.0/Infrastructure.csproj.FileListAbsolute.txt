@@ -1,3 +1,0 @@
-C:\Projetos\APIAlfaBravo\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.csprojAssemblyReference.cache
-C:\Projetos\APIAlfaBravo\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.AssemblyInfoInputs.cache
-C:\Projetos\APIAlfaBravo\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.AssemblyInfo.cs
