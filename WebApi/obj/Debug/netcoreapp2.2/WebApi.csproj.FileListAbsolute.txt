@@ -29,8 +29,10 @@ C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.dll
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.pdb
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.xml
+C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Application.dll
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Domain.dll
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Infrastructure.dll
+C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Application.pdb
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Infrastructure.pdb
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Domain.pdb
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.csprojAssemblyReference.cache
@@ -42,5 +44,3 @@ C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.csproj.CopyComplete
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.dll
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.pdb
-C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Application.dll
-C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Application.pdb

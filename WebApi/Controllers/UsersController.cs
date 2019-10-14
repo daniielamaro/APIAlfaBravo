@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.UseCases;
 using Domain;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Http;
@@ -13,30 +14,38 @@ namespace WebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        // GET: api/Users
+        /// <summary>
+        /// Retorna todos os usuários
+        /// </summary>
+        /// <returns>Retorna todos os usuarios</returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<User> Get()
         {
-            return new string[] { "value1", "value2" };
+            return GetUser.All();
         }
 
-        // GET: api/Users/5
+        /// <summary>
+        /// Retorna um usuário especifico
+        /// </summary>
+        /// <param name="id">O ID do usuário que deseja retornar</param>
+        /// <remarks>Retorna um usuário usando um ID como parametro</remarks>
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public User Get(Guid id)
         {
-            return "value";
+            return GetUser.ById(id);
         }
 
-        // POST: api/Users
+        /// <summary>
+        /// Regista um novo usuário
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="birthdate"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         [HttpPost]
-        public ActionResult<User> Post([FromBody] User user)
+        public ActionResult<User> Post(string name, string birthdate, string email, string password)
         {
-            using (var db = new ApiContext())
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
-            }
-            return Ok(user);
+            return Ok(RegisterUser.Execute(name, birthdate, email, password));
         }
 
         // PUT: api/Users/5

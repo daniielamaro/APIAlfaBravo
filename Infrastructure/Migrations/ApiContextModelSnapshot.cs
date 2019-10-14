@@ -19,62 +19,6 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("Domain.Comment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid?>("AutorId");
-
-                    b.Property<string>("Content");
-
-                    b.Property<Guid?>("PublicationId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AutorId");
-
-                    b.HasIndex("PublicationId");
-
-                    b.ToTable("Comment");
-                });
-
-            modelBuilder.Entity("Domain.Publication", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid?>("AutorId");
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("Title");
-
-                    b.Property<Guid?>("TopicId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AutorId");
-
-                    b.HasIndex("TopicId");
-
-                    b.ToTable("Publications");
-                });
-
-            modelBuilder.Entity("Domain.Topic", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Topic");
-                });
-
             modelBuilder.Entity("Domain.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -86,33 +30,11 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Senha");
+                    b.Property<string>("Password");
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
-                });
-
-            modelBuilder.Entity("Domain.Comment", b =>
-                {
-                    b.HasOne("Domain.User", "Autor")
-                        .WithMany()
-                        .HasForeignKey("AutorId");
-
-                    b.HasOne("Domain.Publication")
-                        .WithMany("Comments")
-                        .HasForeignKey("PublicationId");
-                });
-
-            modelBuilder.Entity("Domain.Publication", b =>
-                {
-                    b.HasOne("Domain.User", "Autor")
-                        .WithMany()
-                        .HasForeignKey("AutorId");
-
-                    b.HasOne("Domain.Topic", "Topic")
-                        .WithMany("RelatedPublications")
-                        .HasForeignKey("TopicId");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
