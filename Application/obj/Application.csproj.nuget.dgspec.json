@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Application\\Application.csproj": {}
+    "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Application\\Application.csproj": {
+    "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\Daniel Amaro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Application\\obj\\",
+        "projectPath": "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\APIAlfaBravo\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Daniel Amaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -32,11 +30,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
+              "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -71,23 +69,21 @@
         }
       }
     },
-    "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
+    "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Daniel Amaro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\obj\\",
+        "projectPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Daniel Amaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -131,23 +127,21 @@
         }
       }
     },
-    "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Daniel Amaro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Daniel Amaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -159,8 +153,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Daniel Amaro\\Desktop\\Projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
+              "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj"
               }
             }
           }
