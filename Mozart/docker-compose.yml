@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  api-postgres-compose:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "password"
+    volumes:
+      - /home/docker/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+    expose:
+      - "5432" 
+    networks:
+      - postgres-compose-network
+      
+  api-pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "postgree"
+      PGADMIN_DEFAULT_PASSWORD: "password"
+    ports:
+      - "16543:80" 
+    depends_on:
+      - api-postgres-compose
+    networks:
+      - postgres-compose-network
+
+networks: 
+  postgres-compose-network:
+    driver: bridge

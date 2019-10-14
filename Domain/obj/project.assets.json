@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\APIAlfaBravo\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\DanielGA\\Desktop\\APIAlfaBravo\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DanielGA\\Desktop\\APIAlfaBravo\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
