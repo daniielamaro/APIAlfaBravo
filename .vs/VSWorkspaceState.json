@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Application",
+    "\\Domain",
+    "\\Domain\\obj",
+    "\\Domain\\obj\\Debug\\netcoreapp2.2",
+    "\\Domain\\obj\\Release",
+    "\\Domain\\obj\\Release\\netcoreapp3.0",
+    "\\Infrastructure"
+  ],
+  "SelectedNode": "\\Domain\\obj\\Debug",
+  "PreviewInSolutionExplorer": false
+}
