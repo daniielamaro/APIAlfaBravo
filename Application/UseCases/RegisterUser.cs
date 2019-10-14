@@ -9,7 +9,7 @@ namespace Application.UseCases
     public class RegisterUser
     {
 
-        public static User Execute(string name, string birthdate, string email, string password)
+        public static User Execute(string name, DateTime birthdate, string email, string password)
         {
             User user = new User()
             {

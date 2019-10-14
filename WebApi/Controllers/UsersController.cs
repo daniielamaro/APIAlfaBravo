@@ -8,6 +8,7 @@ using Infrastructure.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -35,6 +36,8 @@ namespace WebApi.Controllers
             return GetUser.ById(id);
         }
 
+        //birthdate.ToString("dd MMMM yyyy")
+
         /// <summary>
         /// Regista um novo usuário
         /// </summary>
@@ -43,7 +46,7 @@ namespace WebApi.Controllers
         /// <param name="email"></param>
         /// <param name="password"></param>
         [HttpPost]
-        public ActionResult<User> Post(string name, string birthdate, string email, string password)
+        public ActionResult<User> Post(string name, DateTime birthdate, string email, string password)
         {
             User user = RegisterUser.Execute(name, birthdate, email, password);
             return CreatedAtAction("Get", new { id = user.Id }, user);
@@ -51,7 +54,7 @@ namespace WebApi.Controllers
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] User user)
+        public void Put(Guid id, [FromBody] User user)
         {
         }
 

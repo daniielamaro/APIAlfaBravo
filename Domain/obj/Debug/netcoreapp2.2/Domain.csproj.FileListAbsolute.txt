@@ -14,3 +14,10 @@ C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.2\Domain.dll
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.2\Domain.pdb
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.2\Domain.csprojAssemblyReference.cache
+C:\Projetos\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.2\Domain.AssemblyInfoInputs.cache
+C:\Projetos\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.2\Domain.AssemblyInfo.cs
+C:\Projetos\APIAlfaBravo\Domain\bin\Debug\netcoreapp2.2\Domain.deps.json
+C:\Projetos\APIAlfaBravo\Domain\bin\Debug\netcoreapp2.2\Domain.dll
+C:\Projetos\APIAlfaBravo\Domain\bin\Debug\netcoreapp2.2\Domain.pdb
+C:\Projetos\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.2\Domain.dll
+C:\Projetos\APIAlfaBravo\Domain\obj\Debug\netcoreapp2.2\Domain.pdb

@@ -44,3 +44,27 @@ C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.csproj.CopyComplete
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.dll
 C:\Users\Daniel Amaro\Desktop\Projeto\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.pdb
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.csprojAssemblyReference.cache
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.RazorAssemblyInfo.cache
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.RazorAssemblyInfo.cs
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.AssemblyInfoInputs.cache
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.AssemblyInfo.cs
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.deps.json
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.runtimeconfig.json
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.runtimeconfig.dev.json
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.dll
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.pdb
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\WebApi.xml
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Application.dll
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Domain.dll
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Infrastructure.dll
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Application.pdb
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Infrastructure.pdb
+C:\Projetos\APIAlfaBravo\WebApi\bin\Debug\netcoreapp2.2\Domain.pdb
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.RazorTargetAssemblyInfo.cache
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.csproj.CopyComplete
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.dll
+C:\Projetos\APIAlfaBravo\WebApi\obj\Debug\netcoreapp2.2\WebApi.pdb
