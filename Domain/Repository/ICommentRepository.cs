@@ -7,7 +7,7 @@ namespace Domain.Repository
     /// <summary>
     /// Aqui entra a execução dos metodos para acesso ao DB
     /// </summary>
-    public interface ICommentRepository : ICreateRegister<Comment>, IGetAll<Comment>, IGetRegisterById<Comment>
+    public interface ICommentRepository : ICreateRegister<Comment>, IGetAll<Comment>
     {
 
     }
