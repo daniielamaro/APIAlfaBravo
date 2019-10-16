@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.EntityFrameworkCore;
+using Domain;
 
 namespace WebApi
 {
@@ -27,7 +26,7 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSwaggerGen(c =>
             {
@@ -43,19 +42,13 @@ namespace WebApi
                         },
                         Description = "API para blogs."
                     });
-                var path = Path.Combine(AppContext.BaseDirectory, "BlogAlfaBravo.xml");
+                //var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
                 //c.IncludeXmlComments(path);
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseMvc();
 
             app.UseSwagger();
@@ -64,6 +57,7 @@ namespace WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
                 c.DocumentTitle = "API AlfaBravo";
+                c.RoutePrefix = string.Empty;
             });
         }
     }
