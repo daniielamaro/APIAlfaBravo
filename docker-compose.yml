@@ -1,31 +1,33 @@
-version: '3'
+version: '3.7'
 
+volumes:
+  dados:
+
+networks:
+  localdev:    
+    
 services:
-  api-postgres-compose:
-    image: postgres
-    environment:
-      POSTGRES_PASSWORD: "password"
-    volumes:
-      - /home/docker/Desenvolvimento/Docker-Compose/PostgreSQL:/var/lib/postgresql/data
-    ports:
-      - "15432:5432"
-    expose:
-      - "5432" 
-    networks:
-      - postgres-compose-network
-      
-  api-pgadmin-compose:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "postgree"
-      PGADMIN_DEFAULT_PASSWORD: "password"
-    ports:
-      - "16543:80" 
-    depends_on:
-      - api-postgres-compose
-    networks:
-      - postgres-compose-network
 
-networks: 
-  postgres-compose-network:
-    driver: bridge
+  postgres:    
+    image: postgres:10.0
+    volumes:
+      - dados:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - localdev
+    container_name: db-postgres
+    environment:      
+      POSTGRES_PASSWORD: "global2019"      
+  
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - localdev    
+    ports:
+      - "5000:80"
+    environment:
+      - DBHOST=postgres
+    depends_on:
+      - postgres
