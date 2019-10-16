@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DanielGA\\Desktop\\Projeto\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DanielGA\\Desktop\\Projeto\\Application\\Application.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Application\\obj\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\Domain.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\Domain.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -127,14 +127,14 @@
         }
       }
     },
-    "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -153,8 +153,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Domain\\Domain.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Domain\\Domain.csproj"
               }
             }
           }
@@ -197,14 +197,14 @@
         }
       }
     },
-    "C:\\Users\\DanielGA\\Desktop\\Projeto\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\Projeto\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -223,11 +223,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\DanielGA\\Desktop\\Projeto\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Application\\Application.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Application\\Application.csproj"
               },
-              "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\DanielGA\\Desktop\\Projeto\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\ProjetoAPI\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
