@@ -34,7 +34,7 @@ namespace Infrastructure.Repository
         }
 
 
-        public TEntity SelectId(int id)
+        public TEntity SelectId(Guid id)
         {
             return ApiContext.Set<TEntity>().Find(id);
         }
@@ -44,6 +44,7 @@ namespace Infrastructure.Repository
             return ApiContext.Set<TEntity>().ToList();
         }
 
+        // Server para descaregar a memoria do DBcontext
         public void Dispose()
         {
             ApiContext.Dispose();

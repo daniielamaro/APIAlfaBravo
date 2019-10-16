@@ -7,6 +7,9 @@ using Domain;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Domain.Repository;
 
 
 namespace WebApi.Controllers
@@ -15,6 +18,13 @@ namespace WebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+
+        private readonly IUserRepository userRepository;
+
+        public UsersController()
+        {
+            userRepository = new UserRepository(new ApiContext());
+        }       
         /// <summary>
         /// Retorna todos os usuários
         /// </summary>
@@ -22,7 +32,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return GetUser.All();
+            return userRepository.ListAll();
         }
 
         /// <summary>

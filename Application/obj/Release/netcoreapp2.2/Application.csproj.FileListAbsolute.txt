@@ -1,0 +1,13 @@
+C:\Projetos\APIAlfaBravo\Application\bin\Release\netcoreapp2.2\Application.deps.json
+C:\Projetos\APIAlfaBravo\Application\bin\Release\netcoreapp2.2\Application.dll
+C:\Projetos\APIAlfaBravo\Application\bin\Release\netcoreapp2.2\Application.pdb
+C:\Projetos\APIAlfaBravo\Application\bin\Release\netcoreapp2.2\Domain.dll
+C:\Projetos\APIAlfaBravo\Application\bin\Release\netcoreapp2.2\Infrastructure.dll
+C:\Projetos\APIAlfaBravo\Application\bin\Release\netcoreapp2.2\Domain.pdb
+C:\Projetos\APIAlfaBravo\Application\bin\Release\netcoreapp2.2\Infrastructure.pdb
+C:\Projetos\APIAlfaBravo\Application\obj\Release\netcoreapp2.2\Application.csprojAssemblyReference.cache
+C:\Projetos\APIAlfaBravo\Application\obj\Release\netcoreapp2.2\Application.AssemblyInfoInputs.cache
+C:\Projetos\APIAlfaBravo\Application\obj\Release\netcoreapp2.2\Application.AssemblyInfo.cs
+C:\Projetos\APIAlfaBravo\Application\obj\Release\netcoreapp2.2\Application.csproj.CopyComplete
+C:\Projetos\APIAlfaBravo\Application\obj\Release\netcoreapp2.2\Application.dll
+C:\Projetos\APIAlfaBravo\Application\obj\Release\netcoreapp2.2\Application.pdb

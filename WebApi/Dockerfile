@@ -1,20 +1,19 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+FROM microsoft/dotnet:2.2-sdk as build
+
+ARG BUILDCONFIG=RELEASE
+ARG VERSION=1.0.0
+
+COPY WebApi.csproj /build/
+
+RUN dotnet restore ./build/WebApi.csproj
+
+COPY . ./build/
+WORKDIR /build/
+RUN dotnet publish ./WebApi.csproj -c $BUILDCONFIG -o out /p:Version=$VERSION
+
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
-WORKDIR /src
-COPY ["WebApi/WebApi.csproj", "WebApi/"]
-RUN dotnet restore "WebApi/WebApi.csproj"
-COPY . .
-WORKDIR "/src/WebApi"
-RUN dotnet build "WebApi.csproj" -c Release -o /app/build
+COPY --from=build /build/out .
 
-FROM build AS publish
-RUN dotnet publish "WebApi.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WebApi.dll"]

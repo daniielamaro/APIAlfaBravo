@@ -18,6 +18,7 @@ namespace Infrastructure.Configuration
                 .IsRequired()
                 .HasMaxLength(150);
 
+            // retirar
             builder
                 .Property(u => u.Birthdate)
                 .IsRequired();
@@ -27,7 +28,7 @@ namespace Infrastructure.Configuration
                 .IsRequired()
                 .HasMaxLength(50);
 
-
+            /*
             builder
                 .HasMany(u => u.Publications)
                 .WithOne(p => p.Autor);
@@ -35,7 +36,7 @@ namespace Infrastructure.Configuration
             builder
                 .HasMany(u => u.Comments)
                 .WithOne(c => c.Autor);
-
+            */
         }
     }
 }

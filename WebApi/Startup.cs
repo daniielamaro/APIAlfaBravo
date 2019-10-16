@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.EntityFrameworkCore;
 using Domain;
+using Infrastructure;
+using Microsoft.AspNetCore.Http;
+using Domain.Repository;
 
 namespace WebApi
 {
@@ -27,6 +30,9 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddSwaggerGen(c =>
             {

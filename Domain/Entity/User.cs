@@ -12,6 +12,8 @@ namespace Domain
         public string Email { get; set; }
         public string Password { get; set; }
 
+
+        /*
         /// <summary>
         /// Um Usuario Pode ter nenhum ou muitos publicação
         /// </summary>
@@ -21,5 +23,7 @@ namespace Domain
         /// Um Usuario Pode ter nenhum ou muitos comentários
         /// </summary>
         public virtual ICollection<Comment> Comments { get; set; }
+        */
+
     }
 }
