@@ -63,7 +63,7 @@ namespace WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1 docs");
                 c.DocumentTitle = "API AlfaBravo";
-          
+                c.RoutePrefix = string.Empty;
             });
         }
     }

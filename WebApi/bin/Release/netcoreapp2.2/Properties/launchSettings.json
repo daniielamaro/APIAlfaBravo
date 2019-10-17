@@ -33,7 +33,7 @@
         "ASPNETCORE_URLS": "https://+:443;http://+:80",
         "ASPNETCORE_HTTPS_PORT": "44313"
       },
-      "httpPort": 0,
+      "httpPort": 54949,
     }
   }
 }

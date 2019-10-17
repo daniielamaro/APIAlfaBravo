@@ -23,7 +23,7 @@ namespace Infrastructure.Repository
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-          => optionsBuilder.UseNpgsql("Host=localhost;Database=WebApiBlog;Username=postgres;Password=global2019");
+          => optionsBuilder.UseNpgsql("Host=localhost;Database=WebApiBlog;Username=postgres;Password=password");
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -78,7 +78,7 @@ namespace Infrastructure.Repository
                     Id = Guid.NewGuid(),
                     Name = "Tempo"
                 }
-                );
+            );
 
             base.OnModelCreating(modelBuilder);            
         }    

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.UseCases;
 using Domain;
+using Domain.Repository;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +24,8 @@ namespace WebApi.Controllers
         public UsersController()
         {
             userRepository = new UserRepository(new ApiContext());
-        }       
+        }
+
         /// <summary>
         /// Retorna todos os usuários
         /// </summary>
@@ -32,7 +33,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<User> Get()
         {
-            return userRepository.ListAll();
+            return userRepository.GetAll();
         }
 
         /// <summary>
@@ -40,39 +41,44 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="id">O ID do usuário que deseja retornar</param>
         /// <remarks>Retorna um usuário usando um ID como parametro</remarks>
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetUser")]
         public User Get(Guid id)
         {
-            return GetUser.ById(id);
+            return userRepository.GetById(id);
         }
-
-        //birthdate.ToString("dd MMMM yyyy")
 
         /// <summary>
         /// Regista um novo usuário
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="birthdate"></param>
         /// <param name="email"></param>
         /// <param name="password"></param>
         [HttpPost]
-        public ActionResult<User> Post(string name, DateTime birthdate, string email, string password)
+        public ActionResult<User> Post(string name, string email, string password)
         {
-            User user = RegisterUser.Execute(name, birthdate, email, password);
+            User user = new User()
+            {
+                Name = name,
+                Email = email,
+                Password = password
+            };
+            
+            userRepository.Create(user);
+
             return CreatedAtAction("Get", new { id = user.Id }, user);
         }
 
-        // PUT: api/Users/5
         [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody] User user)
+        public User Put(Guid id, [FromBody] User user)
         {
+            return userRepository.Update(id, user);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public User Delete(Guid id)
         {
-            return RemoveUser.Execute(id);
+            return userRepository.Delete(id);
         }
     }
 }

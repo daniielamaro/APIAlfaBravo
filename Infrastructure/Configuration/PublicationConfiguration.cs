@@ -29,7 +29,6 @@ namespace Infrastructure.Configuration
                 .IsRequired();
 
             builder.HasMany(p => p.Comments);
-            builder.HasOne(p => p.Topic);
 
         }
     }

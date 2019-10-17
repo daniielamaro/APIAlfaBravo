@@ -17,12 +17,11 @@
             <param name="id">O ID do usuário que deseja retornar</param>
             <remarks>Retorna um usuário usando um ID como parametro</remarks>
         </member>
-        <member name="M:WebApi.Controllers.UsersController.Post(System.String,System.DateTime,System.String,System.String)">
+        <member name="M:WebApi.Controllers.UsersController.Post(System.String,System.String,System.String)">
             <summary>
             Regista um novo usuário
             </summary>
             <param name="name"></param>
-            <param name="birthdate"></param>
             <param name="email"></param>
             <param name="password"></param>
         </member>

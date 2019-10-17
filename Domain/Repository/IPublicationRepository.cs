@@ -7,8 +7,8 @@ namespace Domain.Repository
     /// <summary>
     /// Aqui entra a execução dos metodos para acesso ao DB
     /// </summary>
-    public interface IPublicationRepository : IBaseRepository<Publication>
+    public interface IPublicationRepository : ICreateRegister<Publication>, IGetAll<Publication>, IDeleteRegister<Publication>, IGetRegisterById<Publication>, IUpdateRegister<Publication>
     {
-
+        List<Publication> GetByName(string name);
     }
 }

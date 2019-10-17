@@ -13,6 +13,12 @@
     <Compile Remove="Migrations\20191013222030_API.Designer.cs" />
     <Compile Remove="Migrations\20191013234858_Initial.cs" />
     <Compile Remove="Migrations\20191013234858_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191014201712_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191014201712_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191014205328_Infrastructure.cs" />
+    <Compile Remove="Migrations\20191014205328_Infrastructure.Designer.cs" />
+    <Compile Remove="Migrations\20191016210205_Infrastructure.cs" />
+    <Compile Remove="Migrations\20191016210205_Infrastructure.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
