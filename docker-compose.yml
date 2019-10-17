@@ -15,10 +15,13 @@ services:
       - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - localdev
+    ports:
+      - "5432:5432"
     container_name: db-postgres
-    environment:      
-      POSTGRES_PASSWORD: "global2019"      
-  
+    environment:            
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=global2019
+      
   app:
     build:
       context: .
