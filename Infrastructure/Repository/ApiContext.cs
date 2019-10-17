@@ -23,7 +23,7 @@ namespace Infrastructure.Repository
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-          => optionsBuilder.UseNpgsql("Host=localhost;Database=WebApiBlog;Username=postgres;Password=password");
+          => optionsBuilder.UseNpgsql("Host=localhost;Database=WebApiBlog;Username=postgres;Password=global2019");
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -6,6 +6,6 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\DanielGA\Desktop\Projeto\deploy</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Projetos\APIAlfaBravo\deploy</_PublishTargetUrl>
   </PropertyGroup>
 </Project>
