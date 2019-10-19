@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Application.Entity;
+using Application.Repository;
 using Domain;
-using Domain.Repository;
-using Infrastructure.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -20,7 +17,7 @@ namespace WebApi.Controllers
 
         public TopicController()
         {
-            topicRepository = new TopicRepository(new ApiContext());
+            topicRepository = new TopicRepository();
         }
 
         [HttpGet]
@@ -38,11 +35,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Topic> Post(string name)
         {
-            Topic topic = new Topic()
-            {
-                Id = Guid.NewGuid(),
-                Name = name
-            };
+            Topic topic = new Topic(name);
             
             topicRepository.Create(topic);
 

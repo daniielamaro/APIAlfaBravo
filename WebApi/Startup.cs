@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.EntityFrameworkCore;
-using Domain;
+using Application.BusinessRules;
 
 namespace WebApi
 {
@@ -23,7 +22,6 @@ namespace WebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -46,12 +44,10 @@ namespace WebApi
                 //c.IncludeXmlComments(path);
             });
 
-            using (var context = new ApiContext())
+            using (var context = new GetContext().Context)
             {
                 context.Database.Migrate();
             }
-
-            //services.AddDbContext<ApiContext>(options => options.UseNpgsql("host=localhost;port=5432;database=WebApiBlog;username=postgres;password=password"));
         }
 
         public void Configure(IApplicationBuilder app)

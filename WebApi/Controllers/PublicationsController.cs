@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Application.Entity;
+using Application.Repository;
 using Domain;
-using Domain.Repository;
-using Infrastructure.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -20,9 +17,9 @@ namespace WebApi.Controllers
 
         public PublicationsController()
         {
-            publicationRepository = new PublicationRepository(new ApiContext());
-            userRepository = new UserRepository(new ApiContext());
-            topicRepository = new TopicRepository(new ApiContext());
+            publicationRepository = new PublicationRepository();
+            userRepository = new UserRepository();
+            topicRepository = new TopicRepository();
         }
 
         [HttpGet]
@@ -34,18 +31,10 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Publication> Post(Guid autorId, string title, string content, Guid topicId)
         {
-            var user = userRepository.GetById(autorId);
+            var autor = userRepository.GetById(autorId);
             var topic = topicRepository.GetById(topicId);
 
-            Publication publication = new Publication()
-            {
-                Autor = user,
-                Title = title,
-                Content = content,
-                Comments = new List<Comment>(),
-                DateCreated = DateTime.Now,
-                Topic = topic
-            };
+            Publication publication = new Publication(autor, title, content, topic);
 
             return publicationRepository.Create(publication);
         }
@@ -62,7 +51,6 @@ namespace WebApi.Controllers
             return publicationRepository.Update(id, publication);
         }
 
-        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public Publication Delete(Guid id)
         {

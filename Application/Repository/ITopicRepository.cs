@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Domain;
+using Domain.Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Repository
+namespace Application.Repository
 {
     /// <summary>
     /// Aqui entra a execução dos metodos para acesso ao DB

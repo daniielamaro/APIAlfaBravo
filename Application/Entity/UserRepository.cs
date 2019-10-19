@@ -1,20 +1,22 @@
-﻿using Domain;
+﻿using Application.Repository;
+using Domain;
 using Domain.Repository;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure.Repository
+namespace Application.Entity
 {
     public class UserRepository : IUserRepository
     {
 
         protected readonly ApiContext ApiContext;
 
-        public UserRepository(ApiContext apiContext)
+        public UserRepository()
         {
-            ApiContext = apiContext;
+            ApiContext = new ApiContext();
         }
 
         public User Create(User user)

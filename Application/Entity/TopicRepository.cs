@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Application.Repository;
 using Domain;
 using Domain.Repository;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repository
+namespace Application.Entity
 {
     public class TopicRepository : ITopicRepository
     {
         protected readonly ApiContext ApiContext;
 
-        public TopicRepository(ApiContext apiContext)
+        public TopicRepository()
         {
-            ApiContext = apiContext;
+            ApiContext = new ApiContext();
         }
 
         public Topic Create(Topic topic)

@@ -6,7 +6,7 @@ networks:
 
 services:
   webapi:
-    image: ${DOCKER_REGISTRY-}testeapi
+    image: ${DOCKER_REGISTRY-}testeapi2
     build: 
       context: .
       dockerfile: WebApi/Dockerfile

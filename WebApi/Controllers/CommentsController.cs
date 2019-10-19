@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Domain;
-using Domain.Repository;
-using Infrastructure.Repository;
-using Microsoft.AspNetCore.Http;
+using Application.Repository;
 using Microsoft.AspNetCore.Mvc;
-
+using Application.Entity;
 
 namespace WebApi.Controllers
 {
@@ -21,8 +17,8 @@ namespace WebApi.Controllers
 
         public CommentsController()
         {
-            commentRepository = new CommentRepository(new ApiContext());
-            userRepository = new UserRepository(new ApiContext());
+            commentRepository = new CommentRepository();
+            userRepository = new UserRepository();
         }
 
         [HttpGet]
@@ -40,13 +36,9 @@ namespace WebApi.Controllers
         [HttpPost]
         public Comment Post(Guid autorId, string content, Guid publicationId)
         {
-            Comment comment = new Comment()
-            {
-                Id = Guid.NewGuid(),
-                Autor = userRepository.GetById(autorId),
-                Content = content,
-                PublicationId = publicationId
-            };
+            var autor = userRepository.GetById(autorId);
+
+            Comment comment = new Comment(autor, content, publicationId);
             
             commentRepository.Create(comment);
 

@@ -1,20 +1,22 @@
-﻿using Domain;
+﻿using Application.Repository;
+using Domain;
 using Domain.Repository;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure.Repository 
+namespace Application.Entity
 {
     
     public class PublicationRepository : IPublicationRepository
     {
         protected readonly ApiContext ApiContext;
 
-        public PublicationRepository(ApiContext apiContext)
+        public PublicationRepository()
         {
-            ApiContext = apiContext;
+            ApiContext = new ApiContext();
         }
 
         public Publication Create(Publication publication)

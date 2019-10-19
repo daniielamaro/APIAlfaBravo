@@ -7,11 +7,21 @@ namespace Domain
 {
    public class Comment
    {
-        public Guid Id { get; set; }
-        public User Autor { get; set; }
-        public string Content { get; set; }
+        public Guid Id { get; private set; }
+        public User Autor { get; private set; }
+        public string Content { get; private set; }
 
         [ForeignKey("PublicationId")]
         public Guid PublicationId { get; set; }
+
+        public Comment(User autor, string content, Guid publicationId)
+        {
+            Id = Guid.NewGuid();
+            Autor = autor;
+            Content = content;
+            PublicationId = publicationId;
+        }
+
+        public Comment() { }
    }
 }
