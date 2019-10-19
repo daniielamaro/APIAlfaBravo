@@ -1,9 +1,9 @@
-﻿using Domain.Repository;
+﻿using Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.BusinessRules
+namespace Application.BusinessRules
 {
     public sealed class ValidateUser
     {

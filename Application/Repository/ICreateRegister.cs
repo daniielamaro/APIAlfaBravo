@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Repository
+namespace Application.Repository
 {
     public interface ICreateRegister<TEntity>
     {
