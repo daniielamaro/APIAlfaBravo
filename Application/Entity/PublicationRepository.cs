@@ -1,6 +1,5 @@
 ﻿using Application.Repository;
 using Domain;
-using Domain.Repository;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -38,7 +37,7 @@ namespace Application.Entity
             return publication;
         }
 
-        public IEnumerable<Publication> GetAll()
+        public List<Publication> GetAll()
         {
             List<Publication> publications = ApiContext.Publications
                 .Include(x => x.Autor)
@@ -71,7 +70,7 @@ namespace Application.Entity
             return publications;
         }
 
-        public Publication Update(Guid id, Publication publication)
+        public Publication Update(Publication publication)
         {
             ApiContext.Entry(publication).State = EntityState.Modified;
             ApiContext.SaveChanges();

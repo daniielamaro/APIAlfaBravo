@@ -6,6 +6,6 @@ namespace Application.Repository
 {
     public interface IGetAll<TEntity>
     {
-        IEnumerable<TEntity> GetAll();
+        List<TEntity> GetAll();
     }
 }

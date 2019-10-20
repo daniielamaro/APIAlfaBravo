@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Application.Repository;
 using Domain;
-using Domain.Repository;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,7 +36,7 @@ namespace Application.Entity
             return comment;
         }
 
-        public IEnumerable<Comment> GetAll()
+        public List<Comment> GetAll()
         {
             return ApiContext.Comments
                 .Include(x => x.Autor)
@@ -52,7 +51,7 @@ namespace Application.Entity
                 .FirstOrDefault();
         }
 
-        public Comment Update(Guid id, Comment comment)
+        public Comment Update(Comment comment)
         {
             ApiContext.Entry(comment).State = EntityState.Modified;
             ApiContext.SaveChanges();

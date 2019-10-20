@@ -1,6 +1,5 @@
 ﻿using Application.Repository;
 using Domain;
-using Domain.Repository;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -49,7 +48,7 @@ namespace Application.Entity
             return user;
         }
 
-        public IEnumerable<User> GetAll()
+        public List<User> GetAll()
         {
             return ApiContext.Users.ToList();
         }
@@ -59,7 +58,7 @@ namespace Application.Entity
             return ApiContext.Users.Find(id);
         }
 
-        public User Update(Guid id, User user)
+        public User Update(User user)
         {
             ApiContext.Entry(user).State = EntityState.Modified;
             ApiContext.SaveChanges();

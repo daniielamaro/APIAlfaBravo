@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Application.Repository;
 using Domain;
-using Domain.Repository;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,7 +35,7 @@ namespace Application.Entity
             return topic;
         }
 
-        public IEnumerable<Topic> GetAll()
+        public List<Topic> GetAll()
         {
             return ApiContext.Topics.ToList();
         }
@@ -46,7 +45,7 @@ namespace Application.Entity
             return ApiContext.Topics.Find(id);
         }
 
-        public Topic Update(Guid id, Topic topic)
+        public Topic Update(Topic topic)
         {
             ApiContext.Entry(topic).State = EntityState.Modified;
             ApiContext.SaveChanges();

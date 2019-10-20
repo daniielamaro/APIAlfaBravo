@@ -48,7 +48,7 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public Publication Put(Guid id, [FromBody] Publication publication)
         {
-            return publicationRepository.Update(id, publication);
+            return publicationRepository.Update(publication);
         }
 
         [HttpDelete("{id}")]

@@ -18,5 +18,14 @@ namespace Domain
             Email = email;
             Password = password;
         }
+
+        public User(Guid id, string name, string email, string password)
+        {
+
+            Id = id;
+            Name = name;
+            Email = email;
+            Password = password;
+        }
     }
 }

@@ -14,5 +14,11 @@ namespace Domain
             Id = Guid.NewGuid();
             Name = name;
         }
+
+        public Topic(Guid id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

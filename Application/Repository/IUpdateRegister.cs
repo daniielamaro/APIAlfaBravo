@@ -6,6 +6,6 @@ namespace Application.Repository
 {
     public interface IUpdateRegister<TEntity>
     {
-        TEntity Update(Guid id, TEntity entity);
+        TEntity Update(TEntity entity);
     }
 }

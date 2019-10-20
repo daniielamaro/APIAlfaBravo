@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Application.BusinessRules;
 using Application.Entity;
 using Application.Repository;
 using Domain;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -36,16 +38,32 @@ namespace WebApi.Controllers
         public ActionResult<User> Post(string name, string email, string password)
         {
             User user = new User(name, email, password);
-            
+
+            var resultValidation = new UserValidator().Validate(user);
+
+            if (!resultValidation.IsValid)
+            {
+                return BadRequest(resultValidation.Errors);
+            }
+
             userRepository.Create(user);
 
             return CreatedAtAction("Get", new { id = user.Id }, user);
         }
 
         [HttpPut("{id}")]
-        public User Put(Guid id, [FromBody] User user)
+        public ActionResult<User> Put(Guid id, string name, string email, string password)
         {
-            return userRepository.Update(id, user);
+            User user = new User(id, name, email, password);
+
+            var resultValidation = new UserValidator().Validate(user);
+
+            if (!resultValidation.IsValid)
+            {
+                return BadRequest(resultValidation.Errors);
+            }
+
+            return Ok(userRepository.Update(user));
         }
 
         [HttpDelete("{id}")]

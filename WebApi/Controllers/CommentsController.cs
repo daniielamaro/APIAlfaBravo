@@ -48,7 +48,7 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public Comment Put(Guid id, [FromBody] Comment comment)
         {
-            return commentRepository.Update(id, comment);
+            return commentRepository.Update(comment);
         }
 
         [HttpDelete("{id}")]
