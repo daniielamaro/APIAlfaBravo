@@ -42,9 +42,7 @@ namespace WebApi.Controllers
             var resultValidation = new TopicValidator().Validate(topic);
 
             if(!resultValidation.IsValid)
-            {
                 return BadRequest(resultValidation.Errors);
-            }
             
             topicRepository.Create(topic);
 
@@ -59,9 +57,7 @@ namespace WebApi.Controllers
             var resultValidation = new TopicValidator().Validate(topic);
 
             if (!resultValidation.IsValid)
-            {
                 return BadRequest(resultValidation.Errors);
-            }
 
             return Ok(topicRepository.Update(topic));
         }

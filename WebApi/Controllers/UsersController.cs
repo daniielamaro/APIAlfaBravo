@@ -42,9 +42,7 @@ namespace WebApi.Controllers
             var resultValidation = new UserValidator().Validate(user);
 
             if (!resultValidation.IsValid)
-            {
                 return BadRequest(resultValidation.Errors);
-            }
 
             userRepository.Create(user);
 
@@ -59,9 +57,7 @@ namespace WebApi.Controllers
             var resultValidation = new UserValidator().Validate(user);
 
             if (!resultValidation.IsValid)
-            {
                 return BadRequest(resultValidation.Errors);
-            }
 
             return Ok(userRepository.Update(user));
         }

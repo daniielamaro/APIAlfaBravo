@@ -55,9 +55,9 @@ namespace Application.BusinessRules
 
         private bool EmailNotExists(User user, string email)
         {
-            List<User> users = userRepository.GetAll();
+            List<User> listUsers = userRepository.GetAll();
 
-            return !(users.Exists(x => x.Email == email && x.Id != user.Id));
+            return !(listUsers.Exists(x => x.Email == email && x.Id != user.Id));
         }
     }
 }

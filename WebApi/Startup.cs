@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.EntityFrameworkCore;
 using Application.BusinessRules;
+using Application.Entity;
 
 namespace WebApi
 {
@@ -44,10 +45,7 @@ namespace WebApi
                 //c.IncludeXmlComments(path);
             });
 
-            using (var context = new GetContext().Context)
-            {
-                context.Database.Migrate();
-            }
+            ConfigMigration.Apply();
         }
 
         public void Configure(IApplicationBuilder app)
