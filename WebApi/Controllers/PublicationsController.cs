@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Application.BusinessRules;
 using Application.Entity;
 using Application.Repository;
 using Domain;
@@ -36,6 +37,11 @@ namespace WebApi.Controllers
 
             Publication publication = new Publication(autor, title, content, topic);
 
+            var resultValidator = new PublicationValidator().Validate(publication);
+
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
+
             return publicationRepository.Create(publication);
         }
 
@@ -46,9 +52,18 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public Publication Put(Guid id, [FromBody] Publication publication)
+        public ActionResult<Publication> Put(Guid id, string title, string content, Guid topicId)
         {
-            return publicationRepository.Update(publication);
+            Topic topic = topicRepository.GetById(topicId);
+            Publication oldPublication = publicationRepository.GetById(id);
+            Publication newPublication = new Publication(id, oldPublication.Autor, title, content, oldPublication.DateCreated, oldPublication.Comments, topic);
+
+            var resultValidator = new PublicationValidator().Validate(newPublication);
+
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
+
+            return publicationRepository.Update(newPublication);
         }
 
         [HttpDelete("{id}")]

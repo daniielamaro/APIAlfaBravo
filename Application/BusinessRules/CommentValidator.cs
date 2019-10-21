@@ -32,13 +32,13 @@ namespace Application.BusinessRules
             RuleFor(x => x.PublicationId)
                 .NotNull()
                 .WithMessage("O Id da publicação não pode ser nulo.")
-                .Must(IdValidator)
+                .Must(IdNotEmpty)
                 .WithMessage("O Id da publicação não pode ser um Guid vazio (zerado)")
                 .Must(PublicationExists)
                 .WithMessage("Esta publicação não existe");
         }
 
-        private bool IdValidator(Guid id)
+        private bool IdNotEmpty(Guid id)
         {
             return (id != Guid.Empty);
         }

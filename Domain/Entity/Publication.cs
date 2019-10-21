@@ -26,6 +26,17 @@ namespace Domain
             Topic = topic;
         }
 
+        public Publication(Guid id, User autor, string title, string content, DateTime dateCreated, List<Comment> comments, Topic topic)
+        {
+            Id = id;
+            Autor = autor;
+            Title = title;
+            Content = content;
+            DateCreated = dateCreated;
+            Comments = comments;
+            Topic = topic;
+        }
+
         public Publication() { }
     }
 }

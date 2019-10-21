@@ -19,7 +19,7 @@ namespace Application.BusinessRules
             RuleFor(x => x.Id)
                 .NotNull()
                 .WithMessage("O Id não pode ser nulo.")
-                .Must(IdValidator)
+                .Must(IdNotEmpty)
                 .WithMessage("O Id não pode ser um Guid vazio (zerado)");
 
 
@@ -32,7 +32,7 @@ namespace Application.BusinessRules
                 .WithMessage("Este nome de tópico já existe na base de dados.");
         }
 
-        private bool IdValidator(Guid id)
+        private bool IdNotEmpty(Guid id)
         {
             return (id != Guid.Empty);
         }
