@@ -17,6 +17,7 @@ namespace Application.BusinessRules
             topicRepository = new TopicRepository();
 
             RuleFor(x => x.Id)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O Id não pode ser nulo.")
                 .Must(IdNotEmpty)
@@ -24,6 +25,7 @@ namespace Application.BusinessRules
 
 
             RuleFor(x => x.Name)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O nome não pode ser nulo.")
                 .NotEmpty()

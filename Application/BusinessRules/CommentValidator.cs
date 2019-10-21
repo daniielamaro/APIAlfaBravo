@@ -24,12 +24,14 @@ namespace Application.BusinessRules
                 .SetValidator(new UserValidator());
 
             RuleFor(x => x.Content)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O comentario não pode ser nulo.")
                 .NotEmpty()
                 .WithMessage("O comentario não pode estar vazio.");
 
             RuleFor(x => x.PublicationId)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O Id da publicação não pode ser nulo.")
                 .Must(IdNotEmpty)

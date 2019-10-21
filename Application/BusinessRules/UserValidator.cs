@@ -22,6 +22,7 @@ namespace Application.BusinessRules
                 .WithMessage("O Id não pode ser nulo.");
 
             RuleFor(x => x.Name)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O nome não pode ser nulo.")
                 .NotEmpty()
@@ -30,6 +31,7 @@ namespace Application.BusinessRules
                 .WithMessage("O Nome não pode conter números ou caracteres especiais.");
 
             RuleFor(x => x.Email)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O Email não pode ser nulo.")
                 .NotEmpty()
@@ -40,10 +42,11 @@ namespace Application.BusinessRules
                 .WithMessage("Este Email já está registrado na base de dados");
 
             RuleFor(x => x.Password)
-                .NotEmpty()
-                .WithMessage("A senha não pode estar em branco.")
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("A senha não pode ser nula.")
+                .NotEmpty()
+                .WithMessage("A senha não pode estar em branco.")
                 .MinimumLength(8)
                 .WithMessage("A senha precisa conter entre 8 e 30 caracteres.");
         }
@@ -51,7 +54,7 @@ namespace Application.BusinessRules
         private bool NameOnlyLetters(string name)
         {
             return (name.All(c => Char.IsLetter(c) || c == ' '));
-        }
+        }   
 
         private bool EmailNotExists(User user, string email)
         {

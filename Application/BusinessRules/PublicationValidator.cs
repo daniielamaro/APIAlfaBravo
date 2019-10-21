@@ -11,6 +11,7 @@ namespace Application.BusinessRules
         public PublicationValidator()
         {
             RuleFor(x => x.Id)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O Id não pode ser nulo.")
                 .Must(IdNotEmpty)
@@ -20,12 +21,14 @@ namespace Application.BusinessRules
                 .SetValidator(new UserValidator());
 
             RuleFor(x => x.Title)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O titulo não pode ser nulo.")
                 .NotEmpty()
                 .WithMessage("O titulo não pode estar em branco.");
 
             RuleFor(x => x.Content)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O conteudo não pode ser nulo.")
                 .NotEmpty()
