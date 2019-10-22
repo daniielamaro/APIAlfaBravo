@@ -1,20 +1,19 @@
 ﻿CREATE DATABASE webapiblog;
 
-\c webapiblog;
+USE webapiblog;
 
 CREATE TABLE Users
 (
     Id uuid NOT NULL,
-    Name VARCHAR(150) NOT NULL,
-    Birthdate timestamp NOT NULL,
+    Name VARCHAR(150) NOT NULL,    
     Email VARCHAR(100) NOT NULL,
     Password VARCHAR(50) NOT NULL,
     PRIMARY KEY (Id)
 );
 
-INSERT INTO Users VALUES('4327dc6f-efda-4513-a6ce-a2caccc91b96', 'MOZART O ELEGANTE', '2019-10-15 00:00:00', 'mo@gmail.com', '123');
-INSERT INTO Users VALUES('6020ca57-db8c-49fe-8783-26d1cbdf65bf', 'LUAR FOCA', '1980-03-05 00:00:00', 'luar@gmail.com', '123');
-INSERT INTO Users VALUES('ee0fc58f-490d-4086-bc3e-ad78d2569dde', 'LUA LEGAL', '1980-03-05 00:00:00', 'lua@gmail.com', '123');
+INSERT INTO Users VALUES('4327dc6f-efda-4513-a6ce-a2caccc91b96', 'MOZART O ELEGANTE', 'mo@gmail.com', '123');
+INSERT INTO Users VALUES('6020ca57-db8c-49fe-8783-26d1cbdf65bf', 'LUAR FOCA', 'luar@gmail.com', '123');
+INSERT INTO Users VALUES('ee0fc58f-490d-4086-bc3e-ad78d2569dde', 'LUA LEGAL', 'lua@gmail.com', '123');
 
 CREATE TABLE Topics
 (

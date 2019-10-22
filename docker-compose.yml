@@ -1,36 +1,54 @@
 version: '3.7'
 
-volumes:
-  dados:
-
 networks:
-  localdev:    
+  localdev:
+    driver: bridge
+    
+volumes:
+  db_volume:
     
 services:
+
+  app:
+    image: appwebapi
+    build:
+      context: .
+      dockerfile: WebApi/Dockerfile    
+    ports:
+      - "5000:80"
+    depends_on:
+      - postgres
+    networks:
+      - localdev
 
   postgres:    
     image: postgres:10.0
     volumes:
-      - dados:/var/lib/postgresql/data
-      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - localdev
+      - db_volume:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql    
     ports:
       - "5432:5432"
+    restart: always
     container_name: db-postgres
-    environment:            
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=global2019
-      
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    networks:
-      - localdev    
-    ports:
-      - "5000:80"
     environment:
-      - DBHOST=postgres
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}      
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-global2019}
+      POSTGRES_DB: ${POSTGRES_DB:-webapiblog}
+    networks:
+      - localdev
+
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    volumes: 
+      - "./pgadmin:/root/.pgadmin"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-raulsantiago@id.uff.br}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-global2019}
+    ports:
+      - "${PGADMIN_PORT:-15432}:80"
     depends_on:
-      - postgres
+      - db-postgres
+    networks:
+      - localdev
