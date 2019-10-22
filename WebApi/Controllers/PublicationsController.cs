@@ -16,6 +16,9 @@ namespace WebApi.Controllers
         private readonly IUserRepository userRepository;
         private readonly ITopicRepository topicRepository;
 
+        /// <summary>
+        /// Controller das publicações
+        /// </summary>
         public PublicationsController()
         {
             publicationRepository = new PublicationRepository();
@@ -23,12 +26,28 @@ namespace WebApi.Controllers
             topicRepository = new TopicRepository();
         }
 
+        /// <summary>
+        /// Listar todas as publicações
+        /// </summary>
+        /// <response code="200">Lista de publicações encontrada</response>
+        /// <response code="400">Nenhuma lista de publicações encontrada</response>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<Publication> Get()
         {
             return publicationRepository.GetAll();
         }
 
+        /// <summary>
+        /// Criar publicação
+        /// </summary>
+        /// <param name="autorId">Identificador do autor</param>
+        /// <param name="title">Título da publicação</param>
+        /// <param name="content">Conteúdo da publicação</param>
+        /// <param name="topicId">Categoria da qual a publicação pertence</param>
+        /// <response code="200">Sucesso na criação da publicação</response>
+        /// <response code="400">Erro na criação da publicação</response>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<Publication> Post(Guid autorId, string title, string content, Guid topicId)
         {
@@ -45,12 +64,29 @@ namespace WebApi.Controllers
             return publicationRepository.Create(publication);
         }
 
+        /// <summary>
+        /// Buscar publicações
+        /// </summary>
+        /// <param name="name">Nome do autor</param>
+        /// <response code="200">Sucesso na busca da publicação</response>
+        /// <response code="400">Erro ao buscar publicação</response>
+        /// <returns></returns>
         [HttpGet("{name}", Name = "GetPubName")]
         public List<Publication> Get(string name)
         {
             return publicationRepository.GetByName(name);
         }
 
+        /// <summary>
+        /// Alterar publicação
+        /// </summary>
+        /// <param name="id">Identificador do autor</param>
+        /// <param name="title">Título da publicação</param>
+        /// <param name="content">Conteúdo da publicação</param>
+        /// <param name="topicId">Categoria da qual a publicação pertence</param>
+        /// <response code="200">Sucesso na alteração da publicação</response>
+        /// <response code="400">Erro ao tentar alterar a publicação</response>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public ActionResult<Publication> Put(Guid id, string title, string content, Guid topicId)
         {
@@ -66,6 +102,13 @@ namespace WebApi.Controllers
             return publicationRepository.Update(newPublication);
         }
 
+        /// <summary>
+        /// Deletar publicação
+        /// </summary>
+        /// <param name="id"></param>
+        /// <response code="200">Sucesso ao excluir publicação</response>
+        /// <response code="400">Erro ao tentar deletar a publicação</response>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public Publication Delete(Guid id)
         {
