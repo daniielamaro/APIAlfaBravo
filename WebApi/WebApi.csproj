@@ -9,7 +9,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Projetos\APIAlfaBravo\WebApi\WebApi.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\DanielGA\Desktop\projeto\APIAlfaBravo\WebApi\WebApi.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>

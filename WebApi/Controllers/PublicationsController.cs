@@ -54,21 +54,34 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<Publication> Put(Guid id, string title, string content, Guid topicId)
         {
+            var resultValidation = new PublicationExistValidator().Validate(id);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            resultValidation = new TopicExistValidator().Validate(topicId);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
             Topic topic = topicRepository.GetById(topicId);
+
             Publication oldPublication = publicationRepository.GetById(id);
             Publication newPublication = new Publication(id, oldPublication.Autor, title, content, oldPublication.DateCreated, oldPublication.Comments, topic);
 
-            var resultValidator = new PublicationValidator().Validate(newPublication);
+            resultValidation = new PublicationValidator().Validate(newPublication);
 
-            if (!resultValidator.IsValid)
-                return BadRequest(resultValidator.Errors);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
 
             return publicationRepository.Update(newPublication);
         }
 
         [HttpDelete("{id}")]
-        public Publication Delete(Guid id)
+        public ActionResult<Publication> Delete(Guid id)
         {
+            var resultValidation = new PublicationExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return publicationRepository.Delete(id);
         }
     }
