@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         /// <response code="400">Nenhuma lista de comentários encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Comment> Get()
+        public List<Comment> Get()
         {
             return commentRepository.GetAll();
         }
@@ -48,8 +48,13 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao buscar comentário</response>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetComment")]
-        public Comment Get(Guid id)
+        public ActionResult<Comment> Get(Guid id)
         {
+            var resultValidation = new CommentExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return commentRepository.GetById(id);
         }
 
@@ -65,11 +70,21 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Comment> Post(Guid autorId, string content, Guid publicationId)
         {
+            var resultValidation = new UserExistValidator().Validate(autorId);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             var autor = userRepository.GetById(autorId);
+
+            resultValidation = new PublicationExistValidator().Validate(publicationId);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
 
             Comment comment = new Comment(autor, content, publicationId);
 
-            var resultValidation = new CommentValidator().Validate(comment);
+            resultValidation = new CommentValidator().Validate(comment);
 
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
@@ -90,10 +105,15 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<Comment> Put(Guid id, string content)
         {
+            var resultValidation = new CommentExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             Comment oldComment = commentRepository.GetById(id);
             Comment newComment = new Comment(id, oldComment.Autor, content, oldComment.PublicationId);
 
-            var resultValidation = new CommentValidator().Validate(newComment);
+            resultValidation = new CommentValidator().Validate(newComment);
 
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
@@ -109,8 +129,13 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao deletar comentário</response>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public Comment Delete(Guid id)
+        public ActionResult<Comment> Delete(Guid id)
         {
+            var resultValidation = new CommentExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return commentRepository.Delete(id);
         }
     }

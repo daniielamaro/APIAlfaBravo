@@ -32,7 +32,7 @@ namespace WebApi.Controllers
         /// <response code="400">Nenhuma lista de usuários encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<User> Get()
+        public List<User> Get()
         {
             return userRepository.GetAll();
         }

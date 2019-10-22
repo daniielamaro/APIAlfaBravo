@@ -33,7 +33,7 @@ namespace WebApi.Controllers
         /// <response code="400">Nenhuma lista de publicações encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Publication> Get()
+        public List<Publication> Get()
         {
             return publicationRepository.GetAll();
         }
@@ -72,8 +72,13 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao buscar publicação</response>
         /// <returns></returns>
         [HttpGet("{name}", Name = "GetPubName")]
-        public List<Publication> Get(string name)
+        public ActionResult<List<Publication>> Get(string name)
         {
+            var resultValidation = new NameNotNullValidator().Validate(name);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return publicationRepository.GetByName(name);
         }
 

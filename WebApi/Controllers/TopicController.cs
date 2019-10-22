@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         /// <response code="200">Lista de tópicos encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Topic> Get()
+        public List<Topic> Get()
         {
             return topicRepository.GetAll();
         }
