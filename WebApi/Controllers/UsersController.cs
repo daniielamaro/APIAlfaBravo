@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Application.BusinessRules;
+using Application.Entity;
+using Application.Repository;
 using Domain;
-using Domain.Repository;
-using Infrastructure.Repository;
-using Microsoft.AspNetCore.Http;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
-using Domain.Repository;
 
 
 namespace WebApi.Controllers
@@ -23,58 +19,49 @@ namespace WebApi.Controllers
 
         public UsersController()
         {
-            userRepository = new UserRepository(new ApiContext());
+            userRepository = new UserRepository();
         }
 
-        /// <summary>
-        /// Retorna todos os usuários
-        /// </summary>
-        /// <returns>Retorna todos os usuarios</returns>
         [HttpGet]
         public IEnumerable<User> Get()
         {
             return userRepository.GetAll();
         }
 
-        /// <summary>
-        /// Retorna um usuário especifico
-        /// </summary>
-        /// <param name="id">O ID do usuário que deseja retornar</param>
-        /// <remarks>Retorna um usuário usando um ID como parametro</remarks>
         [HttpGet("{id}", Name = "GetUser")]
         public User Get(Guid id)
         {
             return userRepository.GetById(id);
         }
 
-        /// <summary>
-        /// Regista um novo usuário
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="email"></param>
-        /// <param name="password"></param>
         [HttpPost]
         public ActionResult<User> Post(string name, string email, string password)
         {
-            User user = new User()
-            {
-                Name = name,
-                Email = email,
-                Password = password
-            };
-            
+            User user = new User(name, email, password);
+
+            var resultValidation = new UserValidator().Validate(user);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             userRepository.Create(user);
 
             return CreatedAtAction("Get", new { id = user.Id }, user);
         }
 
         [HttpPut("{id}")]
-        public User Put(Guid id, [FromBody] User user)
+        public ActionResult<User> Put(Guid id, string name, string email, string password)
         {
-            return userRepository.Update(id, user);
+            User user = new User(id, name, email, password);
+
+            var resultValidation = new UserValidator().Validate(user);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            return Ok(userRepository.Update(user));
         }
 
-        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public User Delete(Guid id)
         {

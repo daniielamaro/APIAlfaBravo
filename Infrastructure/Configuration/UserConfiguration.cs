@@ -17,11 +17,11 @@ namespace Infrastructure.Configuration
                 .IsRequired()
                 .HasMaxLength(150);
 
-            // retirar
-            object p = builder
+            builder
                 .Property(u => u.Password)
                 .IsRequired()
                 .HasMaxLength(50);
+
         }
     }
 }

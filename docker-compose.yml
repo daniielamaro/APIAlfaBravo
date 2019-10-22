@@ -1,5 +1,6 @@
 version: '3.7'
 
+<<<<<<< HEAD
 networks:
   localdev:
     driver: bridge
@@ -38,17 +39,61 @@ services:
       - localdev
 
   
+=======
+networks: 
+  postgres-compose-network:
+    driver: bridge
+
+services:
+  webapi:
+    image: ${DOCKER_REGISTRY-}testeapi2
+    build: 
+      context: .
+      dockerfile: WebApi/Dockerfile
+    ports:
+      - "5000:80"
+    networks:
+      - postgres-compose-network
+
+  db-postgres:
+    image: postgres:latest
+    container_name: db-postgres
+    ports:
+      - "5432"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-WebApiBlog}  
+    networks:
+      - postgres-compose-network
+
+>>>>>>> 9b933cd547dfedfb219c44c6788a1eaf32743676
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin
     volumes: 
       - "./pgadmin:/root/.pgadmin"
     environment:
+<<<<<<< HEAD
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-raulsantiago@id.uff.br}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-global2019}
+=======
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-postgres}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-password}
+>>>>>>> 9b933cd547dfedfb219c44c6788a1eaf32743676
     ports:
       - "${PGADMIN_PORT:-15432}:80"
     depends_on:
       - db-postgres
     networks:
+<<<<<<< HEAD
       - localdev
+=======
+      - postgres-compose-network      
+
+volumes:
+  db_volume:
+>>>>>>> 9b933cd547dfedfb219c44c6788a1eaf32743676

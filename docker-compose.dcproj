@@ -3,6 +3,13 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
+<<<<<<< HEAD
+=======
+    <ProjectGuid>94eed34d-bdff-4a3a-8e05-1aef5c06a67a</ProjectGuid>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
+    <DockerServiceName>webapi</DockerServiceName>
+>>>>>>> 9b933cd547dfedfb219c44c6788a1eaf32743676
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
@@ -11,4 +18,8 @@
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
+<<<<<<< HEAD
 </Project>
+=======
+</Project>
+>>>>>>> 9b933cd547dfedfb219c44c6788a1eaf32743676

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Application.BusinessRules;
+using Application.Entity;
+using Application.Repository;
 using Domain;
-using Domain.Repository;
-using Infrastructure.Repository;
-using Microsoft.AspNetCore.Http;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -20,7 +19,7 @@ namespace WebApi.Controllers
 
         public TopicController()
         {
-            topicRepository = new TopicRepository(new ApiContext());
+            topicRepository = new TopicRepository();
         }
 
         [HttpGet]
@@ -38,11 +37,12 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Topic> Post(string name)
         {
-            Topic topic = new Topic()
-            {
-                Id = Guid.NewGuid(),
-                Name = name
-            };
+            Topic topic = new Topic(name);
+
+            var resultValidation = new TopicValidator().Validate(topic);
+
+            if(!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
             
             topicRepository.Create(topic);
 
@@ -50,9 +50,16 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public Topic Put(Guid id, [FromBody] Topic topic)
+        public ActionResult<Topic> Put(Guid id, string name)
         {
-            return topicRepository.Update(id, topic);
+            Topic topic = new Topic(id, name);
+
+            var resultValidation = new TopicValidator().Validate(topic);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            return Ok(topicRepository.Update(topic));
         }
 
         [HttpDelete("{id}")]

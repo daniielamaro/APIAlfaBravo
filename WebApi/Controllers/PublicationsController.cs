@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Application.BusinessRules;
+using Application.Entity;
+using Application.Repository;
 using Domain;
-using Domain.Repository;
-using Infrastructure.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -20,9 +18,9 @@ namespace WebApi.Controllers
 
         public PublicationsController()
         {
-            publicationRepository = new PublicationRepository(new ApiContext());
-            userRepository = new UserRepository(new ApiContext());
-            topicRepository = new TopicRepository(new ApiContext());
+            publicationRepository = new PublicationRepository();
+            userRepository = new UserRepository();
+            topicRepository = new TopicRepository();
         }
 
         [HttpGet]
@@ -34,18 +32,15 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Publication> Post(Guid autorId, string title, string content, Guid topicId)
         {
-            var user = userRepository.GetById(autorId);
+            var autor = userRepository.GetById(autorId);
             var topic = topicRepository.GetById(topicId);
 
-            Publication publication = new Publication()
-            {
-                Autor = user,
-                Title = title,
-                Content = content,
-                Comments = new List<Comment>(),
-                DateCreated = DateTime.Now,
-                Topic = topic
-            };
+            Publication publication = new Publication(autor, title, content, topic);
+
+            var resultValidator = new PublicationValidator().Validate(publication);
+
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
 
             return publicationRepository.Create(publication);
         }
@@ -57,12 +52,20 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public Publication Put(Guid id, [FromBody] Publication publication)
+        public ActionResult<Publication> Put(Guid id, string title, string content, Guid topicId)
         {
-            return publicationRepository.Update(id, publication);
+            Topic topic = topicRepository.GetById(topicId);
+            Publication oldPublication = publicationRepository.GetById(id);
+            Publication newPublication = new Publication(id, oldPublication.Autor, title, content, oldPublication.DateCreated, oldPublication.Comments, topic);
+
+            var resultValidator = new PublicationValidator().Validate(newPublication);
+
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
+
+            return publicationRepository.Update(newPublication);
         }
 
-        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public Publication Delete(Guid id)
         {

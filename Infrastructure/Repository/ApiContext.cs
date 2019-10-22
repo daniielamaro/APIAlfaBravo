@@ -3,7 +3,6 @@ using Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.Repository
 {
@@ -23,7 +22,13 @@ namespace Infrastructure.Repository
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-          => optionsBuilder.UseNpgsql("Host=localhost;Database=WebApiBlog;Username=postgres;Password=global2019");
+        {
+            optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
+            {
+                options.EnableRetryOnFailure(2, TimeSpan.FromSeconds(5), new List<string>());
+                options.MigrationsHistoryTable("_MigrationHistory", "WebApiBlog");
+            });
+        }
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,52 +38,16 @@ namespace Infrastructure.Repository
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
 
             modelBuilder.Entity<Topic>().HasData(
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Cultura"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Economia"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Educação"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Entretenimento"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Esporte"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Política"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Saúde"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Tecnologia"
-                },
-                new Topic()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Tempo"
-                }
-            );
+                new Topic("Cultura"),
+                new Topic("Economia"),
+                new Topic("Educação"),                
+                new Topic("Entretenimento"),
+                new Topic("Esporte"),
+                new Topic("Política"),
+                new Topic("Saúde"),
+                new Topic("Tecnologia"),
+                new Topic("Tempo")
+            ) ;
 
             base.OnModelCreating(modelBuilder);            
         }    

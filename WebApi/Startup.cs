@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.EntityFrameworkCore;
-using Domain;
-using Infrastructure;
-using Microsoft.AspNetCore.Http;
-using Domain.Repository;
+using Application.BusinessRules;
+using Application.Entity;
 
 namespace WebApi
 {
@@ -26,13 +23,9 @@ namespace WebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            //services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddSwaggerGen(c =>
             {
@@ -51,6 +44,8 @@ namespace WebApi
                 //var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
                 //c.IncludeXmlComments(path);
             });
+
+            ConfigMigration.Apply();
         }
 
         public void Configure(IApplicationBuilder app)
