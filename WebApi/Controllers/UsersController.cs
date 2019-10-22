@@ -29,8 +29,13 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}", Name = "GetUser")]
-        public User Get(Guid id)
+        public ActionResult<User> Get(Guid id)
         {
+            var resultValidation = new UserExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return userRepository.GetById(id);
         }
 
@@ -52,9 +57,13 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<User> Put(Guid id, string name, string email, string password)
         {
-            User user = new User(id, name, email, password);
+            var resultValidation = new UserExistValidator().Validate(id);
 
-            var resultValidation = new UserValidator().Validate(user);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            User user = new User(id, name, email, password);
+            resultValidation = new UserValidator().Validate(user);
 
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
@@ -63,8 +72,13 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public User Delete(Guid id)
+        public ActionResult<User> Delete(Guid id)
         {
+            var resultValidation = new UserExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return userRepository.Delete(id);
         }
     }
