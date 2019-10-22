@@ -48,7 +48,7 @@ namespace Application.BusinessRules
                 .NotEmpty()
                 .WithMessage("A senha não pode estar em branco.")
                 .MinimumLength(8)
-                .WithMessage("A senha precisa conter entre 8 e 30 caracteres.");
+                .WithMessage("A senha precisa conter no mínimo 8 caracteres");
         }
 
         private bool NameOnlyLetters(string name)
