@@ -29,8 +29,13 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}", Name = "GetTopic")]
-        public Topic Get(Guid id)
+        public ActionResult<Topic> Get(Guid id)
         {
+            var resultValidation = new TopicExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return topicRepository.GetById(id);
         }
 
@@ -52,9 +57,12 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<Topic> Put(Guid id, string name)
         {
-            Topic topic = new Topic(id, name);
+            var resultValidation = new TopicExistValidator().Validate(id);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
 
-            var resultValidation = new TopicValidator().Validate(topic);
+            Topic topic = new Topic(id, name);
+            resultValidation = new TopicValidator().Validate(topic);
 
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
@@ -63,8 +71,13 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public Topic Delete(Guid id)
+        public ActionResult<Topic> Delete(Guid id)
         {
+            var resultValidation = new TopicExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return topicRepository.Delete(id);
         }
     }

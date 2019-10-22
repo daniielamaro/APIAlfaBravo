@@ -43,7 +43,7 @@ namespace Application.BusinessRules
         {
             List<Topic> topics = topicRepository.GetAll();
 
-            return !(topics.Exists(x => x.Name == name));
+            return !(topics.Exists(x => x.Name.ToLower() == name.ToLower()));
         }
     }
 }
