@@ -17,6 +17,11 @@ namespace Application.BusinessRules
             topicRepository = new TopicRepository();
 
             RuleFor(x => x)
+                .Cascade(CascadeMode.StopOnFirstFailure)
+                .NotNull()
+                .WithMessage("O id do tópico não pode ser nulo")
+                .NotEmpty()
+                .WithMessage("O id do tópico não pode ser vazio")
                 .Must(VerifyTopic)
                 .WithMessage("Este tópico não existe."); 
         }

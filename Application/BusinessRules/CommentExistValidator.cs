@@ -17,6 +17,11 @@ namespace Application.BusinessRules
             commentRepository = new CommentRepository();
 
             RuleFor(x => x)
+                .Cascade(CascadeMode.StopOnFirstFailure)
+                .NotNull()
+                .WithMessage("O id do comentário não pode ser nulo")
+                .NotEmpty()
+                .WithMessage("O id do comentário não pode ser vazio")
                 .Must(VerifyTopic)
                 .WithMessage("Este comentário não existe."); 
         }

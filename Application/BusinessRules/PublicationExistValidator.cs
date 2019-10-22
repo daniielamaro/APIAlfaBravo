@@ -17,6 +17,11 @@ namespace Application.BusinessRules
             publicationRepository = new PublicationRepository();
 
             RuleFor(x => x)
+                .Cascade(CascadeMode.StopOnFirstFailure)
+                .NotNull()
+                .WithMessage("O id da publicação não pode ser nulo")
+                .NotEmpty()
+                .WithMessage("O id da publicação não pode ser vazio")
                 .Must(VerifyPublication)
                 .WithMessage("Esta publicação não existe.");
         }

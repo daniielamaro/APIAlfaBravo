@@ -50,6 +50,7 @@ namespace Application.Entity
         public Publication GetById(Guid id)
         {
             Publication publication = ApiContext.Publications
+                .AsNoTracking()
                 .Where(x => x.Id == id)
                 .Include(x => x.Autor)
                 .Include(x => x.Comments)
@@ -72,7 +73,7 @@ namespace Application.Entity
 
         public Publication Update(Publication publication)
         {
-            ApiContext.Entry(publication).State = EntityState.Modified;
+            ApiContext.Update(publication);
             ApiContext.SaveChanges();
 
             return publication;

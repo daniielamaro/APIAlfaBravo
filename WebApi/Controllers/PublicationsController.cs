@@ -51,13 +51,21 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Publication> Post(Guid autorId, string title, string content, Guid topicId)
         {
-            var autor = userRepository.GetById(autorId);
-            var topic = topicRepository.GetById(topicId);
+            var resultValidator = new UserExistValidator().Validate(autorId);
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
+
+            User autor = userRepository.GetById(autorId);
+
+            resultValidator = new TopicExistValidator().Validate(topicId);
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
+
+            Topic topic = topicRepository.GetById(topicId);
 
             Publication publication = new Publication(autor, title, content, topic);
 
-            var resultValidator = new PublicationValidator().Validate(publication);
-
+            resultValidator = new PublicationValidator().Validate(publication);
             if (!resultValidator.IsValid)
                 return BadRequest(resultValidator.Errors);
 
@@ -85,10 +93,10 @@ namespace WebApi.Controllers
         /// <summary>
         /// Alterar publicação
         /// </summary>
-        /// <param name="id">Identificador do autor</param>
+        /// <param name="id">Identificador da publicação</param>
         /// <param name="title">Título da publicação</param>
         /// <param name="content">Conteúdo da publicação</param>
-        /// <param name="topicId">Categoria da qual a publicação pertence</param>
+        /// <param name="topicId">Categoria da qual a publicação pertence ou será alterada</param>
         /// <response code="200">Sucesso na alteração da publicação</response>
         /// <response code="400">Erro ao tentar alterar a publicação</response>
         /// <returns></returns>
@@ -102,8 +110,8 @@ namespace WebApi.Controllers
             resultValidation = new TopicExistValidator().Validate(topicId);
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
-            Topic topic = topicRepository.GetById(topicId);
 
+            Topic topic = topicRepository.GetById(topicId);
             Publication oldPublication = publicationRepository.GetById(id);
             Publication newPublication = new Publication(id, oldPublication.Autor, title, content, oldPublication.DateCreated, oldPublication.Comments, topic);
 

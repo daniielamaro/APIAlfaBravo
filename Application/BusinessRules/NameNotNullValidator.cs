@@ -13,6 +13,7 @@ namespace Application.BusinessRules
         public NameNotNullValidator()
         {
             RuleFor(x => x)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotNull()
                 .WithMessage("O nome do autor não pode estar nulo.")
                 .NotEmpty()
