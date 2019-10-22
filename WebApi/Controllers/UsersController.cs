@@ -17,17 +17,33 @@ namespace WebApi.Controllers
 
         private readonly IUserRepository userRepository;
 
+        /// <summary>
+        /// Controller do usuário
+        /// </summary>
         public UsersController()
         {
             userRepository = new UserRepository();
         }
 
+        /// <summary>
+        /// Buscar todos os usuários
+        /// </summary>
+        /// <response code="200">Sucesso ao buscar usuários</response>
+        /// <response code="400">Nenhuma lista de usuários encontrada</response>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<User> Get()
         {
             return userRepository.GetAll();
         }
 
+        /// <summary>
+        /// Buscar usuário
+        /// </summary>
+        /// <param name="id">Identificador do usuário</param>
+        /// <response code="200">Sucesso ao buscar usuário</response>
+        /// <response code="400">Erro ao buscar usuário</response>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetUser")]
         public ActionResult<User> Get(Guid id)
         {
@@ -39,6 +55,15 @@ namespace WebApi.Controllers
             return userRepository.GetById(id);
         }
 
+        /// <summary>
+        /// Criar usuário
+        /// </summary>
+        /// <param name="name">Nome do usuário</param>
+        /// <param name="email">E-mail do usuário</param>
+        /// <param name="password">Senha do usuário</param>
+        /// <response code="200">Usuário criado com sucesso</response>
+        /// <response code="400">Erro ao criar usuário</response>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<User> Post(string name, string email, string password)
         {
@@ -54,6 +79,16 @@ namespace WebApi.Controllers
             return CreatedAtAction("Get", new { id = user.Id }, user);
         }
 
+        /// <summary>
+        /// Atualizar dados do usuário
+        /// </summary>
+        /// <param name="id">Identificador do usuário</param>
+        /// <param name="name">Nome do usuário</param>
+        /// <param name="email">E-mail do usuário</param>
+        /// <param name="password">Senha do usuário</param>
+        /// <response code="200">Alteração realizada com sucesso</response>
+        /// <response code="400">Erro ao atualizar usuário</response>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public ActionResult<User> Put(Guid id, string name, string email, string password)
         {
@@ -71,6 +106,13 @@ namespace WebApi.Controllers
             return Ok(userRepository.Update(user));
         }
 
+        /// <summary>
+        /// Deletar usuário
+        /// </summary>
+        /// <param name="id">Idenfiticador do usuário</param>
+        /// <response code="200">Sucesso ao deletar usuário</response>
+        /// <response code="400">Erro ao deletar usuário</response>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult<User> Delete(Guid id)
         {

@@ -17,17 +17,32 @@ namespace WebApi.Controllers
 
         private readonly ITopicRepository topicRepository;
 
+        /// <summary>
+        /// Criação de uma nova categoria
+        /// </summary>
         public TopicController()
         {
             topicRepository = new TopicRepository();
         }
 
+        /// <summary>
+        /// Listar todas as categorias
+        /// </summary>
+        /// <response code="200">Lista de tópicos encontrada</response>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<Topic> Get()
         {
             return topicRepository.GetAll();
         }
 
+        /// <summary>
+        /// Buscar categoria
+        /// </summary>
+        /// <param name="id">Identificador da categoria</param>
+        /// <response code="200">Sucesso na busca da categoria</response>
+        /// <response code="400">Erro ao tentar buscar a categoria</response>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetTopic")]
         public ActionResult<Topic> Get(Guid id)
         {
@@ -39,6 +54,13 @@ namespace WebApi.Controllers
             return topicRepository.GetById(id);
         }
 
+        /// <summary>
+        /// Criar categoria
+        /// </summary>
+        /// <param name="name">Nome da categoria</param>
+        /// <response code="200">Sucesso ao criar cateogria</response>
+        /// <response code="400">Erro ao tentar criar categoria</response>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<Topic> Post(string name)
         {
@@ -54,6 +76,14 @@ namespace WebApi.Controllers
             return CreatedAtAction("Get", new { id = topic.Id }, topic);
         }
 
+        /// <summary>
+        /// Alterar categoria
+        /// </summary>
+        /// <param name="id">Identificador </param>
+        /// <param name="name">Nome </param>
+        /// <response code="200">Sucesso ao buscar categoria</response>
+        /// <response code="400">Erro ao tentar buscar a categoria</response>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public ActionResult<Topic> Put(Guid id, string name)
         {
@@ -70,6 +100,13 @@ namespace WebApi.Controllers
             return Ok(topicRepository.Update(topic));
         }
 
+        /// <summary>
+        /// Deletar categoria
+        /// </summary>
+        /// <param name="id"></param>
+        /// <response code="200">Sucesso ao deletar categoria</response>
+        /// <response code="400">Erro ao tentar deletar a categoria</response>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult<Topic> Delete(Guid id)
         {
