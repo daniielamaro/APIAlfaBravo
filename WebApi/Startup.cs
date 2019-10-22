@@ -45,7 +45,8 @@ namespace WebApi
                 //c.IncludeXmlComments(path);
             });
 
-            ConfigMigration.Apply();
+            //ConfigMigration.Apply();
+            services.AddDistributedMemoryCache();
         }
 
         public void Configure(IApplicationBuilder app)
