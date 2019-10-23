@@ -13,6 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{94EED34D-BDFF-4A3A-8E05-1AEF5C06A67A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestAlfa", "XUnitTestAlfa\XUnitTestAlfa.csproj", "{8C0D7D6A-42E6-4B3D-9CE1-FCBFE6E0F11E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{770B5171-49DB-4814-BB94-A5801B5C5E4B} = {770B5171-49DB-4814-BB94-A5801B5C5E4B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +44,10 @@ Global
 		{94EED34D-BDFF-4A3A-8E05-1AEF5C06A67A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94EED34D-BDFF-4A3A-8E05-1AEF5C06A67A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94EED34D-BDFF-4A3A-8E05-1AEF5C06A67A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0D7D6A-42E6-4B3D-9CE1-FCBFE6E0F11E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0D7D6A-42E6-4B3D-9CE1-FCBFE6E0F11E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0D7D6A-42E6-4B3D-9CE1-FCBFE6E0F11E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0D7D6A-42E6-4B3D-9CE1-FCBFE6E0F11E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
