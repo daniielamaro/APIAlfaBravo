@@ -3,6 +3,7 @@ using Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Infrastructure.Repository
 {
@@ -23,11 +24,17 @@ namespace Infrastructure.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            // Utilizar este banco para testes
+            optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
+
+            // Utilizar este banco para produção
+            /*
             optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
             {
                 options.EnableRetryOnFailure(2, TimeSpan.FromSeconds(5), new List<string>());
                 options.MigrationsHistoryTable("_MigrationHistory", "WebApiBlog");
             });
+            */
         }
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
