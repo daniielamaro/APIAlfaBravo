@@ -8,6 +8,7 @@ namespace XUnitTestAlfa.Domain
 {
     public class DomainTestTopic
     {
+        [Fact]
         public void TestCreate()
         {
             Topic topic = new Topic("Nome teste");
