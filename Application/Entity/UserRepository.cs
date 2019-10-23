@@ -28,7 +28,7 @@ namespace Application.Entity
 
         public User Delete(Guid id)
         {
-            User user = ApiContext.Users.Find(id);
+            User user = GetById(id);
 
             List<Comment> RelatedComments = ApiContext.Comments.Where(x => x.Autor.Id == user.Id).ToList();
             foreach (Comment comment in RelatedComments)

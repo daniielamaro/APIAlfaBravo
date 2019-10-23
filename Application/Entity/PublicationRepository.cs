@@ -30,7 +30,7 @@ namespace Application.Entity
 
         public Publication Delete(Guid id)
         {
-            Publication publication = ApiContext.Publications.Find(id);
+            Publication publication = GetById(id);
             ApiContext.Remove(publication);
             ApiContext.SaveChanges();
 

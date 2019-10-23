@@ -28,7 +28,7 @@ namespace Application.Entity
 
         public Topic Delete(Guid id)
         {
-            Topic topic = ApiContext.Topics.Find(id);
+            Topic topic = GetById(id);
             ApiContext.Remove(topic);
             ApiContext.SaveChanges();
 
