@@ -29,7 +29,7 @@ namespace Application.Entity
 
         public Comment Delete(Guid id)
         {
-            Comment comment = ApiContext.Comments.Find(id);
+            Comment comment = GetById(id);
             ApiContext.Remove(comment);
             ApiContext.SaveChanges();
 
@@ -46,6 +46,7 @@ namespace Application.Entity
         public Comment GetById(Guid id)
         {
             return ApiContext.Comments
+                .AsNoTracking()
                 .Where(x => x.Id == id)
                 .Include(x => x.Autor)
                 .FirstOrDefault();
@@ -53,7 +54,7 @@ namespace Application.Entity
 
         public Comment Update(Comment comment)
         {
-            ApiContext.Entry(comment).State = EntityState.Modified;
+            ApiContext.Update(comment);
             ApiContext.SaveChanges();
 
             return comment;
