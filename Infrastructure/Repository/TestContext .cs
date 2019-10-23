@@ -7,28 +7,24 @@ using System.Linq;
 
 namespace Infrastructure.Repository
 {
-    public class ApiContext : DbContext
+    public class TestContext : DbContext
     {
         public DbSet<Publication> Publications { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
-        public ApiContext(DbContextOptions options) : base(options)
+        public TestContext(DbContextOptions options) : base(options)
         {
         }
 
-        public ApiContext()
+        public TestContext()
         {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
-            {
-                options.EnableRetryOnFailure(2, TimeSpan.FromSeconds(5), new List<string>());
-                options.MigrationsHistoryTable("_MigrationHistory", "WebApiBlog");
-            });
+            optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
         }
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
