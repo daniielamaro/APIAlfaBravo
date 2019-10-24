@@ -11,19 +11,21 @@ namespace Application.Entity
     
     public class PublicationRepository : IPublicationRepository
     {
-        protected readonly ApiContext ApiContext;
+        private IRegisterDB obj;
+
+        public PublicationRepository(IRegisterDB obj)
+        {
+            this.obj = obj;
+        }
 
         public PublicationRepository()
         {
-            ApiContext = new ApiContext();
+
         }
 
         public Publication Create(Publication publication)
         {
-            ApiContext.Users.Attach(publication.Autor);
-            ApiContext.Topics.Attach(publication.Topic);
-            ApiContext.Publications.Add(publication);
-            ApiContext.SaveChanges();
+            obj.CreateNew(publication);
 
             return publication;
         }
@@ -31,50 +33,54 @@ namespace Application.Entity
         public Publication Delete(Guid id)
         {
             Publication publication = GetById(id);
-            ApiContext.Remove(publication);
-            ApiContext.SaveChanges();
+            //Context.Remove(publication);
+            //Context.SaveChanges();
 
             return publication;
         }
 
         public List<Publication> GetAll()
         {
-            List<Publication> publications = ApiContext.Publications
+            /*List<Publication> publications = Context.Publications
                 .Include(x => x.Autor)
                 .Include(x => x.Comments)
                 .Include(x => x.Topic)
                 .ToList();
-            return publications;
+            return publications;*/
+            return new List<Publication>();
         }
 
         public Publication GetById(Guid id)
         {
-            Publication publication = ApiContext.Publications
-                .AsNoTracking()
-                .Where(x => x.Id == id)
-                .Include(x => x.Autor)
-                .Include(x => x.Comments)
-                .Include(x => x.Topic)
-                .FirstOrDefault();
+            /* Publication publication = Context.Publications
+                 .AsNoTracking()
+                 .Where(x => x.Id == id)
+                 .Include(x => x.Autor)
+                 .Include(x => x.Comments)
+                 .Include(x => x.Topic)
+                 .FirstOrDefault();
 
-            return publication;
+             return publication; */
+
+            return new Publication();
         }
 
         public List<Publication> GetByName(string name)
         {
-            List<Publication> publications = ApiContext.Publications
+            /*List<Publication> publications = Context.Publications
                 .Where(x => x.Autor.Name.ToLower().Contains(name.ToLower()))
                 .Include(x => x.Autor)
                 .Include(x => x.Comments)
                 .Include(x => x.Topic)
                 .ToList();
-            return publications;
+            return publications; */
+            return new List<Publication>();
         }
 
         public Publication Update(Publication publication)
         {
-            ApiContext.Update(publication);
-            ApiContext.SaveChanges();
+            //Context.Update(publication);
+            //Context.SaveChanges();
 
             return publication;
         }

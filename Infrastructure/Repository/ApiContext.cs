@@ -24,11 +24,15 @@ namespace Infrastructure.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
+            //Para a produção
+            /*optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
             {
                 options.EnableRetryOnFailure(2, TimeSpan.FromSeconds(5), new List<string>());
                 options.MigrationsHistoryTable("_MigrationHistory", "WebApiBlog");
-            });
+            });*/
+
+            //Para os testes
+            optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
         }
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
