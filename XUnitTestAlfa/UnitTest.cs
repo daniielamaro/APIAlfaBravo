@@ -10,29 +10,30 @@ using Application.Entity;
 
 namespace XUnitTestAlfa
 {
-    public class ApplicationTestTopic
+    public class UnitTest
     {
-        private readonly ITopicRepository topicRepository;
+        private readonly IUserRepository userRepository;
         private MemoryCache memoryCache;
 
-        public ApplicationTestTopic()
+        public UnitTest()
         {
-            topicRepository = new TopicRepository();
+            userRepository = new UserRepository();
             memoryCache = MemoryCache.Default;
         }       
 
         [Fact]
-        public void TopicCreater()
+        public void TestAdd()
         {
+            User user = new User("Raul Santiago", "raul@gmail.com", "1203456789");
+            
+            var resultValidation = new UserValidator().Validate(user);
 
-            Topic topic = new Topic("Skate");            
-            var resultValidation = new TopicValidator().Validate(topic);
             if (resultValidation.IsValid)
             {
-                topicRepository.Create(topic);
+                userRepository.Create(user);
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
-                Assert.IsTrue(memoryCache.Add("topic", topic, policy));
+                Assert.IsTrue(memoryCache.Add("user", user, policy));
             }
 
 

@@ -17,20 +17,17 @@ namespace Application.Entity
     public class UserRepository : IUserRepository
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         protected readonly ApiContext ApiContext;
         private IUserRepository @object;
+=======
+>>>>>>> parent of c175ea0... Testes
 
-        //protected readonly IUserRepository userRepository;
+        protected readonly ApiContext ApiContext;
 
-        public UserRepository() //IUserRepository uuserRepository
+        public UserRepository()
         {
             ApiContext = new ApiContext();
-            //userRepository = uuserRepository;
-        }
-
-        public UserRepository(IUserRepository @object)
-        {
-            this.@object = @object;
         }
 
         public User Create(User user)

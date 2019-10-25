@@ -10,10 +10,15 @@ namespace Application.Repository
     /// </summary>
     public interface IUserRepository : ICreateRegister<User>, IGetAll<User>, IDeleteRegister<User>, IGetRegisterById<User>, IUpdateRegister<User>
 <<<<<<< HEAD
+<<<<<<< HEAD
     {        
 =======
     {
 
 >>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
+=======
+    {
+
+>>>>>>> parent of c175ea0... Testes
     }
 }
