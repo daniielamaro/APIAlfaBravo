@@ -9,7 +9,6 @@ namespace Application.Repository
     /// Aqui entra a execução dos metodos para acesso ao DB
     /// </summary>
     public interface IUserRepository : ICreateRegister<User>, IGetAll<User>, IDeleteRegister<User>, IGetRegisterById<User>, IUpdateRegister<User>
-    {
-
+    {        
     }
 }

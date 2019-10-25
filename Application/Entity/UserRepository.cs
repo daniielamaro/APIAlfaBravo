@@ -10,12 +10,20 @@ namespace Application.Entity
 {
     public class UserRepository : IUserRepository
     {
-
         protected readonly ApiContext ApiContext;
+        private IUserRepository @object;
 
-        public UserRepository()
+        //protected readonly IUserRepository userRepository;
+
+        public UserRepository() //IUserRepository uuserRepository
         {
             ApiContext = new ApiContext();
+            //userRepository = uuserRepository;
+        }
+
+        public UserRepository(IUserRepository @object)
+        {
+            this.@object = @object;
         }
 
         public User Create(User user)
