@@ -4,20 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repository.Publications
+namespace Infrastructure.Repository.TopicDB
 {
-    public class DeletePublication : IDeleteDB<Publication>
+    public class CreateTopic : ICreateDB<Topic>
     {
         private readonly ApiContext Context;
 
-        public DeletePublication()
+        public CreateTopic()
         {
             Context = new ApiContext();
         }
 
-        public void DeleteRegister(Publication publication)
+        public void CreateNewRegister(Topic topic)
         {
-            Context.Remove(publication);
+            Context.Topics.Add(topic);
             Context.SaveChanges();
         }
     }

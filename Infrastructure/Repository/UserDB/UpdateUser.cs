@@ -4,20 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repository.Topics
+namespace Infrastructure.Repository.UserDB
 {
-    public class CreateTopic : ICreateDB<Topic>
+    public class UpdateUser : IUpdateDB<User>
     {
         private readonly ApiContext Context;
 
-        public CreateTopic()
+        public UpdateUser()
         {
             Context = new ApiContext();
         }
 
-        public void CreateNewRegister(Topic topic)
+        public void UpdateRegister(User user)
         {
-            Context.Topics.Add(topic);
+            Context.Update(user);
             Context.SaveChanges();
         }
     }

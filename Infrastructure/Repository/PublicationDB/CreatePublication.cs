@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repository.Publications
+namespace Infrastructure.Repository.PublicationDB
 {
     public class CreatePublication : ICreateDB<Publication>
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Infrastructure.Repository.Topics
+namespace Infrastructure.Repository.TopicDB
 {
     public class DeleteTopic : IDeleteDB<Topic>
     {

@@ -80,16 +80,9 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao buscar publicação</response>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetPubId")]
-        public ActionResult<List<Publication>> Get(Guid id)
+        public ActionResult<Publication> Get(Guid id)
         {
-            /* var resultValidation = new NameNotNullValidator().Validate(name);
-
-             if (!resultValidation.IsValid)
-                 return BadRequest(resultValidation.Errors);
-
-             return publicationRepository.GetByName(name);*/
-
-            return BadRequest();
+            return publicationRepository.GetById(id);
         }
 
         /// <summary>

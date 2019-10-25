@@ -6,7 +6,7 @@ using Application.Repository;
 using Domain;
 using Infrastructure.Context;
 using Infrastructure.Repository;
-using Infrastructure.Repository.Topics;
+using Infrastructure.Repository.TopicDB;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Entity

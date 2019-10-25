@@ -4,19 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repository.Publications
+namespace Infrastructure.Repository.CommentDB
 {
-    public class UpdatePublication : IUpdateDB<Publication>
+    public class CreateComment : ICreateDB<Comment>
     {
         private readonly ApiContext Context;
 
-        public UpdatePublication()
+        public CreateComment()
         {
             Context = new ApiContext();
         }
-        public void UpdateRegister(Publication publication)
+
+        public void CreateNewRegister(Comment comment)
         {
-            Context.Update(publication);
+            Context.Users.Attach(comment.Autor);
+            Context.Comments.Add(comment);
             Context.SaveChanges();
         }
     }
