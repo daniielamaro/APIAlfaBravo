@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Application.Repository;
 using Domain;
+using Infrastructure.Context;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,9 +28,8 @@ namespace Application.Entity
             return comment;
         }
 
-        public Comment Delete(Guid id)
+        public Comment Delete(Comment comment)
         {
-            Comment comment = GetById(id);
             ApiContext.Remove(comment);
             ApiContext.SaveChanges();
 

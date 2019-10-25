@@ -121,7 +121,9 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return userRepository.Delete(id);
+            User user = userRepository.GetById(id);
+
+            return userRepository.Delete(user);
         }
     }
 }

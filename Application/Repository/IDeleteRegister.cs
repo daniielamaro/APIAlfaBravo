@@ -6,6 +6,6 @@ namespace Application.Repository
 {
     public interface IDeleteRegister<TEntity>
     {
-        TEntity Delete(Guid id);
+        TEntity Delete(TEntity entity);
     }
 }

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Infrastructure.Repository
 {
-    public interface IRegisterDB<TEntity>
+    public interface ICreateDB<TEntity>
     {
-        void CreateNew(TEntity entity);
+        void CreateNewRegister(TEntity entity);
     }
 }

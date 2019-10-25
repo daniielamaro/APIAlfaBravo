@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Application.Repository;
 using Domain;
+using Infrastructure.Context;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,9 +27,8 @@ namespace Application.Entity
             return topic;
         }
 
-        public Topic Delete(Guid id)
+        public Topic Delete(Topic topic)
         {
-            Topic topic = GetById(id);
             ApiContext.Remove(topic);
             ApiContext.SaveChanges();
 
