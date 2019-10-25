@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Infrastructure.Repository
 {
-    public class RegisterPublication : IRegisterDB
+    public class RegisterPublication : IRegisterDB<Publication>
     {
         private readonly ApiContext Context;
 

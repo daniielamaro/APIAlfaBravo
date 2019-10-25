@@ -1,5 +1,6 @@
 ﻿using Application.Entity;
 using Application.Repository;
+using Autofac;
 using Domain;
 using Infrastructure.Repository;
 using Moq;
@@ -10,8 +11,15 @@ using Xunit;
 
 namespace XUnitTestAlfa.Application
 {
-    public class ApplicationTextPublication
+    public class ApplicationTestPublication : IClassFixture<ConfigAutofac.ConfigAutofac>
     {
+        private readonly IPublicationRepository pub;
+
+        public ApplicationTestPublication(ConfigAutofac.ConfigAutofac config)
+        {
+            pub = config.Container.Resolve<IPublicationRepository>();
+        }
+
         [Fact]
         public void TestEntityCreate()
         {
@@ -22,7 +30,7 @@ namespace XUnitTestAlfa.Application
                 new Topic("topico")
             );
 
-            var mockTeste = new Mock<IPublicationRepository>();
+            var mockTeste = new Mock<IRegisterDB<Publication>>();
 
             var publicationRepository = new PublicationRepository(mockTeste.Object);
 

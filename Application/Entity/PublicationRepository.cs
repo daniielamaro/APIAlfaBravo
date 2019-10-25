@@ -11,21 +11,21 @@ namespace Application.Entity
     
     public class PublicationRepository : IPublicationRepository
     {
-        private IRegisterDB obj;
-
-        public PublicationRepository(IRegisterDB obj)
-        {
-            this.obj = obj;
-        }
+        public IRegisterDB<Publication> Register;
 
         public PublicationRepository()
         {
+            Register = new RegisterPublication();
+        }
 
+        public PublicationRepository(IRegisterDB<Publication> register)
+        {
+            Register = register;
         }
 
         public Publication Create(Publication publication)
         {
-            obj.CreateNew(publication);
+            Register.CreateNew(publication);
 
             return publication;
         }
