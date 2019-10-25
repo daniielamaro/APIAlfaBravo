@@ -22,6 +22,7 @@ namespace Infrastructure.Repository.PublicationDB
             List<Publication> publications = Context.Publications
                 .Include(x => x.Autor)
                 .Include(x => x.Comments)
+                    .ThenInclude(c => c.Autor)
                 .Include(x => x.Topic)
                 .ToList();
 
