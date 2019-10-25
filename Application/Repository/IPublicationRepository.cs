@@ -10,6 +10,10 @@ namespace Application.Repository
     /// </summary>
     public interface IPublicationRepository : ICreateRegister<Publication>, IGetAll<Publication>, IDeleteRegister<Publication>, IGetRegisterById<Publication>, IUpdateRegister<Publication>
     {
+<<<<<<< HEAD
         List<Publication> GetByName(string name);
+=======
+
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
     }
 }

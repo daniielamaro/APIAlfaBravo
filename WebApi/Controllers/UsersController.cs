@@ -17,6 +17,7 @@ namespace WebApi.Controllers
 
         private readonly IUserRepository userRepository;
 
+<<<<<<< HEAD
         /// <summary>
         /// Controller do usuário
         /// </summary>
@@ -28,6 +29,19 @@ namespace WebApi.Controllers
         /// <summary>
         /// Buscar todos os usuários
         /// </summary>
+=======
+        /// <summary>
+        /// Controller do usuário
+        /// </summary>
+        public UsersController()
+        {
+            userRepository = new UserRepository();
+        }
+
+        /// <summary>
+        /// Buscar todos os usuários
+        /// </summary>
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
         /// <response code="200">Sucesso ao buscar usuários</response>
         /// <response code="400">Nenhuma lista de usuários encontrada</response>
         /// <returns></returns>
@@ -121,7 +135,13 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
+<<<<<<< HEAD
             return userRepository.Delete(id);
+=======
+            User user = userRepository.GetById(id);
+
+            return userRepository.Delete(user);
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
         }
     }
 }

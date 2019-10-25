@@ -7,10 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
     <PackageReference Include="NEST" Version="7.4.0" />
+=======
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
     <PackageReference Include="System.Runtime.Caching" Version="4.6.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
@@ -25,7 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Domain\" />
+=======
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
     <Folder Include="Infrastructure\" />
     <Folder Include="WebApi\" />
   </ItemGroup>

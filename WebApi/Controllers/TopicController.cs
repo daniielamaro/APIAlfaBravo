@@ -115,7 +115,13 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
+<<<<<<< HEAD
             return topicRepository.Delete(id);
+=======
+            Topic topic = topicRepository.GetById(id);
+
+            return topicRepository.Delete(topic);
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
         }
     }
 }

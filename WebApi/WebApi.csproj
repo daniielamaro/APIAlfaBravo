@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+<<<<<<< HEAD
     <DocumentationFile>C:\Projetos\APIAlfaBravo\WebApi\WebApi.xml</DocumentationFile>
+=======
+    <DocumentationFile>C:\Users\DanielGA\Desktop\projeto\APIAlfaBravo\WebApi\WebApi.xml</DocumentationFile>
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
   </PropertyGroup>
 
   <ItemGroup>

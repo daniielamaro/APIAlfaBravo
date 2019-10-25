@@ -73,6 +73,7 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Buscar publicações
         /// </summary>
         /// <param name="name">Nome do autor</param>
@@ -88,6 +89,25 @@ namespace WebApi.Controllers
                 return BadRequest(resultValidation.Errors);
 
             return publicationRepository.GetByName(name);
+=======
+        /// Buscar uma publicação pelo seu Id
+        /// </summary>
+        /// <param id="ID">ID da publicação</param>
+        /// <response code="200">Sucesso na busca da publicação</response>
+        /// <response code="400">Erro ao buscar publicação</response>
+        /// <returns></returns>
+        [HttpGet("{id}", Name = "GetPubId")]
+        public ActionResult<List<Publication>> Get(Guid id)
+        {
+            /* var resultValidation = new NameNotNullValidator().Validate(name);
+
+             if (!resultValidation.IsValid)
+                 return BadRequest(resultValidation.Errors);
+
+             return publicationRepository.GetByName(name);*/
+
+            return BadRequest();
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
         }
 
         /// <summary>
@@ -138,7 +158,13 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
+<<<<<<< HEAD
             return publicationRepository.Delete(id);
+=======
+            Publication publication = publicationRepository.GetById(id);
+
+            return publicationRepository.Delete(publication);
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
         }
     }
 }

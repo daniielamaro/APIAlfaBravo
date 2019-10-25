@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using Application.Repository;
 using Domain;
+<<<<<<< HEAD
+=======
+using Infrastructure.Context;
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,9 +30,14 @@ namespace Application.Entity
             return topic;
         }
 
+<<<<<<< HEAD
         public Topic Delete(Guid id)
         {
             Topic topic = GetById(id);
+=======
+        public Topic Delete(Topic topic)
+        {
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
             ApiContext.Remove(topic);
             ApiContext.SaveChanges();
 

@@ -136,7 +136,13 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
+<<<<<<< HEAD
             return commentRepository.Delete(id);
+=======
+            Comment comment = commentRepository.GetById(id);
+
+            return commentRepository.Delete(comment);
+>>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
         }
     }
 }
