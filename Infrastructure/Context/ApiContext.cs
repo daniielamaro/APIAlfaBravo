@@ -34,7 +34,7 @@ namespace Infrastructure.Context
             //Para os testes
             //optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
         }
-       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
@@ -45,16 +45,16 @@ namespace Infrastructure.Context
             modelBuilder.Entity<Topic>().HasData(
                 new Topic("Cultura"),
                 new Topic("Economia"),
-                new Topic("Educação"),                
+                new Topic("Educação"),
                 new Topic("Entretenimento"),
                 new Topic("Esporte"),
                 new Topic("Política"),
                 new Topic("Saúde"),
                 new Topic("Tecnologia"),
                 new Topic("Tempo")
-            ) ;
+            );
 
-            base.OnModelCreating(modelBuilder);            
-        }    
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

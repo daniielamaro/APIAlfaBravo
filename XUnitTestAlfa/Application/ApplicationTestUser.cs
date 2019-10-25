@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/*
 using Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -65,8 +65,8 @@ namespace XUnitTestAlfa
             }
         }
 
-=======
-﻿using Application.Entity;
+*/
+using Application.Entity;
 using Domain;
 using Infrastructure.Repository;
 using Moq;
@@ -74,6 +74,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Runtime.Caching;
+using Application.Repository;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using Application.BusinessRules;
+using Nest;
 
 namespace XUnitTestAlfa.Application
 {
@@ -144,6 +150,5 @@ namespace XUnitTestAlfa.Application
 
             mockTeste.Verify(x => x.DeleteRegister(It.IsAny<User>()));
         }
->>>>>>> a15940ef19fd927d23fae7c0f3f0105e99844a0b
     }
 }
