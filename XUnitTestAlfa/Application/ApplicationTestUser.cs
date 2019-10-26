@@ -1,4 +1,5 @@
-﻿using Application.Entity;
+﻿using Application.BusinessRules;
+using Application.Entity;
 using Domain;
 using Infrastructure.Repository;
 using Moq;
@@ -75,6 +76,25 @@ namespace XUnitTestAlfa.Application
             userRepository.Delete(user);
 
             mockTeste.Verify(x => x.DeleteRegister(It.IsAny<User>()));
+        }
+
+        [Fact]
+        public void TestValidationUser()
+        {
+            var okUser = new User("Nome teste", "email@email.com", "dsdsadasdas");
+            var badUser1 = new User(" ", "email@email.com", "dsdsadasdas");
+            var badUser2 = new User("Nome teste", "email", "dsdsadasdas");
+            var badUser3 = new User("Nome teste", "email@email.com", "dsds");
+
+            var resultValidation1 = new UserValidator().Validate(okUser);
+            var resultValidation2 = new UserValidator().Validate(badUser1);
+            var resultValidation3 = new UserValidator().Validate(badUser2);
+            var resultValidation4 = new UserValidator().Validate(badUser3);
+
+            Assert.True(resultValidation1.IsValid);
+            Assert.False(resultValidation2.IsValid);
+            Assert.False(resultValidation3.IsValid);
+            Assert.False(resultValidation4.IsValid);
         }
     }
 }
