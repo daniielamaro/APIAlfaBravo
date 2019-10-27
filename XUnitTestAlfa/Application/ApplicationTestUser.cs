@@ -96,5 +96,20 @@ namespace XUnitTestAlfa.Application
             Assert.False(resultValidation3.IsValid);
             Assert.False(resultValidation4.IsValid);
         }
+
+        [Fact]
+        public void TestValidationUserExist()
+        {
+            var user1 = new User("Nome teste", "email1@email.com", "dsdsadasdas");
+            var user2 = new User("Nome teste", "email1@email.com", "3242343243242");
+
+            new UserRepository().Create(user1);
+
+            var resultValidation1 = new UserExistValidator().Validate(user1.Id);
+            var resultValidation2 = new UserExistValidator().Validate(user2.Id);
+
+            Assert.True(resultValidation1.IsValid);
+            Assert.False(resultValidation2.IsValid);
+        }
     }
 }

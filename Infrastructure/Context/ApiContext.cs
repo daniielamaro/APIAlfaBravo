@@ -42,6 +42,10 @@ namespace Infrastructure.Context
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
 
+            modelBuilder.Entity<User>().HasData(
+                new User(Guid.Parse("00000000-0000-0000-0000-000000000001"), "Anonimo", "", "")
+            ); 
+
             modelBuilder.Entity<Topic>().HasData(
                 new Topic("Cultura"),
                 new Topic("Economia"),
@@ -58,3 +62,9 @@ namespace Infrastructure.Context
         }    
     }
 }
+
+
+
+
+
+
