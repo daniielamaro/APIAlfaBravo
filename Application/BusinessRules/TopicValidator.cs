@@ -30,7 +30,7 @@ namespace Application.BusinessRules
                 .WithMessage("O nome não pode ser nulo.")
                 .NotEmpty()
                 .WithMessage("O Nome não pode estar em branco.")
-                .Must(NameNotExists)
+                .Must((topic, name) => NameNotExists(topic, name))
                 .WithMessage("Este nome de tópico já existe na base de dados.");
         }
 
@@ -39,11 +39,11 @@ namespace Application.BusinessRules
             return (id != Guid.Empty);
         }
 
-        private bool NameNotExists(string name)
+        private bool NameNotExists(Topic topic, string name)
         {
             List<Topic> topics = topicRepository.GetAll();
 
-            return !(topics.Exists(x => x.Name.ToLower() == name.ToLower()));
+            return !(topics.Exists(x => x.Name == name && x.Id != topic.Id));
         }
     }
 }

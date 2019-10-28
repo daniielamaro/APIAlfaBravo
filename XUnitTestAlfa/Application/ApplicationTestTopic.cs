@@ -1,4 +1,5 @@
-﻿using Application.Entity;
+﻿using Application.BusinessRules;
+using Application.Entity;
 using Domain;
 using Infrastructure.Repository;
 using Moq;
@@ -75,6 +76,42 @@ namespace XUnitTestAlfa.Application
             topicRepository.Delete(topic);
 
             mockTeste.Verify(x => x.DeleteRegister(It.IsAny<Topic>()));
+        }
+
+        [Fact]
+        public void TestValidationTopic()
+        {
+            var okTopic = new Topic("Nome");
+            var badTopic1 = new Topic("");
+            var badTopic2 = new Topic("  ");
+            var badTopic3 = new Topic("Nome");
+
+            new TopicRepository().Create(okTopic);
+
+            var resultValidation1 = new TopicValidator().Validate(okTopic);
+            var resultValidation2 = new TopicValidator().Validate(badTopic1);
+            var resultValidation3 = new TopicValidator().Validate(badTopic2);
+            var resultValidation4 = new TopicValidator().Validate(badTopic3);
+
+            Assert.True(resultValidation1.IsValid);
+            Assert.False(resultValidation2.IsValid);
+            Assert.False(resultValidation3.IsValid);
+            Assert.False(resultValidation4.IsValid);
+        }
+
+        [Fact]
+        public void TestValidationTopicExist()
+        {
+            var topic1 = new Topic("Nome teste 1");
+            var topic2 = new Topic("Nome teste 2");
+
+            new TopicRepository().Create(topic1);
+
+            var resultValidation1 = new TopicExistValidator().Validate(topic1.Id);
+            var resultValidation2 = new TopicExistValidator().Validate(topic2.Id);
+
+            Assert.True(resultValidation1.IsValid);
+            Assert.False(resultValidation2.IsValid);
         }
     }
 }
