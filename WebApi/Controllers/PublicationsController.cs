@@ -73,21 +73,16 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Buscar publicações
+        /// Buscar uma publicação pelo seu Id
         /// </summary>
-        /// <param name="name">Nome do autor</param>
+        /// <param id="ID">ID da publicação</param>
         /// <response code="200">Sucesso na busca da publicação</response>
         /// <response code="400">Erro ao buscar publicação</response>
         /// <returns></returns>
-        [HttpGet("{name}", Name = "GetPubName")]
-        public ActionResult<List<Publication>> Get(string name)
+        [HttpGet("{id}", Name = "GetPubId")]
+        public ActionResult<Publication> Get(Guid id)
         {
-            var resultValidation = new NameNotNullValidator().Validate(name);
-
-            if (!resultValidation.IsValid)
-                return BadRequest(resultValidation.Errors);
-
-            return publicationRepository.GetByName(name);
+            return publicationRepository.GetById(id);
         }
 
         /// <summary>
@@ -138,7 +133,9 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return publicationRepository.Delete(id);
+            Publication publication = publicationRepository.GetById(id);
+
+            return publicationRepository.Delete(publication);
         }
     }
 }

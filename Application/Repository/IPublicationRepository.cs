@@ -10,6 +10,6 @@ namespace Application.Repository
     /// </summary>
     public interface IPublicationRepository : ICreateRegister<Publication>, IGetAll<Publication>, IDeleteRegister<Publication>, IGetRegisterById<Publication>, IUpdateRegister<Publication>
     {
-        List<Publication> GetByName(string name);
+
     }
 }
