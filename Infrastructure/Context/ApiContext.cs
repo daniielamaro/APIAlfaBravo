@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure.Repository
+namespace Infrastructure.Context
 {
     public class ApiContext : DbContext
     {
@@ -24,11 +24,15 @@ namespace Infrastructure.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
+            //Para a produção
+            /*optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
             {
                 options.EnableRetryOnFailure(2, TimeSpan.FromSeconds(5), new List<string>());
                 options.MigrationsHistoryTable("_MigrationHistory", "WebApiBlog");
-            });
+            }); */
+
+            //Para os testes
+            optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
         }
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,6 +41,10 @@ namespace Infrastructure.Repository
             modelBuilder.ApplyConfiguration(new PublicationConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
+
+            modelBuilder.Entity<User>().HasData(
+                new User(Guid.Parse("00000000-0000-0000-0000-000000000001"), "Anonimo", "", "")
+            ); 
 
             modelBuilder.Entity<Topic>().HasData(
                 new Topic("Cultura"),
@@ -54,3 +62,9 @@ namespace Infrastructure.Repository
         }    
     }
 }
+
+
+
+
+
+

@@ -45,9 +45,11 @@ namespace WebApi
                 c.IncludeXmlComments(path);
             });
 
-            //ConfigMigration.Apply();  // Somente em produção
+            // Somente em produção
+            //ConfigMigration.Apply();  
 
-            services.AddDistributedMemoryCache(); // Somente para teste
+            // Somente para teste
+            services.AddDistributedMemoryCache(); 
         }
 
         public void Configure(IApplicationBuilder app)

@@ -115,7 +115,9 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return topicRepository.Delete(id);
+            Topic topic = topicRepository.GetById(id);
+
+            return topicRepository.Delete(topic);
         }
     }
 }

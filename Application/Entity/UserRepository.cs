@@ -1,6 +1,8 @@
 ﻿using Application.Repository;
 using Domain;
+using Infrastructure.Context;
 using Infrastructure.Repository;
+using Infrastructure.Repository.UserDB;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,58 +12,66 @@ namespace Application.Entity
 {
     public class UserRepository : IUserRepository
     {
-
-        protected readonly ApiContext ApiContext;
+        public ICreateDB<User> Register;
+        public IDeleteDB<User> Remove;
+        public IGetDB<User> Get;
+        public IUpdateDB<User> Alter;
 
         public UserRepository()
         {
-            ApiContext = new ApiContext();
+            Register = new CreateUser();
+            Remove = new DeleteUser();
+            Get = new GetUser();
+            Alter = new UpdateUser();
+        }
+
+        public UserRepository(ICreateDB<User> register)
+        {
+            Register = register;
+        }
+
+        public UserRepository(IDeleteDB<User> remove)
+        {
+            Remove = remove;
+        }
+
+        public UserRepository(IGetDB<User> get)
+        {
+            Get = get;
+        }
+
+        public UserRepository(IUpdateDB<User> alter)
+        {
+            Alter = alter;
         }
 
         public User Create(User user)
         {
-            ApiContext.Users.Add(user);
-            ApiContext.SaveChanges();
+            Register.CreateNewRegister(user);
 
             return user;
         }
 
-        public User Delete(Guid id)
+        public User Delete(User user)
         {
-            User user = GetById(id);
-
-            List<Comment> RelatedComments = ApiContext.Comments.Where(x => x.Autor.Id == user.Id).ToList();
-            foreach (Comment comment in RelatedComments)
-            {
-                ApiContext.Comments.Remove(comment);
-            }
-
-            List<Publication> RelatedPublications = ApiContext.Publications.Where(x => x.Autor.Id == user.Id).ToList();
-            foreach(Publication publication in RelatedPublications)
-            {
-                ApiContext.Publications.Remove(publication);
-            }
-
-            ApiContext.Remove(user);
-            ApiContext.SaveChanges();
+            Remove.DeleteRegister(user);
 
             return user;
         }
 
         public List<User> GetAll()
         {
-            return ApiContext.Users.ToList();
+            return Get.GetAllRegister();
         }
 
         public User GetById(Guid id)
         {
-            return ApiContext.Users.Find(id);
+            return Get.GetRegisterById(id);
         }
 
         public User Update(User user)
         {
-            ApiContext.Entry(user).State = EntityState.Modified;
-            ApiContext.SaveChanges();
+            Alter.UpdateRegister(user);
 
             return user;
         }
