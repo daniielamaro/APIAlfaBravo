@@ -9,10 +9,6 @@ namespace Application.Entity
 {
     public sealed class ConfigMigration
     {
-
-        // Somente para banco relacional em produção
-        /*
-
         public static void Apply()
         {
             using (var context = new ApiContext())
@@ -20,8 +16,6 @@ namespace Application.Entity
                 context.Database.Migrate();
             };
         }
-
-        */
-
+        
     }
 }

@@ -1,71 +1,4 @@
-/*
-using Domain;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Runtime.Caching;
-using Xunit;
-using Application.Repository;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
-using Application.BusinessRules;
-using Application.Entity;
-using Moq;
-using Nest;
-
-namespace XUnitTestAlfa
-{
-    public class ApplicationTestUser
-    {
-        private readonly IUserRepository userRepository;
-        //private readonly IDeleteRegister deleteRegister;
-        private UserRepository userRepClass;
-        private MemoryCache memoryCache;
-
-        public ApplicationTestUser()
-        {
-            userRepository = new UserRepository();
-            memoryCache = MemoryCache.Default;
-            //userRepository = userRep;
-            //userRepClass = repository;
-            //deleteRegister = ddeleteRegister;
-            //deleteRegister = new UserRepository();
-
-        }       
-
-        [Fact]
-        public void UserCreater()
-        {
-            User user = new User("Raul Santiago", "raul@gmail.com", "1203456789");
-            
-            var resultValidation = new UserValidator().Validate(user);
-
-            if (resultValidation.IsValid)
-            {
-                userRepository.Create(user);
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
-                Assert.IsTrue(memoryCache.Add("user", user, policy));
-            }
-        }
-        
-        [Fact]
-        public void UserDelete()
-        {
-            //User u = new User { Id = "dd56d258-daf2-4026-ac1b-13ac23087536", Name = "Luar", Email = "ra@gmail.com", Password = "123456789" };
-            var u = new User("Raul F Santiago", "raulfs@gmail.com", "01203456789");
-            FluentValidation.Results.ValidationResult resultValidation = new UserValidator().Validate(u);
-            if (resultValidation.IsValid)
-            {
-                userRepository.Create(u);
-                var id = u.Id;
-                Console.WriteLine(id);
-                var mock = new Mock<IUserRepository>();
-                var controller = new UserRepository(mock.Object);
-                controller.Delete(id);
-                mock.VerifyRemove(x => x.Delete(u.Id));
-            }
-        }
-
-*/
+﻿using Application.BusinessRules;
 using Application.Entity;
 using Domain;
 using Infrastructure.Repository;
@@ -74,12 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Runtime.Caching;
-using Application.Repository;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
-using Application.BusinessRules;
-using Nest;
 
 namespace XUnitTestAlfa.Application
 {
@@ -149,6 +76,40 @@ namespace XUnitTestAlfa.Application
             userRepository.Delete(user);
 
             mockTeste.Verify(x => x.DeleteRegister(It.IsAny<User>()));
+        }
+
+        [Fact]
+        public void TestValidationUser()
+        {
+            var okUser = new User("Nome teste", "email@email.com", "dsdsadasdas");
+            var badUser1 = new User(" ", "email@email.com", "dsdsadasdas");
+            var badUser2 = new User("Nome teste", "email", "dsdsadasdas");
+            var badUser3 = new User("Nome teste", "email@email.com", "dsds");
+
+            var resultValidation1 = new UserValidator().Validate(okUser);
+            var resultValidation2 = new UserValidator().Validate(badUser1);
+            var resultValidation3 = new UserValidator().Validate(badUser2);
+            var resultValidation4 = new UserValidator().Validate(badUser3);
+
+            Assert.True(resultValidation1.IsValid);
+            Assert.False(resultValidation2.IsValid);
+            Assert.False(resultValidation3.IsValid);
+            Assert.False(resultValidation4.IsValid);
+        }
+
+        [Fact]
+        public void TestValidationUserExist()
+        {
+            var user1 = new User("Nome teste", "email1@email.com", "dsdsadasdas");
+            var user2 = new User("Nome teste", "email1@email.com", "3242343243242");
+
+            new UserRepository().Create(user1);
+
+            var resultValidation1 = new UserExistValidator().Validate(user1.Id);
+            var resultValidation2 = new UserExistValidator().Validate(user2.Id);
+
+            Assert.True(resultValidation1.IsValid);
+            Assert.False(resultValidation2.IsValid);
         }
     }
 }

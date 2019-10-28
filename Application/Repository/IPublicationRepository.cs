@@ -11,8 +11,5 @@ namespace Application.Repository
     public interface IPublicationRepository : ICreateRegister<Publication>, IGetAll<Publication>, IDeleteRegister<Publication>, IGetRegisterById<Publication>, IUpdateRegister<Publication>
     {
 
-
-
-
     }
 }

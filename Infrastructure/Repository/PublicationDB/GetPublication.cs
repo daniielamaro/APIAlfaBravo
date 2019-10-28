@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Infrastructure.Repository.Publications
+namespace Infrastructure.Repository.PublicationDB
 {
     public class GetPublication : IGetDB<Publication>
     {
@@ -22,6 +22,7 @@ namespace Infrastructure.Repository.Publications
             List<Publication> publications = Context.Publications
                 .Include(x => x.Autor)
                 .Include(x => x.Comments)
+                    .ThenInclude(c => c.Autor)
                 .Include(x => x.Topic)
                 .ToList();
 

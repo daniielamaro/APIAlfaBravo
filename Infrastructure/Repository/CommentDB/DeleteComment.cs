@@ -4,20 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repository.Users
+namespace Infrastructure.Repository.CommentDB
 {
-    public class CreateUser : ICreateDB<User>
+    public class DeleteComment : IDeleteDB<Comment>
     {
         private readonly ApiContext Context;
 
-        public CreateUser()
+        public DeleteComment()
         {
             Context = new ApiContext();
         }
 
-        public void CreateNewRegister(User user)
+        public void DeleteRegister(Comment comment)
         {
-            Context.Users.Add(user);
+            Context.Remove(comment);
             Context.SaveChanges();
         }
     }

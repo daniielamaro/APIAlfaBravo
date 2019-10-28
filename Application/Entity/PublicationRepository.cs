@@ -1,7 +1,7 @@
 ﻿using Application.Repository;
 using Domain;
 using Infrastructure.Repository;
-using Infrastructure.Repository.Publications;
+using Infrastructure.Repository.PublicationDB;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Application.Entity
 {
-
+    
     public class PublicationRepository : IPublicationRepository
     {
         public ICreateDB<Publication> Register;

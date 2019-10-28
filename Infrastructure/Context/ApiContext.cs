@@ -25,16 +25,16 @@ namespace Infrastructure.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //Para a produção
-            optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
+            /*optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
             {
                 options.EnableRetryOnFailure(2, TimeSpan.FromSeconds(5), new List<string>());
                 options.MigrationsHistoryTable("_MigrationHistory", "WebApiBlog");
-            });
+            }); */
 
             //Para os testes
-            //optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
+            optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
         }
-
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
@@ -42,19 +42,29 @@ namespace Infrastructure.Context
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
 
+            modelBuilder.Entity<User>().HasData(
+                new User(Guid.Parse("00000000-0000-0000-0000-000000000001"), "Anonimo", "", "")
+            ); 
+
             modelBuilder.Entity<Topic>().HasData(
                 new Topic("Cultura"),
                 new Topic("Economia"),
-                new Topic("Educação"),
+                new Topic("Educação"),                
                 new Topic("Entretenimento"),
                 new Topic("Esporte"),
                 new Topic("Política"),
                 new Topic("Saúde"),
                 new Topic("Tecnologia"),
                 new Topic("Tempo")
-            );
+            ) ;
 
-            base.OnModelCreating(modelBuilder);
-        }
+            base.OnModelCreating(modelBuilder);            
+        }    
     }
 }
+
+
+
+
+
+

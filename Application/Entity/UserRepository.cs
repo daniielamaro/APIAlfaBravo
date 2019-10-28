@@ -2,7 +2,7 @@
 using Domain;
 using Infrastructure.Context;
 using Infrastructure.Repository;
-using Infrastructure.Repository.Users;
+using Infrastructure.Repository.UserDB;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -4,20 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repository.Users
+namespace Infrastructure.Repository.CommentDB
 {
-    public class UpdateUser : IUpdateDB<User>
+    public class UpdateComment : IUpdateDB<Comment>
     {
         private readonly ApiContext Context;
 
-        public UpdateUser()
+        public UpdateComment()
         {
             Context = new ApiContext();
         }
 
-        public void UpdateRegister(User user)
+        public void UpdateRegister(Comment comment)
         {
-            Context.Update(user);
+            Context.Update(comment);
             Context.SaveChanges();
         }
     }

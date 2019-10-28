@@ -4,20 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repository.Publications
+namespace Infrastructure.Repository.CommentDB
 {
-    public class DeletePublication : IDeleteDB<Publication>
+    public class CreateComment : ICreateDB<Comment>
     {
         private readonly ApiContext Context;
 
-        public DeletePublication()
+        public CreateComment()
         {
             Context = new ApiContext();
         }
 
-        public void DeleteRegister(Publication publication)
+        public void CreateNewRegister(Comment comment)
         {
-            Context.Remove(publication);
+            Context.Users.Attach(comment.Autor);
+            Context.Comments.Add(comment);
             Context.SaveChanges();
         }
     }
