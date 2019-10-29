@@ -99,18 +99,18 @@ namespace XUnitTestAlfa.Infrastructure
                 memoryCache.Add("userUpdate", user, policy);
                 User userGet = (User)memoryCache["userUpdate"];
                 Assert.AreEqual(user.ToString(), userGet.ToString());
-                User userSegundo = new User("Raul Lual Santiago", "raulluar@gmail.com", "123011203456789");
-                memoryCache.Set("userUpdate", userSegundo, policy);
+                User userSecond = new User("Raul Lual Santiago", "raulluar@gmail.com", "123011203456789");
+                memoryCache.Set("userUpdate", userSecond, policy);
                 userGet = (User)memoryCache["userUpdate"];                
                 Assert.IsTrue(user.Name.ToString() != userGet.Name.ToString());
 
                 // Produção através dos métodos
                 new CreateUser().CreateNewRegister(user);
                 var userCopia = new GetUser().GetRegisterById(user.Id);
-                User userTerceiro = new User(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7"), "Raul Notato Santiago", "raulnotato@gmail.com", "012334561131456789");
-                new UpdateUser().UpdateRegister(userTerceiro);
-                Assert.IsTrue(userCopia.Email.ToString() != userTerceiro.Email.ToString());
-                Assert.IsTrue(userCopia.Id.ToString() == user.Id.ToString() & userCopia.Id.ToString() == userTerceiro.Id.ToString());
+                User userThird = new User(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7"), "Raul Notato Santiago", "raulnotato@gmail.com", "012334561131456789");
+                new UpdateUser().UpdateRegister(userThird);
+                Assert.IsTrue(userCopia.Email.ToString() != userThird.Email.ToString());
+                Assert.IsTrue(userCopia.Id.ToString() == user.Id.ToString() & userCopia.Id.ToString() == userThird.Id.ToString());
                 
             }
         }
@@ -119,25 +119,25 @@ namespace XUnitTestAlfa.Infrastructure
         public void TestGetAll()
         {
             User userPrimeiro = new User("Raul Freitas Santiago", "raula@gmail.com", "01234567890");
-            User userSegundo = new User("Raul Fre Santiago", "raulb@gmail.com", "111123456789");
-            User userTerceiro = new User("Raul Mar Santiago", "raulc@gmail.com", "0123789999999");
+            User userSecond = new User("Raul Fre Santiago", "raulb@gmail.com", "111123456789");
+            User userThird = new User("Raul Mar Santiago", "raulc@gmail.com", "0123789999999");
             var resultValidationPrimeiro = new UserValidator().Validate(userPrimeiro);
-            var resultValidationSegundo = new UserValidator().Validate(userSegundo);
-            var resultValidationTerceiro = new UserValidator().Validate(userTerceiro);
-            if (resultValidationPrimeiro.IsValid & resultValidationSegundo.IsValid & resultValidationTerceiro.IsValid)
+            var resultValidationSecond = new UserValidator().Validate(userSecond);
+            var resultValidationThird = new UserValidator().Validate(userThird);
+            if (resultValidationPrimeiro.IsValid & resultValidationSecond.IsValid & resultValidationThird.IsValid)
             {
                 // Conhecimento MemoryCache 
                 CacheItemPolicy policyDif = new CacheItemPolicy();
                 policyDif.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
                 memoryCache.Add("userPrimeiro", userPrimeiro, policyDif);
-                memoryCache.Add("userSegundo", userSegundo, policyDif);
-                memoryCache.Add("userTerceiro", userTerceiro, policyDif);
+                memoryCache.Add("userSecond", userSecond, policyDif);
+                memoryCache.Add("userThird", userThird, policyDif);
                 Assert.IsTrue(memoryCache.GetCount() == 3);
 
                 // Produção através dos métodos
                 new CreateUser().CreateNewRegister(userPrimeiro);
-                new CreateUser().CreateNewRegister(userSegundo);
-                new CreateUser().CreateNewRegister(userTerceiro);
+                new CreateUser().CreateNewRegister(userSecond);
+                new CreateUser().CreateNewRegister(userThird);
                 List<User> listUsers = new GetUser().GetAllRegister();
                 Assert.IsTrue(listUsers.Count == 3);
             }

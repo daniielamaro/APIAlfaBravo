@@ -106,10 +106,10 @@ namespace XUnitTestAlfa.Infrastructure
                 memoryCache.Add("publicationUpdate", publication, policy);
                 Publication publicationGet = (Publication)memoryCache["publicationUpdate"];
                 Assert.AreEqual(publication.ToString(), publicationGet.ToString());
-                User userSegundo = new User("Raul Luar", "raull@gmail.com", "120345678109");
-                Topic topicSegundo = new Topic("Cultura");
-                Publication publicationSegundo = new Publication(userSegundo, "Musica", "A melhor musica", topicSegundo);
-                memoryCache.Set("publicationUpdate", publicationSegundo, policy);
+                User userSecond = new User("Raul Luar", "raull@gmail.com", "120345678109");
+                Topic topicSecond = new Topic("Cultura");
+                Publication publicationSecond = new Publication(userSecond, "Musica", "A melhor musica", topicSecond);
+                memoryCache.Set("publicationUpdate", publicationSecond, policy);
                 publicationGet = (Publication)memoryCache["publicationUpdate"];
                 Assert.IsTrue(publication.Title.ToString() != publicationGet.Title.ToString());
 
@@ -117,8 +117,8 @@ namespace XUnitTestAlfa.Infrastructure
                 new CreatePublication().CreateNewRegister(publication);
                 var publicationCopia = new GetPublication().GetRegisterById(publication.Id);
                 List<Comment> listComments = new List<Comment>();
-                Publication publicationTerceiro = new Publication(publication.Id, user, "Skate é radical", "O melhor esporte", DateTime.Now, listComments, topic);
-                new UpdatePublication().UpdateRegister(publicationTerceiro);
+                Publication publicationThird = new Publication(publication.Id, user, "Skate é radical", "O melhor esporte", DateTime.Now, listComments, topic);
+                new UpdatePublication().UpdateRegister(publicationThird);
                 Assert.IsTrue(publicationCopia.Title.ToString() != publication.Title.ToString());
                 Assert.IsTrue(publicationCopia.Id.ToString() == publication.Id.ToString());
             }
@@ -127,30 +127,30 @@ namespace XUnitTestAlfa.Infrastructure
         [Fact]
         public void TestGetAll()
         {
-            User userPrimeiro = new User("Raul Santiago", "raul@gmail.com", "1203456789");
-            Topic topicPrimeiro = new Topic("Esporte");
-            Publication publicationPrimeiro = new Publication(userPrimeiro, "Skate", "O melhor esporte", topicPrimeiro);
-            User userSegundo = new User("Raul Luar", "raull@gmail.com", "120345678109");
-            Topic topicSegundo = new Topic("Cultura");
-            Publication publicationSegundo = new Publication(userSegundo, "Musica", "A melhor musica", topicSegundo);
-            Publication publicationTerceiro = new Publication(userSegundo, "Musica", "A melhor musica", topicSegundo);
-            var resultValidationPrimeiro = new PublicationValidator().Validate(publicationPrimeiro);
-            var resultValidationSegundo = new PublicationValidator().Validate(publicationSegundo);
-            var resultValidationTerceiro = new PublicationValidator().Validate(publicationTerceiro);
-            if (resultValidationPrimeiro.IsValid & resultValidationSegundo.IsValid & resultValidationTerceiro.IsValid)
+            User userFirst = new User("Raul Santiago", "raul@gmail.com", "1203456789");
+            Topic topicFirst = new Topic("Esporte");
+            Publication publicationFirst = new Publication(userFirst, "Skate", "O melhor esporte", topicFirst);
+            User userSecond = new User("Raul Luar", "raull@gmail.com", "120345678109");
+            Topic topicSecond = new Topic("Cultura");
+            Publication publicationSecond = new Publication(userSecond, "Musica", "A melhor musica", topicSecond);
+            Publication publicationThird = new Publication(userSecond, "Musica", "A melhor musica", topicSecond);
+            var resultValidationFirst = new PublicationValidator().Validate(publicationFirst);
+            var resultValidationSecond = new PublicationValidator().Validate(publicationSecond);
+            var resultValidationThird = new PublicationValidator().Validate(publicationThird);
+            if (resultValidationFirst.IsValid & resultValidationSecond.IsValid & resultValidationThird.IsValid)
             {
                 // Conhecimento MemoryCache 
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(120);
-                memoryCache.Add("publicationPrimeiro", publicationPrimeiro, policy);
-                memoryCache.Add("publicationSegundo", publicationSegundo, policy);
-                memoryCache.Add("publicationTerceiro", publicationTerceiro, policy);
+                memoryCache.Add("publicationFirst", publicationFirst, policy);
+                memoryCache.Add("publicationSecond", publicationSecond, policy);
+                memoryCache.Add("publicationThird", publicationThird, policy);
                 Assert.IsTrue(memoryCache.GetCount() == 3);
 
                 // Produção através dos métodos
-                new CreatePublication().CreateNewRegister(publicationPrimeiro);
-                new CreatePublication().CreateNewRegister(publicationSegundo);
-                new CreatePublication().CreateNewRegister(publicationTerceiro);
+                new CreatePublication().CreateNewRegister(publicationFirst);
+                new CreatePublication().CreateNewRegister(publicationSecond);
+                new CreatePublication().CreateNewRegister(publicationThird);
                 List<Publication> listPublications = new GetPublication().GetAllRegister();                                
                 Assert.IsTrue(3 == listPublications.Count);
             }

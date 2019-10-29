@@ -110,19 +110,19 @@ namespace XUnitTestAlfa.Infrastructure
                 memoryCache.Add("commentUpdate", comment, policy);
                 Comment commentGet = (Comment)memoryCache["commentUpdate"];
                 Assert.AreEqual(comment.ToString(), commentGet.ToString());
-                User userSegundo = new User("Raul Luar", "raull@gmail.com", "120345678109");
-                Topic topicSegundo = new Topic("Cultura");
-                Publication publicationSegundo = new Publication(userSegundo, "Skate8", "O melhor esporte 8", topicSegundo);
-                Comment commentSegundo = new Comment(userSegundo, "Musica Nova", publicationSegundo.Id);
-                memoryCache.Set("commentUpdate", commentSegundo, policy);
+                User userSecond = new User("Raul Luar", "raull@gmail.com", "120345678109");
+                Topic topicSecond = new Topic("Cultura");
+                Publication publicationSecond = new Publication(userSecond, "Skate8", "O melhor esporte 8", topicSecond);
+                Comment commentSecond = new Comment(userSecond, "Musica Nova", publicationSecond.Id);
+                memoryCache.Set("commentUpdate", commentSecond, policy);
                 commentGet = (Comment)memoryCache["commentUpdate"];
                 Assert.IsTrue(comment.Content.ToString() != commentGet.Content.ToString());
                 
                 // Produção através dos métodos
                 new CreateComment().CreateNewRegister(comment);
                 var commentCopia = new GetComment().GetRegisterById(comment.Id);
-                Comment commentTerceiro = new Comment(comment.Id, user, "Skate é radical", publication.Id);
-                new UpdateComment().UpdateRegister(commentTerceiro);
+                Comment commentThird = new Comment(comment.Id, user, "Skate é radical", publication.Id);
+                new UpdateComment().UpdateRegister(commentThird);
                 Assert.IsTrue(commentCopia.Content.ToString() != comment.Content.ToString());
             }
         }
@@ -134,26 +134,26 @@ namespace XUnitTestAlfa.Infrastructure
             User user = new User("Raul Santiago", "raul@gmail.com", "1203456789");
             Topic topic = new Topic("Esporte");
             Publication publication = new Publication(user, "Skate", "O melhor esporte", topic);            
-            Comment commentPrimeiro = new Comment(user, "Skate é show", publication.Id);
-            Comment commentSegundo = new Comment(user, "Skate8", publication.Id);
-            Comment commentTerceiro = new Comment(user, "Skate radical", publication.Id);
-            var resultValidationPrimeiro = new CommentValidator().Validate(commentPrimeiro);
-            var resultValidationSegundo = new CommentValidator().Validate(commentSegundo);
-            var resultValidationTerceiro = new CommentValidator().Validate(commentTerceiro);
-            if (resultValidationPrimeiro.IsValid & resultValidationSegundo.IsValid & resultValidationTerceiro.IsValid)
+            Comment commentFirst = new Comment(user, "Skate é show", publication.Id);
+            Comment commentSecond = new Comment(user, "Skate8", publication.Id);
+            Comment commentThird = new Comment(user, "Skate radical", publication.Id);
+            var resultValidationFirst = new CommentValidator().Validate(commentFirst);
+            var resultValidationSecond = new CommentValidator().Validate(commentSecond);
+            var resultValidationThird = new CommentValidator().Validate(commentThird);
+            if (resultValidationFirst.IsValid & resultValidationSecond.IsValid & resultValidationThird.IsValid)
             {
                 // Conhecimento MemoryCache 
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(120);
-                memoryCache.Add("commentPrimeiro", commentPrimeiro, policy);
-                memoryCache.Add("commentSegundo", commentSegundo, policy);
-                memoryCache.Add("commentTerceiro", commentTerceiro, policy);
+                memoryCache.Add("commentFirst", commentFirst, policy);
+                memoryCache.Add("commentSecond", commentSecond, policy);
+                memoryCache.Add("commentThird", commentThird, policy);
                 Assert.IsTrue(3 == memoryCache.GetCount());
 
                 // Produção através dos métodos
-                new CreateComment().CreateNewRegister(commentPrimeiro);
-                new CreateComment().CreateNewRegister(commentSegundo);
-                new CreateComment().CreateNewRegister(commentTerceiro);
+                new CreateComment().CreateNewRegister(commentFirst);
+                new CreateComment().CreateNewRegister(commentSecond);
+                new CreateComment().CreateNewRegister(commentThird);
                 List<Comment> listComments = new GetComment().GetAllRegister();
                 Assert.IsTrue(3 == listComments.Count);
             }

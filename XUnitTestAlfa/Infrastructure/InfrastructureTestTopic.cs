@@ -98,44 +98,44 @@ namespace XUnitTestAlfa.Infrastructure
                 memoryCache.Add("topicUpdate", topic, policy);
                 Topic topicGet = (Topic)memoryCache["topicUpdate"];
                 Assert.AreEqual(topic.ToString(), topicGet.ToString());
-                Topic topicSegundo = new Topic("Cultura");
-                memoryCache.Set("topicUpdate", topicSegundo, policy);
-                topicGet = (Topic)memoryCache["topicUpdate"];                
+                Topic topicSecond = new Topic("Cultura");
+                memoryCache.Set("topicUpdate", topicSecond, policy);
+                topicGet = (Topic)memoryCache["topicUpdate"];
                 Assert.IsTrue(topic.Name.ToString() != topicGet.Name.ToString());
 
                 // Produção através dos métodos
                 new CreateTopic().CreateNewRegister(topic);
                 var topicCopia = new GetTopic().GetRegisterById(topic.Id);
-                Topic topicTerceiro = new Topic(topic.Id, "Comida");
-                new UpdateTopic().UpdateRegister(topicTerceiro);
+                Topic topicThird = new Topic(topic.Id, "Comida");
+                new UpdateTopic().UpdateRegister(topicThird);
                 Assert.IsTrue(topicCopia.Id.ToString() == topic.Id.ToString());
-                Assert.IsTrue(topicCopia.Name.ToString() != topicTerceiro.Name.ToString());
+                Assert.IsTrue(topicCopia.Name.ToString() != topicThird.Name.ToString());
             }
         }
 
         [Fact]
         public void TestGetAll()
         {
-            Topic topicPrimeiro = new Topic("Skate");
-            Topic topicSegundo = new Topic("Cultura");
-            Topic topicTerceiro = new Topic("Musica");
-            var resultValidationPrimeiro = new TopicValidator().Validate(topicPrimeiro);
-            var resultValidationSegundo = new TopicValidator().Validate(topicSegundo);
-            var resultValidationTerceiro = new TopicValidator().Validate(topicTerceiro);
-            if (resultValidationPrimeiro.IsValid & resultValidationSegundo.IsValid & resultValidationTerceiro.IsValid)
+            Topic topicFirst = new Topic("Skate");
+            Topic topicSecond = new Topic("Cultura");
+            Topic topicThird = new Topic("Musica");
+            var resultValidationFirst = new TopicValidator().Validate(topicFirst);
+            var resultValidationSecond = new TopicValidator().Validate(topicSecond);
+            var resultValidationThird = new TopicValidator().Validate(topicThird);
+            if (resultValidationFirst.IsValid & resultValidationSecond.IsValid & resultValidationThird.IsValid)
             {
                 // Conhecimento MemoryCache 
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(120);
-                memoryCache.Add("topicPrimeiro", topicPrimeiro, policy);
-                memoryCache.Add("topicSegundo", topicSegundo, policy);
-                memoryCache.Add("topicTerceiro", topicTerceiro, policy);                
+                memoryCache.Add("topicFirst", topicFirst, policy);
+                memoryCache.Add("topicSecond", topicSecond, policy);
+                memoryCache.Add("topicThird", topicThird, policy);                
                 Assert.IsTrue(memoryCache.GetCount() == 3);
 
                 // Produção através dos métodos
-                new CreateTopic().CreateNewRegister(topicPrimeiro);
-                new CreateTopic().CreateNewRegister(topicSegundo);
-                new CreateTopic().CreateNewRegister(topicTerceiro);
+                new CreateTopic().CreateNewRegister(topicFirst);
+                new CreateTopic().CreateNewRegister(topicSecond);
+                new CreateTopic().CreateNewRegister(topicThird);
                 List<Topic> listTopics = new GetTopic().GetAllRegister();
                 Assert.IsTrue(3 == listTopics.Count);
             }
