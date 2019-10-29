@@ -7,17 +7,16 @@ using System.Collections.Generic;
 using Xunit;
 using System.Runtime.Caching;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using Infrastructure.Repository.UserDB;
 
 namespace XUnitTestAlfa.Infrastructure
 {
     public class InfrastructureTestUser
-    {
-        private readonly IUserRepository userRepository;
+    {        
         private MemoryCache memoryCache;
 
         public InfrastructureTestUser()
-        {
-            userRepository = new UserRepository();
+        {            
             memoryCache = MemoryCache.Default;
         }
 
@@ -28,10 +27,16 @@ namespace XUnitTestAlfa.Infrastructure
             var resultValidation = new UserValidator().Validate(user);
             if (resultValidation.IsValid)
             {
-                userRepository.Create(user);
+                // Conhecimento MemoryCache
                 CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
+                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
                 Assert.IsTrue(memoryCache.Add("user", user, policy));
+
+                // Produção através dos métodos
+                new CreateUser().CreateNewRegister(user);
+                var idGet = new GetUser().GetRegisterById(user.Id);                
+                Assert.IsNotNull(idGet);
+                Assert.IsTrue(idGet.Id.ToString() == user.Id.ToString());
             }
         }
 
@@ -42,9 +47,9 @@ namespace XUnitTestAlfa.Infrastructure
             var resultValidation = new UserValidator().Validate(user);
             if (resultValidation.IsValid)
             {
-                userRepository.Create(user);                
+                // Conhecimento MemoryCache
                 CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
+                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
                 memoryCache.Add("userRevome", user, policy);
                 User userGet = (User)memoryCache["userRevome"];
                 Assert.AreEqual(user.ToString(), userGet.ToString());
@@ -52,6 +57,11 @@ namespace XUnitTestAlfa.Infrastructure
                 userGet = (User)memoryCache["userRevome"];
                 Assert.IsNull(userGet);
 
+                // Produção através dos métodos
+                new CreateUser().CreateNewRegister(user);
+                new DeleteUser().DeleteRegister(user);
+                var idGet = new GetUser().GetRegisterById(user.Id);
+                Assert.IsNull(idGet);
             }
         }
 
@@ -62,60 +72,75 @@ namespace XUnitTestAlfa.Infrastructure
             var resultValidation = new UserValidator().Validate(user);
             if (resultValidation.IsValid)
             {
-                userRepository.Create(user);
-                var id = user.Id;
-                var idGet = userRepository.GetById(id);
+                // Conhecimento MemoryCache
                 CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
+                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
                 memoryCache.Add("userGetId", user, policy);
                 User userGet = (User)memoryCache["userGetId"];                
-                Assert.IsTrue(idGet.Id == userGet.Id);
+                Assert.IsTrue(Guid.Parse("fea77e83-001a-4cb7-b7ed-eedb6deff57a") == userGet.Id);
+
+                // Produção através dos métodos
+                new CreateUser().CreateNewRegister(user);
+                var idGet = new GetUser().GetRegisterById(user.Id);               
+                Assert.IsNotNull(idGet);
             }
         }
 
         [Fact]
         public void TestUpdate()
         {
-            User user = new User("Raul L Santiago", "raull@gmail.com", "1133203456789");
+            User user = new User(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7"),"Raul Lu Santiago", "raullu@gmail.com", "1133203456546789");
             var resultValidation = new UserValidator().Validate(user);
             if (resultValidation.IsValid)
             {
-                userRepository.Create(user);
+                // Conhecimento MemoryCache
                 CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(120);
+                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
                 memoryCache.Add("userUpdate", user, policy);
                 User userGet = (User)memoryCache["userUpdate"];
                 Assert.AreEqual(user.ToString(), userGet.ToString());
-                User user2 = new User("Raul SF Santiago", "raulfs@gmail.com", "011203456789");
-                memoryCache.Set("userUpdate", user2, policy);
+                User userSegundo = new User("Raul Lual Santiago", "raulluar@gmail.com", "123011203456789");
+                memoryCache.Set("userUpdate", userSegundo, policy);
                 userGet = (User)memoryCache["userUpdate"];                
-                Assert.IsTrue(user.Name != userGet.Name);
+                Assert.IsTrue(user.Name.ToString() != userGet.Name.ToString());
+
+                // Produção através dos métodos
+                new CreateUser().CreateNewRegister(user);
+                var userCopia = new GetUser().GetRegisterById(user.Id);
+                User userTerceiro = new User(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7"), "Raul Notato Santiago", "raulnotato@gmail.com", "012334561131456789");
+                new UpdateUser().UpdateRegister(userTerceiro);
+                Assert.IsTrue(userCopia.Email.ToString() != userTerceiro.Email.ToString());
+                Assert.IsTrue(userCopia.Id.ToString() == user.Id.ToString() & userCopia.Id.ToString() == userTerceiro.Id.ToString());
+                
             }
         }
 
         [Fact]
         public void TestGetAll()
         {
-            User user1 = new User("Raul F Santiago", "raulddf@gmail.com", "1120345671089");
-            User user2 = new User("Raul D Santiago", "rauldf@gmail.com", "112034567189");
-            User user3 = new User("Raul G Santiago", "rauldf@gmail.com", "112034567989");
-            var resultValidation1 = new UserValidator().Validate(user1);
-            var resultValidation2 = new UserValidator().Validate(user2);
-            var resultValidation3 = new UserValidator().Validate(user3);
-            if (resultValidation1.IsValid & resultValidation2.IsValid & resultValidation3.IsValid)
+            User userPrimeiro = new User("Raul Freitas Santiago", "raula@gmail.com", "01234567890");
+            User userSegundo = new User("Raul Fre Santiago", "raulb@gmail.com", "111123456789");
+            User userTerceiro = new User("Raul Mar Santiago", "raulc@gmail.com", "0123789999999");
+            var resultValidationPrimeiro = new UserValidator().Validate(userPrimeiro);
+            var resultValidationSegundo = new UserValidator().Validate(userSegundo);
+            var resultValidationTerceiro = new UserValidator().Validate(userTerceiro);
+            if (resultValidationPrimeiro.IsValid & resultValidationSegundo.IsValid & resultValidationTerceiro.IsValid)
             {
-                userRepository.Create(user1);
-                userRepository.Create(user2);
-                userRepository.Create(user3);
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(120);
-                memoryCache.Add("user1", user1, policy);
-                memoryCache.Add("user2", user2, policy);
-                memoryCache.Add("user3", user3, policy);
-                List<User> listUsers = userRepository.GetAll();
-                Assert.IsTrue(memoryCache.GetCount() == listUsers.Count);
+                // Conhecimento MemoryCache 
+                CacheItemPolicy policyDif = new CacheItemPolicy();
+                policyDif.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
+                memoryCache.Add("userPrimeiro", userPrimeiro, policyDif);
+                memoryCache.Add("userSegundo", userSegundo, policyDif);
+                memoryCache.Add("userTerceiro", userTerceiro, policyDif);
+                Assert.IsTrue(memoryCache.GetCount() == 3);
+
+                // Produção através dos métodos
+                new CreateUser().CreateNewRegister(userPrimeiro);
+                new CreateUser().CreateNewRegister(userSegundo);
+                new CreateUser().CreateNewRegister(userTerceiro);
+                List<User> listUsers = new GetUser().GetAllRegister();
+                Assert.IsTrue(listUsers.Count == 3);
             }
         }
-
     }
 }

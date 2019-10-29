@@ -20,5 +20,10 @@ namespace Domain
             Id = id;
             Name = name;
         }
+
+        public Topic()
+        {
+
+        }
     }
 }

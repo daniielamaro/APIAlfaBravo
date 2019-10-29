@@ -12,13 +12,11 @@ using Infrastructure.Repository.CommentDB;
 namespace XUnitTestAlfa.Infrastructure
 {
     public class InfrastructureTestComment
-    {
-        private readonly ICommentRepository commentRepository;
+    {        
         private MemoryCache memoryCache;
 
         public InfrastructureTestComment()
         {
-            commentRepository = new CommentRepository();
             memoryCache = MemoryCache.Default;
         }
 
@@ -32,10 +30,15 @@ namespace XUnitTestAlfa.Infrastructure
             var resultValidation = new CommentValidator().Validate(comment);
             if (resultValidation.IsValid)
             {
-                commentRepository.Create(comment);
+                // Conhecimento MemoryCache
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
                 Assert.IsTrue(memoryCache.Add("comment", comment, policy));
+                
+                // Produção através dos métodos
+                new CreateComment().CreateNewRegister(comment);                
+                var idGet = new GetComment().GetRegisterById(comment.Id);
+                Assert.IsNotNull(idGet);
             }
         }
 
@@ -49,31 +52,21 @@ namespace XUnitTestAlfa.Infrastructure
             var resultValidation = new CommentValidator().Validate(comment);
             if (resultValidation.IsValid)
             {
+                // Conhecimento MemoryCache
+                CacheItemPolicy policy = new CacheItemPolicy();
+                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
+                memoryCache.Add("commentRevome", comment, policy);
+                Comment commentGet = (Comment)memoryCache["commentRevome"];
+                Assert.AreEqual(comment.ToString(), commentGet.ToString());
+                memoryCache.Remove("commentRevome");
+                commentGet = (Comment)memoryCache["commentRevome"];
+                Assert.IsNull(commentGet);
+
+                // Produção através dos métodos
                 new CreateComment().CreateNewRegister(comment);
-                var id = comment.Id;
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
-                memoryCache.Add("commentRevome", comment, policy);
-                Comment commentGet = (Comment)memoryCache["commentRevome"];
-                Assert.AreEqual(comment.ToString(), commentGet.ToString());
-                memoryCache.Remove("commentRevome");
-                commentGet = (Comment)memoryCache["commentRevome"];
-                Assert.IsNull(commentGet);
-                new DeleteComment().DeleteRegister(comment);
                 var idGet = new GetComment().GetRegisterById(comment.Id);
+                new DeleteComment().DeleteRegister(comment);                
                 Assert.IsNull(idGet);
-
-                /*
-
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
-                memoryCache.Add("commentRevome", comment, policy);
-                Comment commentGet = (Comment)memoryCache["commentRevome"];
-                Assert.AreEqual(comment.ToString(), commentGet.ToString());
-                memoryCache.Remove("commentRevome");
-                commentGet = (Comment)memoryCache["commentRevome"];
-                Assert.IsNull(commentGet);
-                */
             }
         }
 
@@ -87,14 +80,17 @@ namespace XUnitTestAlfa.Infrastructure
             var resultValidation = new CommentValidator().Validate(comment);
             if (resultValidation.IsValid)
             {
-                commentRepository.Create(comment);
-                var id = comment.Id;
-                var idGet = commentRepository.GetById(id);
+                // Conhecimento MemoryCache                                                
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
                 memoryCache.Add("commentGetId", comment, policy);
-                Comment commentGet = (Comment)memoryCache["commentGetId"];                
-                Assert.IsTrue(idGet.Id == commentGet.Id);
+                Comment commentGet = (Comment)memoryCache["commentGetId"];
+                Assert.IsTrue(commentGet.Id == Guid.Parse("fea77e83-001a-4cb7-b7ed-eedb6deff57a"));
+
+                // Produção através dos métodos
+                new CreateComment().CreateNewRegister(comment);                
+                var idGet = new GetComment().GetRegisterById(comment.Id);
+                Assert.IsNotNull(idGet);
             }
         }
 
@@ -108,19 +104,26 @@ namespace XUnitTestAlfa.Infrastructure
             var resultValidation = new CommentValidator().Validate(comment);
             if (resultValidation.IsValid)
             {
-                commentRepository.Create(comment);
+                // Conhecimento MemoryCache                                                                
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(120);
                 memoryCache.Add("commentUpdate", comment, policy);
                 Comment commentGet = (Comment)memoryCache["commentUpdate"];
                 Assert.AreEqual(comment.ToString(), commentGet.ToString());
-                User user2 = new User("Raul Luar", "raull@gmail.com", "120345678109");
-                Topic topic2 = new Topic("Cultura");
-                Publication publication2 = new Publication(user2, "Skate8", "O melhor esporte 8", topic2);
-                Comment comment2 = new Comment(user2, "Musica Nova", publication2.Id);
-                memoryCache.Set("commentUpdate", comment2, policy);
+                User userSegundo = new User("Raul Luar", "raull@gmail.com", "120345678109");
+                Topic topicSegundo = new Topic("Cultura");
+                Publication publicationSegundo = new Publication(userSegundo, "Skate8", "O melhor esporte 8", topicSegundo);
+                Comment commentSegundo = new Comment(userSegundo, "Musica Nova", publicationSegundo.Id);
+                memoryCache.Set("commentUpdate", commentSegundo, policy);
                 commentGet = (Comment)memoryCache["commentUpdate"];
-                Assert.IsTrue(comment.Content != commentGet.Content);
+                Assert.IsTrue(comment.Content.ToString() != commentGet.Content.ToString());
+                
+                // Produção através dos métodos
+                new CreateComment().CreateNewRegister(comment);
+                var commentCopia = new GetComment().GetRegisterById(comment.Id);
+                Comment commentTerceiro = new Comment(comment.Id, user, "Skate é radical", publication.Id);
+                new UpdateComment().UpdateRegister(commentTerceiro);
+                Assert.IsTrue(commentCopia.Content.ToString() != comment.Content.ToString());
             }
         }
 
@@ -131,24 +134,28 @@ namespace XUnitTestAlfa.Infrastructure
             User user = new User("Raul Santiago", "raul@gmail.com", "1203456789");
             Topic topic = new Topic("Esporte");
             Publication publication = new Publication(user, "Skate", "O melhor esporte", topic);            
-            Comment comment1 = new Comment(user, "Skate é show", publication.Id);
-            Comment comment2 = new Comment(user, "Skate8", publication.Id);
-            Comment comment3 = new Comment(user, "Skate radical", publication.Id);
-            var resultValidation1 = new CommentValidator().Validate(comment1);
-            var resultValidation2 = new CommentValidator().Validate(comment2);
-            var resultValidation3 = new CommentValidator().Validate(comment3);
-            if (resultValidation1.IsValid & resultValidation2.IsValid & resultValidation3.IsValid)
+            Comment commentPrimeiro = new Comment(user, "Skate é show", publication.Id);
+            Comment commentSegundo = new Comment(user, "Skate8", publication.Id);
+            Comment commentTerceiro = new Comment(user, "Skate radical", publication.Id);
+            var resultValidationPrimeiro = new CommentValidator().Validate(commentPrimeiro);
+            var resultValidationSegundo = new CommentValidator().Validate(commentSegundo);
+            var resultValidationTerceiro = new CommentValidator().Validate(commentTerceiro);
+            if (resultValidationPrimeiro.IsValid & resultValidationSegundo.IsValid & resultValidationTerceiro.IsValid)
             {
-                commentRepository.Create(comment1);
-                commentRepository.Create(comment2);
-                commentRepository.Create(comment3);
+                // Conhecimento MemoryCache 
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(120);
-                memoryCache.Add("comment1", comment1, policy);
-                memoryCache.Add("comment2", comment2, policy);
-                memoryCache.Add("comment3", comment3, policy);
-                List<Comment> listComments = commentRepository.GetAll();
-                Assert.IsTrue(memoryCache.GetCount() == listComments.Count);
+                memoryCache.Add("commentPrimeiro", commentPrimeiro, policy);
+                memoryCache.Add("commentSegundo", commentSegundo, policy);
+                memoryCache.Add("commentTerceiro", commentTerceiro, policy);
+                Assert.IsTrue(3 == memoryCache.GetCount());
+
+                // Produção através dos métodos
+                new CreateComment().CreateNewRegister(commentPrimeiro);
+                new CreateComment().CreateNewRegister(commentSegundo);
+                new CreateComment().CreateNewRegister(commentTerceiro);
+                List<Comment> listComments = new GetComment().GetAllRegister();
+                Assert.IsTrue(3 == listComments.Count);
             }
         }
 
