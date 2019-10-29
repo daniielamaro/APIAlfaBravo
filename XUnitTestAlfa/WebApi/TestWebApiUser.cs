@@ -1,10 +1,16 @@
 ﻿using Domain;
+using FluentAssertions;
 using Infrastructure.Repository.UserDB;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
+using System.Runtime.Caching;
 using System.Text;
+using System.Threading.Tasks;
 using WebApi;
 using WebApi.Controllers;
 using Xunit;
@@ -13,36 +19,89 @@ namespace XUnitTestAlfa.WebApi
 {
     public class TestWebApiUser
     {
+        private readonly UsersController controller;
+        private readonly CreateUser creator;
+
+        public TestWebApiUser()
+        {
+            creator = new CreateUser();
+            controller = new UsersController();
+        }
 
         [Fact]
         public void TestGet()
         {
-            User user1 = new User("nome primeiro", "email@email.com", "123456789");
-            User user2 = new User("nome segundo", "email2@email.com", "123456789");
-            User user3 = new User("nome terceiro", "email2@email.com", "123456789");
-            new CreateUser().CreateNewRegister(user1);
-            new CreateUser().CreateNewRegister(user2);
-            new CreateUser().CreateNewRegister(user3);
+            var result1 = controller.Get();
 
-            var controller = new UsersController();
+            var user1 = UserBuilder.New().WithPassword("1234").Build();
+            var user2 = UserBuilder.New().Build();
 
-            var result = controller.Get();
+            creator.CreateNewRegister(user1);
+            creator.CreateNewRegister(user2);
 
-            Assert.IsType<OkObjectResult>(result.Result);
-            Assert.True(result.Value.Count == 3);
+            var result2 = controller.Get();
+
+            Assert.IsType<NoContentResult>(result1.Result);
+            Assert.IsType<OkObjectResult>(result2.Result);
         }
 
         [Fact]
+        public void TestGetById()
+        {
+            var user = UserBuilder.New().Build();
+
+            var result1 = controller.Get(user.Id);
+
+            creator.CreateNewRegister(user);
+
+            var result2 = controller.Get(user.Id);
+
+            Assert.IsType<BadRequestObjectResult>(result1.Result);
+            Assert.IsType<OkObjectResult>(result2.Result);
+        }
+        
+        [Fact]
         public void TestPost()
         {
-            var controller = new UsersController();
+            var user = UserBuilder.New().Build();
 
-            var result = controller.Post("nome", "email@email.com", "123456897");
+            creator.CreateNewRegister(user);
 
-            var user = result.Value;
+            var result1 = controller.Post("Nome segundo", user.Email, "123456789");
 
-            Assert.IsType<CreatedAtActionResult>(result.Result);
-            Assert.True(user.Id == Guid.Empty || user.Id == null);
+            var result2 = controller.Post("Nome segundo", "emai2@email.com", "123456789");
+
+            Assert.IsType<BadRequestObjectResult>(result1.Result);
+            Assert.IsType<OkObjectResult>(result2.Result);
+        }
+        
+        [Fact]
+        public void TestPut()
+        {
+            var user = UserBuilder.New().Build();
+            creator.CreateNewRegister(user);
+
+            var result1 = controller.Put(user.Id, "nome primeiro", "danieldaniel.com", "123456789");
+
+            var result2 = controller.Put(user.Id, "nome primeiro", "daniel@daniel.com", "123456789");
+
+            Assert.IsType<BadRequestObjectResult>(result1.Result);
+            Assert.IsType<OkObjectResult>(result2.Result);
+        }
+        
+        [Fact]
+        public void TestDelete()
+        {
+            var user = UserBuilder.New().Build();
+
+            creator.CreateNewRegister(user);
+
+            var result1 = controller.Delete(Guid.NewGuid());
+
+            var result2 = controller.Delete(user.Id);
+
+            Assert.IsType<BadRequestObjectResult>(result1.Result);
+            Assert.IsType<OkObjectResult>(result2.Result);
         }
     }
 }

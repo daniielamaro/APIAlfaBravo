@@ -29,12 +29,15 @@ namespace WebApi.Controllers
         /// Buscar todos os usuários
         /// </summary>
         /// <response code="200">Sucesso ao buscar usuários</response>
-        /// <response code="400">Nenhuma lista de usuários encontrada</response>
-        /// <returns></returns>
         [HttpGet]
         public ActionResult<List<User>> Get()
         {
-            return Ok(userRepository.GetAll());
+            List<User> listUsers = userRepository.GetAll();
+
+            if (listUsers.Count == 0)
+                return NoContent();
+
+            return Ok(listUsers);
         }
 
         /// <summary>
@@ -52,7 +55,7 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return userRepository.GetById(id);
+            return Ok(userRepository.GetById(id));
         }
 
         /// <summary>
@@ -76,7 +79,7 @@ namespace WebApi.Controllers
 
             userRepository.Create(user);
 
-            return CreatedAtAction("Get", new { id = user.Id }, user);
+            return Ok(user);
         }
 
         /// <summary>
@@ -123,7 +126,7 @@ namespace WebApi.Controllers
 
             User user = userRepository.GetById(id);
 
-            return userRepository.Delete(user);
+            return Ok(userRepository.Delete(user));
         }
     }
 }
