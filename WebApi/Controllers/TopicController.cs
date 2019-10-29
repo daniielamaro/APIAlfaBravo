@@ -68,9 +68,9 @@ namespace WebApi.Controllers
 
             var resultValidation = new TopicValidator().Validate(topic);
 
-            if(!resultValidation.IsValid)
+            if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
-            
+
             topicRepository.Create(topic);
 
             return CreatedAtAction("Get", new { id = topic.Id }, topic);

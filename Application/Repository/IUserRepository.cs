@@ -10,6 +10,5 @@ namespace Application.Repository
     /// </summary>
     public interface IUserRepository : ICreateRegister<User>, IGetAll<User>, IDeleteRegister<User>, IGetRegisterById<User>, IUpdateRegister<User>
     {
-
     }
 }
