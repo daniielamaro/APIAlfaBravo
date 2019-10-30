@@ -83,11 +83,19 @@ namespace XUnitTestAlfa.WebApi
         {
             var result = controller.Post("Nome segundo", "email@email.com", "123456789");
 
-            Assert.IsType<OkObjectResult>(result.Result);
+            Assert.IsType<CreatedAtActionResult>(result.Result);
         }
 
         [Fact]
-        public void PutReturnsBadRequest()
+        public void PutReturnsBadRequest_UserNotExistOnDatabase()
+        {
+            var result = controller.Put(Guid.NewGuid(), "nome put", "daniel@daniel.com", "123456789");
+
+            Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public void PutReturnsBadRequest_UserNotValid()
         {
             var user = UserBuilder.New().Build();
             creator.CreateNewRegister(user);

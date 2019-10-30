@@ -96,7 +96,7 @@ namespace WebApi.Controllers
 
             commentRepository.Create(comment);
 
-            return Ok(comment);
+            return CreatedAtAction("Get", new { id = comment.Id }, comment);
         }
 
         /// <summary>

@@ -74,7 +74,7 @@ namespace WebApi.Controllers
             if (!resultValidator.IsValid)
                 return BadRequest(resultValidator.Errors);
 
-            return Ok(publicationRepository.Create(publication));
+            return CreatedAtAction("Get", new { id = publication.Id }, publication);
         }
 
         /// <summary>
