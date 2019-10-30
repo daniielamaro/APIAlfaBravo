@@ -83,53 +83,50 @@ namespace XUnitTestAlfa.Application
         }
 
         [Fact]
-        public void TestValidationComment()
+        public void TestValidationCommentWithValidResult()
         {
             var okUser = UserBuilder.New().Build();
             new UserRepository().Create(okUser);
 
-            var badUser = new User("Nome teste", "", "12345");
-
-            var topic = TopicBuilder.New().Build();
-            new TopicRepository().Create(topic);
-
-            var okPublication = PublicationBuilder.New().Build();
-            new CreatePublication().CreateNewRegister(okPublication);
-
-
             var okComment = CommentBuilder.New().Build();
 
-            var badComment1 = CommentBuilder.New().WithContent("WrongContent").Build();
-
-            var badComment2 = CommentBuilder.New().Build();
-            
-            var badComment3 = CommentBuilder.New().WithContent("WrongAgain").Build();
-
-
             var resultValidation1 = new CommentValidator().Validate(okComment);
-            var resultValidation2 = new CommentValidator().Validate(badComment1);
-            var resultValidation3 = new CommentValidator().Validate(badComment2);
-            var resultValidation4 = new CommentValidator().Validate(badComment3);
 
             Assert.True(resultValidation1.IsValid);
+
+        }
+        
+        [Fact]
+        public void TestValidationCommentWithInvalidTopic()
+        {
+            var okUser = UserBuilder.New().Build();
+            new UserRepository().Create(okUser);
+
+            var badComment1 = CommentBuilder.New().WithContent("  ").Build();
+            
+            var resultValidation2 = new CommentValidator().Validate(badComment1);
+            
             Assert.False(resultValidation2.IsValid);
-            Assert.False(resultValidation3.IsValid);
-            Assert.False(resultValidation4.IsValid);
+
+        }
+
+        [Fact]
+        public void TestValidationCommentWithInvalidPublicationId()
+        {
+            var okUser = UserBuilder.New().Build();
+            new UserRepository().Create(okUser);
+
+            var badComment1 = CommentBuilder.New().WithPublicationId(Guid.Parse("00000000-0000-0000-0000-000000000000")).Build();
+            
+            var resultValidation2 = new CommentValidator().Validate(badComment1);
+            
+            Assert.False(resultValidation2.IsValid);
+
         }
 
         [Fact]
         public void TestValidationCommentExist()
         {
-
-            var user = UserBuilder.New().Build();
-            new CreateUser().CreateNewRegister(user);
-
-            var topic = TopicBuilder.New().Build();
-            new CreateTopic().CreateNewRegister(topic);
-
-            var publicaiton = PublicationBuilder.New().Build();
-            new CreatePublication().CreateNewRegister(publicaiton);
-
             var okComment = CommentBuilder.New().Build();
             new CreateComment().CreateNewRegister(okComment);
 
