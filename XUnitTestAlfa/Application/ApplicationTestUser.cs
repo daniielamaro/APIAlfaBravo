@@ -84,12 +84,9 @@ namespace XUnitTestAlfa.Application
         {
             var userFirst = UserBuilder.New().Build();
             var userSecond =  UserBuilder.New().Build();
-            
             new UserRepository().Create(userFirst);
-
             var resultValidationFirst = new UserExistValidator().Validate(userFirst.Id);
             var resultValidationSecond = new UserExistValidator().Validate(userSecond.Id);
-
             Assert.True(resultValidationFirst.IsValid);
             Assert.False(resultValidationSecond.IsValid);
         }

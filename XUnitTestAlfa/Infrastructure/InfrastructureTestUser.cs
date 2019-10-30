@@ -24,8 +24,6 @@ namespace XUnitTestAlfa.Infrastructure
         public void TestCreate()
         {
             var user = UserBuilder.New().Build();
-           
-            // Produção através dos métodos
             new CreateUser().CreateNewRegister(user);
             var idGet = new GetUser().GetRegisterById(user.Id);
             Assert.IsNotNull(idGet);
@@ -36,19 +34,6 @@ namespace XUnitTestAlfa.Infrastructure
         public void TestDelete()
         {
             var user = UserBuilder.New().Build();            
-            /*
-            // Conhecimento MemoryCache
-            CacheItemPolicy policy = new CacheItemPolicy();
-            policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
-            memoryCache.Add("userRevome", user, policy);
-            User userGet = (User)memoryCache["userRevome"];
-            Assert.AreEqual(user.ToString(), userGet.ToString());
-            memoryCache.Remove("userRevome");
-            userGet = (User)memoryCache["userRevome"];
-            Assert.IsNull(userGet);
-            */
-
-            // Produção através dos métodos
             new CreateUser().CreateNewRegister(user);
             new DeleteUser().DeleteRegister(user);
             var idGet = new GetUser().GetRegisterById(user.Id);
@@ -59,16 +44,6 @@ namespace XUnitTestAlfa.Infrastructure
         public void TestGetById()
         {
             var user = UserBuilder.New().WithId(Guid.Parse("fea77e83-001a-4cb7-b7ed-eedb6deff57a")).Build();            
-            /*  
-            // Conhecimento MemoryCache
-            CacheItemPolicy policy = new CacheItemPolicy();
-            policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
-            memoryCache.Add("userGetId", user, policy);
-            User userGet = (User)memoryCache["userGetId"];                
-            Assert.IsTrue(Guid.Parse("fea77e83-001a-4cb7-b7ed-eedb6deff57a") == userGet.Id);
-            */
-
-            // Produção através dos métodos
             new CreateUser().CreateNewRegister(user);
             var idGet = new GetUser().GetRegisterById(user.Id);               
             Assert.IsNotNull(idGet);
@@ -79,23 +54,6 @@ namespace XUnitTestAlfa.Infrastructure
         public void TestUpdate()
         {
             var user = UserBuilder.New().WithId(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7")).Build();
-
-            //User user = new User(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7"),"Raul Lu Santiago", "raullu@gmail.com", "1133203456546789");
-        
-            /*
-            // Conhecimento MemoryCache
-            CacheItemPolicy policy = new CacheItemPolicy();
-            policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
-            memoryCache.Add("userUpdate", user, policy);
-            User userGet = (User)memoryCache["userUpdate"];
-            Assert.AreEqual(user.ToString(), userGet.ToString());
-            User userSecond = new User("Raul Lual Santiago", "raulluar@gmail.com", "123011203456789");
-            memoryCache.Set("userUpdate", userSecond, policy);
-            userGet = (User)memoryCache["userUpdate"];                
-            Assert.IsTrue(user.Name.ToString() != userGet.Name.ToString());
-            */
-
-            // Produção através dos métodos
             new CreateUser().CreateNewRegister(user);
             var userCopia = new GetUser().GetRegisterById(user.Id);
             User userSecond = UserBuilder.New().WithId(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7")).Build(); 
@@ -110,17 +68,6 @@ namespace XUnitTestAlfa.Infrastructure
             var userPrimeiro = UserBuilder.New().Build();
             var userSecond = UserBuilder.New().Build();
             var userThird = UserBuilder.New().Build();
-            /*
-            // Conhecimento MemoryCache 
-            CacheItemPolicy policyDif = new CacheItemPolicy();
-            policyDif.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(60);
-            memoryCache.Add("userPrimeiro", userPrimeiro, policyDif);
-            memoryCache.Add("userSecond", userSecond, policyDif);
-            memoryCache.Add("userThird", userThird, policyDif);
-            Assert.IsTrue(memoryCache.GetCount() == 3);
-            */
-
-            // Produção através dos métodos
             new CreateUser().CreateNewRegister(userPrimeiro);
             new CreateUser().CreateNewRegister(userSecond);
             new CreateUser().CreateNewRegister(userThird);
