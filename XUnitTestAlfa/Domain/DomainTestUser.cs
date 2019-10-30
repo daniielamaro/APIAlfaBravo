@@ -9,7 +9,7 @@ namespace XUnitTestAlfa.Domain
     public class DomainTestUser
     {
         [Fact]
-        public void TestCreateWithoutId()
+        public void TestCreateWithoutIdUser()
         {
             var user = UserBuilder.New()
                 .WithName("Nome teste")
@@ -24,7 +24,7 @@ namespace XUnitTestAlfa.Domain
         }
 
         [Fact]
-        public void TestCreateWithId()
+        public void TestCreateWithIdUser()
         {
             var user = UserBuilder.New()
                 .WithId(Guid.Parse("00000000-0000-0000-0000-000000000000"))

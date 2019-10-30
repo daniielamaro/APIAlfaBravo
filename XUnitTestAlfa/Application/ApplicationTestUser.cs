@@ -13,7 +13,7 @@ namespace XUnitTestAlfa.Application
     public class ApplicationTestUser
     {
         [Fact]
-        public void TestEntityCreate()
+        public void TestEntityCreateUser()
         {
             var user = UserBuilder.New().Build();
             var mockTeste = new Mock<ICreateDB<User>>();
@@ -23,7 +23,7 @@ namespace XUnitTestAlfa.Application
         }
 
         [Fact]
-        public void TestEntityGetAll()
+        public void TestEntityGetAllUser()
         {
             var mockTeste = new Mock<IGetDB<Publication>>();
             var publicationRepository = new PublicationRepository(mockTeste.Object);
@@ -32,7 +32,7 @@ namespace XUnitTestAlfa.Application
         }
 
         [Fact]
-        public void TestEntityGetById()
+        public void TestEntityGetByIdUser()
         {
             var mockTeste = new Mock<IGetDB<User>>();
             var userRepository = new UserRepository(mockTeste.Object);
@@ -41,7 +41,7 @@ namespace XUnitTestAlfa.Application
         }
 
         [Fact]
-        public void TestEntityUpdate()
+        public void TestEntityUpdateUser()
         {
             var user = UserBuilder.New().Build();
             var mockTeste = new Mock<IUpdateDB<User>>();
@@ -51,7 +51,7 @@ namespace XUnitTestAlfa.Application
         }
 
         [Fact]
-        public void TestEntityDelete()
+        public void TestEntityDeleteUser()
         {
             var user = UserBuilder.New().Build();
             var mockTeste = new Mock<IDeleteDB<User>>();
@@ -80,7 +80,7 @@ namespace XUnitTestAlfa.Application
         }
 
         [Fact]
-        public void TestValidationUserExist()
+        public void TestValidationUserExistUser()
         {
             var userFirst = UserBuilder.New().Build();
             var userSecond =  UserBuilder.New().Build();

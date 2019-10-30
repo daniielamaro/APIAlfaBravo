@@ -13,15 +13,12 @@ namespace XUnitTestAlfa.Infrastructure
 {
     public class InfrastructureTestUser
     {        
-        private MemoryCache memoryCache;
-
         public InfrastructureTestUser()
         {            
-            memoryCache = MemoryCache.Default;
         }
 
         [Fact]
-        public void TestCreate()
+        public void TestCreateUser()
         {
             var user = UserBuilder.New().Build();
             new CreateUser().CreateNewRegister(user);
@@ -31,7 +28,7 @@ namespace XUnitTestAlfa.Infrastructure
         }
 
         [Fact]
-        public void TestDelete()
+        public void TestDeleteUser()
         {
             var user = UserBuilder.New().Build();            
             new CreateUser().CreateNewRegister(user);
@@ -41,7 +38,7 @@ namespace XUnitTestAlfa.Infrastructure
         }
 
         [Fact]
-        public void TestGetById()
+        public void TestGetByIdUser()
         {
             var user = UserBuilder.New().WithId(Guid.Parse("fea77e83-001a-4cb7-b7ed-eedb6deff57a")).Build();            
             new CreateUser().CreateNewRegister(user);
@@ -51,7 +48,7 @@ namespace XUnitTestAlfa.Infrastructure
         }
 
         [Fact]
-        public void TestUpdate()
+        public void TestUpdateUser()
         {
             var user = UserBuilder.New().WithId(Guid.Parse("57ffdf20-ea87-4e72-9b80-fa3d77aef2b7")).Build();
             new CreateUser().CreateNewRegister(user);
@@ -63,7 +60,7 @@ namespace XUnitTestAlfa.Infrastructure
         }
 
         [Fact]
-        public void TestGetAll()
+        public void TestGetAllUser()
         {
             var userPrimeiro = UserBuilder.New().Build();
             var userSecond = UserBuilder.New().Build();
