@@ -13582,23 +13582,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DanielGA\\.nuget\\packages\\": {},
+    "C:\\Users\\ThallitaSP\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\obj\\",
+      "projectPath": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\ThallitaSP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ThallitaSP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13611,8 +13611,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj"
+            "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\Application\\Application.csproj"
             }
           }
         }
@@ -13686,7 +13686,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'Microsoft.AspNet.WebApi.Core 5.2.7' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v2.2'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.WebApi.Core",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.2"
