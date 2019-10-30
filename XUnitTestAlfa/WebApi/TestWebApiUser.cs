@@ -33,11 +33,9 @@ namespace XUnitTestAlfa.WebApi
         {
             var result1 = controller.Get();
 
-            var user1 = UserBuilder.New().WithPassword("1234").Build();
-            var user2 = UserBuilder.New().Build();
+            var user1 = UserBuilder.New().Build();
 
             creator.CreateNewRegister(user1);
-            creator.CreateNewRegister(user2);
 
             var result2 = controller.Get();
 

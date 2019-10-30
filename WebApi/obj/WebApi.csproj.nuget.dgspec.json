@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\APIAlfaBravo\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\APIAlfaBravo\\Application\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
               },
-              "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -73,20 +73,20 @@
         }
       }
     },
-    "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -131,20 +131,20 @@
         }
       }
     },
-    "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -157,8 +157,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
               }
             }
           }
@@ -205,20 +205,20 @@
         }
       }
     },
-    "C:\\Projetos\\APIAlfaBravo\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Projetos\\APIAlfaBravo\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\APIAlfaBravo\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -231,8 +231,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj": {
-                "projectPath": "C:\\Projetos\\APIAlfaBravo\\Application\\Application.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj"
               }
             }
           }
@@ -246,20 +246,23 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[5.9.0, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[8.5.0, )"
+            },
+            "Microsoft.AspNet.WebApi.Core": {
+              "target": "Package",
+              "version": "[5.2.7, )"
             },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
-            },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",

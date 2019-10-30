@@ -23,21 +23,18 @@ namespace XUnitTestAlfa.Infrastructure
         [Fact]
         public void TestCreate()
         {
-            User user = new User("Raul Santiago", "raul@gmail.com", "1203456789");
-            var resultValidation = new UserValidator().Validate(user);
-            if (resultValidation.IsValid)
-            {
-                // Conhecimento MemoryCache
-                CacheItemPolicy policy = new CacheItemPolicy();
-                policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
-                Assert.IsTrue(memoryCache.Add("user", user, policy));
+            var user = UserBuilder.New().Build();
+            
+            // Conhecimento MemoryCache
+            CacheItemPolicy policy = new CacheItemPolicy();
+            policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(30);
+            Assert.IsTrue(memoryCache.Add("user", user, policy));
 
-                // Produção através dos métodos
-                new CreateUser().CreateNewRegister(user);
-                var idGet = new GetUser().GetRegisterById(user.Id);                
-                Assert.IsNotNull(idGet);
-                Assert.IsTrue(idGet.Id.ToString() == user.Id.ToString());
-            }
+            // Produção através dos métodos
+            new CreateUser().CreateNewRegister(user);
+            var idGet = new GetUser().GetRegisterById(user.Id);                
+            Assert.IsNotNull(idGet);
+            Assert.IsTrue(idGet.Id.ToString() == user.Id.ToString());
         }
 
         [Fact]
