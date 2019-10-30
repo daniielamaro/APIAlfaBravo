@@ -35,9 +35,14 @@ namespace WebApi.Controllers
         /// <response code="400">Nenhuma lista de comentários encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public List<Comment> Get()
+        public ActionResult<List<Comment>> Get()
         {
-            return commentRepository.GetAll();
+            List<Comment> listComment = commentRepository.GetAll();
+
+            if (listComment.Count == 0)
+                return NoContent();
+
+            return Ok(commentRepository.GetAll());
         }
 
         /// <summary>
@@ -55,7 +60,7 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return commentRepository.GetById(id);
+            return Ok(commentRepository.GetById(id));
         }
 
         /// <summary>
@@ -91,7 +96,7 @@ namespace WebApi.Controllers
 
             commentRepository.Create(comment);
 
-            return comment;
+            return Ok(comment);
         }
 
         /// <summary>
@@ -118,7 +123,7 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return commentRepository.Update(newComment);
+            return Ok(commentRepository.Update(newComment));
         }
 
         /// <summary>
@@ -138,7 +143,7 @@ namespace WebApi.Controllers
 
             Comment comment = commentRepository.GetById(id);
 
-            return commentRepository.Delete(comment);
+            return Ok(commentRepository.Delete(comment));
         }
     }
 }
