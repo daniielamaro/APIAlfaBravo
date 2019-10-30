@@ -86,11 +86,11 @@
             <response code="400">Erro na criação da publicação</response>
             <returns></returns>
         </member>
-        <member name="M:WebApi.Controllers.PublicationsController.Get(System.String)">
+        <member name="M:WebApi.Controllers.PublicationsController.Get(System.Guid)">
             <summary>
-            Buscar publicações
+            Buscar uma publicação pelo seu Id
             </summary>
-            <param name="name">Nome do autor</param>
+            <param id="ID">ID da publicação</param>
             <response code="200">Sucesso na busca da publicação</response>
             <response code="400">Erro ao buscar publicação</response>
             <returns></returns>
@@ -99,10 +99,10 @@
             <summary>
             Alterar publicação
             </summary>
-            <param name="id">Identificador do autor</param>
+            <param name="id">Identificador da publicação</param>
             <param name="title">Título da publicação</param>
             <param name="content">Conteúdo da publicação</param>
-            <param name="topicId">Categoria da qual a publicação pertence</param>
+            <param name="topicId">Categoria da qual a publicação pertence ou será alterada</param>
             <response code="200">Sucesso na alteração da publicação</response>
             <response code="400">Erro ao tentar alterar a publicação</response>
             <returns></returns>

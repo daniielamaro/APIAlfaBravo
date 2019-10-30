@@ -1,6 +1,7 @@
 ﻿using Application.Repository;
 using Domain;
 using Infrastructure.Repository;
+using Infrastructure.Repository.PublicationDB;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,70 +12,65 @@ namespace Application.Entity
     
     public class PublicationRepository : IPublicationRepository
     {
-        protected readonly ApiContext ApiContext;
+        public ICreateDB<Publication> Register;
+        public IDeleteDB<Publication> Remove;
+        public IGetDB<Publication> Get;
+        public IUpdateDB<Publication> Alter;
 
         public PublicationRepository()
         {
-            ApiContext = new ApiContext();
+            Register = new CreatePublication();
+            Remove = new DeletePublication();
+            Get = new GetPublication();
+            Alter = new UpdatePublication();
+        }
+
+        public PublicationRepository(ICreateDB<Publication> register)
+        {
+            Register = register;
+        }
+
+        public PublicationRepository(IDeleteDB<Publication> remove)
+        {
+            Remove = remove;
+        }
+
+        public PublicationRepository(IGetDB<Publication> get)
+        {
+            Get = get;
+        }
+
+        public PublicationRepository(IUpdateDB<Publication> alter)
+        {
+            Alter = alter;
         }
 
         public Publication Create(Publication publication)
         {
-            ApiContext.Users.Attach(publication.Autor);
-            ApiContext.Topics.Attach(publication.Topic);
-            ApiContext.Publications.Add(publication);
-            ApiContext.SaveChanges();
-
-            return publication;
-        }
-
-        public Publication Delete(Guid id)
-        {
-            Publication publication = ApiContext.Publications.Find(id);
-            ApiContext.Remove(publication);
-            ApiContext.SaveChanges();
+            Register.CreateNewRegister(publication);
 
             return publication;
         }
 
         public List<Publication> GetAll()
         {
-            List<Publication> publications = ApiContext.Publications
-                .Include(x => x.Autor)
-                .Include(x => x.Comments)
-                .Include(x => x.Topic)
-                .ToList();
-            return publications;
+            return Get.GetAllRegister();
         }
 
         public Publication GetById(Guid id)
         {
-            Publication publication = ApiContext.Publications
-                .Where(x => x.Id == id)
-                .Include(x => x.Autor)
-                .Include(x => x.Comments)
-                .Include(x => x.Topic)
-                .FirstOrDefault();
-
-            return publication;
-        }
-
-        public List<Publication> GetByName(string name)
-        {
-            List<Publication> publications = ApiContext.Publications
-                .Where(x => x.Autor.Name.ToLower().Contains(name.ToLower()))
-                .Include(x => x.Autor)
-                .Include(x => x.Comments)
-                .Include(x => x.Topic)
-                .ToList();
-            return publications;
+            return Get.GetRegisterById(id);
         }
 
         public Publication Update(Publication publication)
         {
-            ApiContext.Entry(publication).State = EntityState.Modified;
-            ApiContext.SaveChanges();
+            Alter.UpdateRegister(publication);
+            return publication;
+        }
 
+        public Publication Delete(Publication publication)
+        {
+            Remove.DeleteRegister(publication);
             return publication;
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Domain
 {
@@ -26,6 +28,11 @@ namespace Domain
             Name = name;
             Email = email;
             Password = password;
+        }
+
+        public User()
+        {
+
         }
     }
 }

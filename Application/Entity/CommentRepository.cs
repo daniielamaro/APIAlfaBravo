@@ -4,57 +4,75 @@ using System.Linq;
 using System.Text;
 using Application.Repository;
 using Domain;
+using Infrastructure.Context;
 using Infrastructure.Repository;
+using Infrastructure.Repository.CommentDB;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Entity
 {
     public class CommentRepository : ICommentRepository
     {
-        protected readonly ApiContext ApiContext;
+        public ICreateDB<Comment> Register;
+        public IDeleteDB<Comment> Remove;
+        public IGetDB<Comment> Get;
+        public IUpdateDB<Comment> Alter;
 
         public CommentRepository()
         {
-            ApiContext = new ApiContext();
+            Register = new CreateComment();
+            Remove = new DeleteComment();
+            Get = new GetComment();
+            Alter = new UpdateComment();
+        }
+
+        public CommentRepository(ICreateDB<Comment> register)
+        {
+            Register = register;
+        }
+
+        public CommentRepository(IDeleteDB<Comment> remove)
+        {
+            Remove = remove;
+        }
+
+        public CommentRepository(IGetDB<Comment> get)
+        {
+            Get = get;
+        }
+
+        public CommentRepository(IUpdateDB<Comment> alter)
+        {
+            Alter = alter;
         }
 
         public Comment Create(Comment comment)
         {
-            ApiContext.Users.Attach(comment.Autor);
-            ApiContext.Comments.Add(comment);
-            ApiContext.SaveChanges();
+            Register.CreateNewRegister(comment);
 
             return comment;
         }
 
-        public Comment Delete(Guid id)
+        public Comment Delete(Comment comment)
         {
-            Comment comment = ApiContext.Comments.Find(id);
-            ApiContext.Remove(comment);
-            ApiContext.SaveChanges();
+            Remove.DeleteRegister(comment);
 
             return comment;
         }
 
         public List<Comment> GetAll()
         {
-            return ApiContext.Comments
-                .Include(x => x.Autor)
-                .ToList();
+            return Get.GetAllRegister();
         }
 
         public Comment GetById(Guid id)
         {
-            return ApiContext.Comments
-                .Where(x => x.Id == id)
-                .Include(x => x.Autor)
-                .FirstOrDefault();
+            return Get.GetRegisterById(id);
         }
 
         public Comment Update(Comment comment)
         {
-            ApiContext.Entry(comment).State = EntityState.Modified;
-            ApiContext.SaveChanges();
+            Alter.UpdateRegister(comment);
 
             return comment;
         }

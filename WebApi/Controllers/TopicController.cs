@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         /// <response code="200">Lista de tópicos encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Topic> Get()
+        public List<Topic> Get()
         {
             return topicRepository.GetAll();
         }
@@ -44,8 +44,13 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao tentar buscar a categoria</response>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetTopic")]
-        public Topic Get(Guid id)
+        public ActionResult<Topic> Get(Guid id)
         {
+            var resultValidation = new TopicExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return topicRepository.GetById(id);
         }
 
@@ -63,9 +68,9 @@ namespace WebApi.Controllers
 
             var resultValidation = new TopicValidator().Validate(topic);
 
-            if(!resultValidation.IsValid)
+            if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
-            
+
             topicRepository.Create(topic);
 
             return CreatedAtAction("Get", new { id = topic.Id }, topic);
@@ -82,9 +87,12 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<Topic> Put(Guid id, string name)
         {
-            Topic topic = new Topic(id, name);
+            var resultValidation = new TopicExistValidator().Validate(id);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
 
-            var resultValidation = new TopicValidator().Validate(topic);
+            Topic topic = new Topic(id, name);
+            resultValidation = new TopicValidator().Validate(topic);
 
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
@@ -100,9 +108,16 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao tentar deletar a categoria</response>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public Topic Delete(Guid id)
+        public ActionResult<Topic> Delete(Guid id)
         {
-            return topicRepository.Delete(id);
+            var resultValidation = new TopicExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            Topic topic = topicRepository.GetById(id);
+
+            return topicRepository.Delete(topic);
         }
     }
 }

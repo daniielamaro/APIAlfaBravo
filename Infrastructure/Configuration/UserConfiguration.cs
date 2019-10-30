@@ -18,6 +18,11 @@ namespace Infrastructure.Configuration
                 .HasMaxLength(150);
 
             builder
+                .Property(u => u.Email)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            builder
                 .Property(u => u.Password)
                 .IsRequired()
                 .HasMaxLength(50);

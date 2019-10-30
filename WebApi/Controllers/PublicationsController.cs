@@ -33,7 +33,7 @@ namespace WebApi.Controllers
         /// <response code="400">Nenhuma lista de publicações encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Publication> Get()
+        public List<Publication> Get()
         {
             return publicationRepository.GetAll();
         }
@@ -51,13 +51,21 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<Publication> Post(Guid autorId, string title, string content, Guid topicId)
         {
-            var autor = userRepository.GetById(autorId);
-            var topic = topicRepository.GetById(topicId);
+            var resultValidator = new UserExistValidator().Validate(autorId);
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
+
+            User autor = userRepository.GetById(autorId);
+
+            resultValidator = new TopicExistValidator().Validate(topicId);
+            if (!resultValidator.IsValid)
+                return BadRequest(resultValidator.Errors);
+
+            Topic topic = topicRepository.GetById(topicId);
 
             Publication publication = new Publication(autor, title, content, topic);
 
-            var resultValidator = new PublicationValidator().Validate(publication);
-
+            resultValidator = new PublicationValidator().Validate(publication);
             if (!resultValidator.IsValid)
                 return BadRequest(resultValidator.Errors);
 
@@ -65,39 +73,47 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Buscar publicações
+        /// Buscar uma publicação pelo seu Id
         /// </summary>
-        /// <param name="name">Nome do autor</param>
+        /// <param id="ID">ID da publicação</param>
         /// <response code="200">Sucesso na busca da publicação</response>
         /// <response code="400">Erro ao buscar publicação</response>
         /// <returns></returns>
-        [HttpGet("{name}", Name = "GetPubName")]
-        public List<Publication> Get(string name)
+        [HttpGet("{id}", Name = "GetPubId")]
+        public ActionResult<Publication> Get(Guid id)
         {
-            return publicationRepository.GetByName(name);
+            return publicationRepository.GetById(id);
         }
 
         /// <summary>
         /// Alterar publicação
         /// </summary>
-        /// <param name="id">Identificador do autor</param>
+        /// <param name="id">Identificador da publicação</param>
         /// <param name="title">Título da publicação</param>
         /// <param name="content">Conteúdo da publicação</param>
-        /// <param name="topicId">Categoria da qual a publicação pertence</param>
+        /// <param name="topicId">Categoria da qual a publicação pertence ou será alterada</param>
         /// <response code="200">Sucesso na alteração da publicação</response>
         /// <response code="400">Erro ao tentar alterar a publicação</response>
         /// <returns></returns>
         [HttpPut("{id}")]
         public ActionResult<Publication> Put(Guid id, string title, string content, Guid topicId)
         {
+            var resultValidation = new PublicationExistValidator().Validate(id);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            resultValidation = new TopicExistValidator().Validate(topicId);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             Topic topic = topicRepository.GetById(topicId);
             Publication oldPublication = publicationRepository.GetById(id);
             Publication newPublication = new Publication(id, oldPublication.Autor, title, content, oldPublication.DateCreated, oldPublication.Comments, topic);
 
-            var resultValidator = new PublicationValidator().Validate(newPublication);
+            resultValidation = new PublicationValidator().Validate(newPublication);
 
-            if (!resultValidator.IsValid)
-                return BadRequest(resultValidator.Errors);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
 
             return publicationRepository.Update(newPublication);
         }
@@ -110,9 +126,16 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao tentar deletar a publicação</response>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public Publication Delete(Guid id)
+        public ActionResult<Publication> Delete(Guid id)
         {
-            return publicationRepository.Delete(id);
+            var resultValidation = new PublicationExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            Publication publication = publicationRepository.GetById(id);
+
+            return publicationRepository.Delete(publication);
         }
     }
 }

@@ -4,51 +4,75 @@ using System.Linq;
 using System.Text;
 using Application.Repository;
 using Domain;
+using Infrastructure.Context;
 using Infrastructure.Repository;
+using Infrastructure.Repository.TopicDB;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Entity
 {
     public class TopicRepository : ITopicRepository
     {
-        protected readonly ApiContext ApiContext;
+        public ICreateDB<Topic> Register;
+        public IDeleteDB<Topic> Remove;
+        public IGetDB<Topic> Get;
+        public IUpdateDB<Topic> Alter;
 
         public TopicRepository()
         {
-            ApiContext = new ApiContext();
+            Register = new CreateTopic();
+            Remove = new DeleteTopic();
+            Get = new GetTopic();
+            Alter = new UpdateTopic();
+        }
+
+        public TopicRepository(ICreateDB<Topic> register)
+        {
+            Register = register;
+        }
+
+        public TopicRepository(IDeleteDB<Topic> remove)
+        {
+            Remove = remove;
+        }
+
+        public TopicRepository(IGetDB<Topic> get)
+        {
+            Get = get;
+        }
+
+        public TopicRepository(IUpdateDB<Topic> alter)
+        {
+            Alter = alter;
         }
 
         public Topic Create(Topic topic)
         {
-            ApiContext.Topics.Add(topic);
-            ApiContext.SaveChanges();
+            Register.CreateNewRegister(topic);
 
             return topic;
         }
 
-        public Topic Delete(Guid id)
+        public Topic Delete(Topic topic)
         {
-            Topic topic = ApiContext.Topics.Find(id);
-            ApiContext.Remove(topic);
-            ApiContext.SaveChanges();
+            Remove.DeleteRegister(topic);
 
             return topic;
         }
 
         public List<Topic> GetAll()
         {
-            return ApiContext.Topics.ToList();
+            return Get.GetAllRegister();
         }
 
         public Topic GetById(Guid id)
         {
-            return ApiContext.Topics.Find(id);
+            return Get.GetRegisterById(id);
         }
 
         public Topic Update(Topic topic)
         {
-            ApiContext.Entry(topic).State = EntityState.Modified;
-            ApiContext.SaveChanges();
+            Alter.UpdateRegister(topic);
 
             return topic;
         }

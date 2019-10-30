@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Application.BusinessRules
 {
-    public class UserExistValidator : AbstractValidator<User>
+    public class UserExistValidator : AbstractValidator<Guid>
     {
         private readonly IUserRepository userRepository;
 
@@ -16,7 +16,12 @@ namespace Application.BusinessRules
         {
             userRepository = new UserRepository();
 
-            RuleFor(x => x.Id)
+            RuleFor(x => x)
+                .Cascade(CascadeMode.StopOnFirstFailure)
+                .NotNull()
+                .WithMessage("O id do user não pode ser nulo")
+                .NotEmpty()
+                .WithMessage("O id do user não pode ser vazio")
                 .Must(VerifyUser)
                 .WithMessage("Este usuario não existe.");
         }
@@ -24,7 +29,6 @@ namespace Application.BusinessRules
         private bool VerifyUser(Guid id)
         {
             User user = userRepository.GetById(id);
-
             return (user != null);
         }
     }

@@ -32,7 +32,7 @@ namespace WebApi.Controllers
         /// <response code="400">Nenhuma lista de usuários encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<User> Get()
+        public List<User> Get()
         {
             return userRepository.GetAll();
         }
@@ -45,8 +45,13 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao buscar usuário</response>
         /// <returns></returns>
         [HttpGet("{id}", Name = "GetUser")]
-        public User Get(Guid id)
+        public ActionResult<User> Get(Guid id)
         {
+            var resultValidation = new UserExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
             return userRepository.GetById(id);
         }
 
@@ -87,9 +92,13 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<User> Put(Guid id, string name, string email, string password)
         {
-            User user = new User(id, name, email, password);
+            var resultValidation = new UserExistValidator().Validate(id);
 
-            var resultValidation = new UserValidator().Validate(user);
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            User user = new User(id, name, email, password);
+            resultValidation = new UserValidator().Validate(user);
 
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
@@ -105,9 +114,16 @@ namespace WebApi.Controllers
         /// <response code="400">Erro ao deletar usuário</response>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public User Delete(Guid id)
+        public ActionResult<User> Delete(Guid id)
         {
-            return userRepository.Delete(id);
+            var resultValidation = new UserExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            User user = userRepository.GetById(id);
+
+            return userRepository.Delete(user);
         }
     }
 }
