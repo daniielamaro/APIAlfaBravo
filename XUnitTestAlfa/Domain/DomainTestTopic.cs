@@ -11,7 +11,7 @@ namespace XUnitTestAlfa.Domain
         [Fact]
         public void TestCreate()
         {
-            Topic topic = new Topic("Nome teste");
+            Topic topic = TopicBuilder.New().WithName("Nome teste").Build();
 
             Assert.True(topic.Id != Guid.Empty && topic.Id != null);
             Assert.True(topic.Name == "Nome teste");

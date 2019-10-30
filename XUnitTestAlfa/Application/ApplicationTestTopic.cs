@@ -81,37 +81,65 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestValidationTopic()
         {
-            var okTopic = new Topic("Nome");
-            var badTopic1 = new Topic("");
-            var badTopic2 = new Topic("  ");
-            var badTopic3 = new Topic("Nome");
-
-            new TopicRepository().Create(okTopic);
+            var okTopic = TopicBuilder.New().Build();
 
             var resultValidation1 = new TopicValidator().Validate(okTopic);
-            var resultValidation2 = new TopicValidator().Validate(badTopic1);
-            var resultValidation3 = new TopicValidator().Validate(badTopic2);
-            var resultValidation4 = new TopicValidator().Validate(badTopic3);
+            
+            Assert.True(resultValidation1.IsValid);    
+        }
 
-            Assert.True(resultValidation1.IsValid);
-            Assert.False(resultValidation2.IsValid);
-            Assert.False(resultValidation3.IsValid);
-            Assert.False(resultValidation4.IsValid);
+        [Fact]
+        public void TestValidationBadTopicNameNull()
+        {
+            var badTopic = TopicBuilder.New().WithName(null).Build();
+
+            var resultValidation = new TopicValidator().Validate(badTopic);
+
+            Assert.False(resultValidation.IsValid);
+        }
+
+        [Fact]
+        public void TestValidationBadTopic2()
+        {
+            var badTopic2 = TopicBuilder.New().WithName("  ").Build();
+
+            var resultValidation = new TopicValidator().Validate(badTopic2);
+
+            Assert.False(resultValidation.IsValid);
+        }
+
+        [Fact]
+        public void TestValidationBadTopicNameExistsOnDatabase()
+        {
+            var topic = TopicBuilder.New().WithName("Nome").Build();
+
+            new TopicRepository().Create(topic);
+
+            var badTopic = new Topic("Nome");
+
+            var resultValidation = new TopicValidator().Validate(badTopic);
+
+            Assert.False(resultValidation.IsValid);
         }
 
         [Fact]
         public void TestValidationTopicExist()
         {
-            var topic1 = new Topic("Nome teste 1");
-            var topic2 = new Topic("Nome teste 2");
+            var topic = TopicBuilder.New().WithName("Nome teste").Build();
+           
+            new TopicRepository().Create(topic);
 
-            new TopicRepository().Create(topic1);
+            var resultValidation = new TopicExistValidator().Validate(topic.Id);
+            
+            Assert.True(resultValidation.IsValid);          
+        }
 
-            var resultValidation1 = new TopicExistValidator().Validate(topic1.Id);
-            var resultValidation2 = new TopicExistValidator().Validate(topic2.Id);
+        [Fact]
+        public void TestValidationTopicNotExist()
+        {
+            var resultValidation = new TopicExistValidator().Validate(Guid.NewGuid());
 
-            Assert.True(resultValidation1.IsValid);
-            Assert.False(resultValidation2.IsValid);
+            Assert.False(resultValidation.IsValid);
         }
     }
 }
