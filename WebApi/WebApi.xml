@@ -175,8 +175,6 @@
             Buscar todos os usuários
             </summary>
             <response code="200">Sucesso ao buscar usuários</response>
-            <response code="400">Nenhuma lista de usuários encontrada</response>
-            <returns></returns>
         </member>
         <member name="M:WebApi.Controllers.UsersController.Get(System.Guid)">
             <summary>
