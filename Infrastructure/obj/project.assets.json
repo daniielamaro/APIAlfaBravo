@@ -3212,23 +3212,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RaulFS\\.nuget\\packages\\": {},
+    "C:\\Users\\MozartMS\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\RaulFS\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\APIAlfaBravo\\Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\RaulFS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3241,8 +3241,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Projetos\\APIAlfaBravo\\Domain\\Domain.csproj"
+            "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj"
             }
           }
         }

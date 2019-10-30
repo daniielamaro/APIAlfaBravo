@@ -8,6 +8,7 @@ using Xunit;
 using System.Runtime.Caching;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 using Infrastructure.Repository.CommentDB;
+using Infrastructure.Repository.UserDB;
 
 namespace XUnitTestAlfa.Infrastructure
 {
@@ -23,7 +24,10 @@ namespace XUnitTestAlfa.Infrastructure
         [Fact]
         public void TestCreate()
         {
-            User user = new User("Raul Santiago", "raul@gmail.com", "1203456789");
+            var user = UserBuilder.New().Build();
+            new CreateUser().CreateNewRegister(user);
+
+
             Topic topic = new Topic("Esporte");
             Publication publication = new Publication(user, "Skate", "O melhor esporte", topic);            
             Comment comment = new Comment(user, "Skate", publication.Id);
