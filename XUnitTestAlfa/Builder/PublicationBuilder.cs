@@ -18,6 +18,7 @@ using System.Text;
         public static PublicationBuilder New()
         {
             var user = UserBuilder.New().Build();  
+<<<<<<< HEAD
 
             new CreateUser().CreateNewRegister(user);
 
@@ -27,6 +28,15 @@ using System.Text;
 
         return new PublicationBuilder()
         {
+=======
+            new CreateUser().CreateNewRegister(user);
+
+            var topic = TopicBuilder.New().Build();  
+            new CreateTopic().CreateNewRegister(topic);
+
+            return new PublicationBuilder()
+            {
+>>>>>>> master
                 Id = Guid.NewGuid(),
                 Autor = user,
                 Title = "TestPost",

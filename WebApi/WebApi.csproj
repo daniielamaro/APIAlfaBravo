@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+<<<<<<< HEAD
     <DocumentationFile></DocumentationFile>
+=======
+    <DocumentationFile>C:\Users\JonathanOL\Documents\WebApi\APIAlfaBravo\WebApi\WebApi.xml</DocumentationFile>
+>>>>>>> master
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>

@@ -79,7 +79,7 @@ namespace WebApi.Controllers
 
             userRepository.Create(user);
 
-            return Ok(user);
+            return CreatedAtAction("Get", new { id = user.Id }, user);
         }
 
         /// <summary>
