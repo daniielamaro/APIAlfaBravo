@@ -19,7 +19,9 @@ namespace Infrastructure.Repository.PublicationDB
         {
             Context.Users.Attach(publication.Autor);
             Context.Topics.Attach(publication.Topic);
+
             Context.Publications.Add(publication);
+
             Context.SaveChanges();
         }
     }
