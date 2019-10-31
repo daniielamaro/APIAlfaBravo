@@ -31,9 +31,14 @@ namespace WebApi.Controllers
         /// <response code="200">Lista de tópicos encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public List<Topic> Get()
+        public ActionResult<List<Topic>> Get()
         {
-            return topicRepository.GetAll();
+            List<Topic> listTopics = topicRepository.GetAll();
+
+            if (listTopics.Count == 0)
+                return NoContent();
+
+            return Ok(listTopics);
         }
 
         /// <summary>
@@ -51,7 +56,7 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return topicRepository.GetById(id);
+            return Ok(topicRepository.GetById(id));
         }
 
         /// <summary>
@@ -68,9 +73,9 @@ namespace WebApi.Controllers
 
             var resultValidation = new TopicValidator().Validate(topic);
 
-            if(!resultValidation.IsValid)
+            if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
-            
+
             topicRepository.Create(topic);
 
             return CreatedAtAction("Get", new { id = topic.Id }, topic);
@@ -117,7 +122,7 @@ namespace WebApi.Controllers
 
             Topic topic = topicRepository.GetById(id);
 
-            return topicRepository.Delete(topic);
+            return Ok(topicRepository.Delete(topic));
         }
     }
 }

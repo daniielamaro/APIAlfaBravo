@@ -33,9 +33,14 @@ namespace WebApi.Controllers
         /// <response code="400">Nenhuma lista de publicações encontrada</response>
         /// <returns></returns>
         [HttpGet]
-        public List<Publication> Get()
+        public ActionResult<List<Publication>> Get()
         {
-            return publicationRepository.GetAll();
+            List<Publication> listPublication = publicationRepository.GetAll();
+
+            if (listPublication.Count == 0)
+                return NoContent();
+
+            return Ok(publicationRepository.GetAll());
         }
 
         /// <summary>
@@ -69,7 +74,9 @@ namespace WebApi.Controllers
             if (!resultValidator.IsValid)
                 return BadRequest(resultValidator.Errors);
 
-            return publicationRepository.Create(publication);
+            publicationRepository.Create(publication);
+
+            return CreatedAtAction("Get", new { id = publication.Id }, publication);
         }
 
         /// <summary>
@@ -82,7 +89,12 @@ namespace WebApi.Controllers
         [HttpGet("{id}", Name = "GetPubId")]
         public ActionResult<Publication> Get(Guid id)
         {
-            return publicationRepository.GetById(id);
+            var resultValidation = new PublicationExistValidator().Validate(id);
+
+            if (!resultValidation.IsValid)
+                return BadRequest(resultValidation.Errors);
+
+            return Ok(publicationRepository.GetById(id));
         }
 
         /// <summary>
@@ -115,7 +127,7 @@ namespace WebApi.Controllers
             if (!resultValidation.IsValid)
                 return BadRequest(resultValidation.Errors);
 
-            return publicationRepository.Update(newPublication);
+            return Ok(publicationRepository.Update(newPublication));
         }
 
         /// <summary>
@@ -135,7 +147,7 @@ namespace WebApi.Controllers
 
             Publication publication = publicationRepository.GetById(id);
 
-            return publicationRepository.Delete(publication);
+            return Ok(publicationRepository.Delete(publication));
         }
     }
 }

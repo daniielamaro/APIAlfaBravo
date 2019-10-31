@@ -13,12 +13,7 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestEntityCreate()
         {
-            var pub = new Publication(
-                new User("teste", "teste", "teste"),
-                "Primeiro",
-                "Conteudo",
-                new Topic("topico")
-            );
+            var pub = PublicationBuilder.New().Build();
 
             var mockTeste = new Mock<ICreateDB<Publication>>();
 
@@ -56,12 +51,7 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestEntityUpdate()
         {
-            var pub = new Publication(
-                new User("teste", "teste", "teste"),
-                "Primeiro",
-                "Conteudo",
-                new Topic("topico")
-            );
+            var pub = PublicationBuilder.New().Build();
 
             var mockTeste = new Mock<IUpdateDB<Publication>>();
 
@@ -75,12 +65,7 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestEntityDelete()
         {
-            var pub = new Publication(
-                new User("teste", "teste", "teste"),
-                "Primeiro",
-                "Conteudo",
-                new Topic("topico")
-            );
+            var pub = PublicationBuilder.New().Build();
 
             var mockTeste = new Mock<IDeleteDB<Publication>>();
 
@@ -94,94 +79,77 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestValidationPublication()
         {
-            var okUser = new User("Nome teste", "email123@email.com", "123456789");
-            new UserRepository().Create(okUser);
+            var okPublication = PublicationBuilder.New().Build();
 
-            var badUser = new User("Nome teste", "", "12345");
+            var resultValidation = new PublicationValidator().Validate(okPublication);
 
-            var okTopic = new Topic("topico");
-            new TopicRepository().Create(okTopic);
-
-            var badTopic = new Topic("  ");
-
-            var okPublication = new Publication(
-                okUser,
-                "Titulo",
-                "Conteudo",
-                okTopic
-            );
-
-            var badPublication1 = new Publication(
-                badUser,
-                "Titulo",
-                "Conteudo",
-                okTopic
-            );
-
-            var badPublication2 = new Publication(
-                okUser,
-                "  ",
-                "Conteudo",
-                okTopic
-            );
-
-            var badPublication3 = new Publication(
-                okUser,
-                "Titulo",
-                "  ",
-                okTopic
-            );
-
-            var badPublication4 = new Publication(
-                okUser,
-                "Titulo",
-                "Conteudo",
-                badTopic
-            );
-
-            var resultValidation1 = new PublicationValidator().Validate(okPublication);
-            var resultValidation2 = new PublicationValidator().Validate(badPublication1);
-            var resultValidation3 = new PublicationValidator().Validate(badPublication2);
-            var resultValidation4 = new PublicationValidator().Validate(badPublication3);
-            var resultValidation5 = new PublicationValidator().Validate(badPublication4);
-
-            Assert.True(resultValidation1.IsValid);
-            Assert.False(resultValidation2.IsValid);
-            Assert.False(resultValidation3.IsValid);
-            Assert.False(resultValidation4.IsValid);
-            Assert.False(resultValidation5.IsValid);
+            Assert.True(resultValidation.IsValid);
         }
 
         [Fact]
-        public void TestValidationPublicationExist()
+        public void TestValidationPublicationBadUser()
         {
-            var okUser = new User("Nome teste", "email123@email.com", "123456789");
-            new UserRepository().Create(okUser);
+            var badUser = UserBuilder.New().WithEmail("emailemail.com").Build();
+            
+            var badPublication = PublicationBuilder.New().WithAutor(badUser).Build();
 
-            var okTopic = new Topic("topico");
-            new TopicRepository().Create(okTopic);
+            var resultValidation2 = new PublicationValidator().Validate(badPublication);
 
-            var okPublication = new Publication(
-                okUser,
-                "Titulo",
-                "Conteudo",
-                okTopic
-            );
+            Assert.False(resultValidation2.IsValid);
+        }
 
-            var badPublication = new Publication(
-                okUser,
-                "Titulo",
-                "Conteudo",
-                okTopic
-            );
+        [Fact]
+        public void TestValidationPublicationBadContent()
+        {
+            var badPublication = PublicationBuilder.New().WithContent("  ").Build();
 
+            var resultValidation = new PublicationValidator().Validate(badPublication);
+
+            Assert.False(resultValidation.IsValid);
+        }
+
+        [Fact]
+        public void TestValidationPublicationBadTitle()
+        {
+            var badPublication = PublicationBuilder.New().WithTitle("  ").Build();
+
+            var resultValidation = new PublicationValidator().Validate(badPublication);
+
+            Assert.False(resultValidation.IsValid);
+        }
+
+        [Fact]
+        public void TestValidationPublicationBadTopic()
+        {
+            var badTopic = TopicBuilder.New().WithName("  ").Build();
+
+            var badPublication = PublicationBuilder.New().WithTopic(badTopic).Build();
+
+            var resultValidation = new PublicationValidator().Validate(badPublication);
+
+            Assert.False(resultValidation.IsValid);
+        }
+
+
+        [Fact]
+        public void TestValidationPublicationExistOnDB()
+        {
+            var okPublication = PublicationBuilder.New().Build();
             new PublicationRepository().Create(okPublication);
 
-            var resultValidation1 = new PublicationExistValidator().Validate(okPublication.Id);
-            var resultValidation2 = new PublicationExistValidator().Validate(badPublication.Id);
+            var resultValidation = new PublicationExistValidator().Validate(okPublication.Id);
 
-            Assert.True(resultValidation1.IsValid);
-            Assert.False(resultValidation2.IsValid);
+            Assert.True(resultValidation.IsValid);
+        }
+
+        [Fact]
+        public void TestValidationPublicationNotExistOnDB()
+        {
+            var badPublication = PublicationBuilder.New().Build();
+
+            var resultValidation = new PublicationExistValidator().Validate(badPublication.Id);
+
+            Assert.False(resultValidation.IsValid);
         }
     }
 }

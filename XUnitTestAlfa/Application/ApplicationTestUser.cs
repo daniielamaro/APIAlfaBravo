@@ -13,103 +13,82 @@ namespace XUnitTestAlfa.Application
     public class ApplicationTestUser
     {
         [Fact]
-        public void TestEntityCreate()
+        public void TestEntityCreateUser()
         {
-            var user = new User("Nome teste", "email@email.com", "dsdsadasdas");
-
+            var user = UserBuilder.New().Build();
             var mockTeste = new Mock<ICreateDB<User>>();
-
             var userRepository = new UserRepository(mockTeste.Object);
-
             userRepository.Create(user);
-
             mockTeste.Verify(x => x.CreateNewRegister(It.IsAny<User>()));
         }
 
         [Fact]
-        public void TestEntityGetAll()
+        public void TestEntityGetAllUser()
         {
             var mockTeste = new Mock<IGetDB<Publication>>();
-
             var publicationRepository = new PublicationRepository(mockTeste.Object);
-
             publicationRepository.GetAll();
-
             mockTeste.Verify(x => x.GetAllRegister());
         }
 
         [Fact]
-        public void TestEntityGetById()
+        public void TestEntityGetByIdUser()
         {
             var mockTeste = new Mock<IGetDB<User>>();
-
             var userRepository = new UserRepository(mockTeste.Object);
-
             userRepository.GetById(Guid.NewGuid());
-
             mockTeste.Verify(x => x.GetRegisterById(It.IsAny<Guid>()));
         }
 
         [Fact]
-        public void TestEntityUpdate()
+        public void TestEntityUpdateUser()
         {
-            var user = new User("Nome teste", "email@email.com", "dsdsadasdas");
-
+            var user = UserBuilder.New().Build();
             var mockTeste = new Mock<IUpdateDB<User>>();
-
             var userRepository = new UserRepository(mockTeste.Object);
-
             userRepository.Update(user);
-
             mockTeste.Verify(x => x.UpdateRegister(It.IsAny<User>()));
         }
 
         [Fact]
-        public void TestEntityDelete()
+        public void TestEntityDeleteUser()
         {
-            var user = new User("Nome teste", "email@email.com", "dsdsadasdas");
-
+            var user = UserBuilder.New().Build();
             var mockTeste = new Mock<IDeleteDB<User>>();
-
             var userRepository = new UserRepository(mockTeste.Object);
-
             userRepository.Delete(user);
-
             mockTeste.Verify(x => x.DeleteRegister(It.IsAny<User>()));
         }
 
         [Fact]
         public void TestValidationUser()
         {
-            var okUser = new User("Nome teste", "email@email.com", "dsdsadasdas");
-            var badUser1 = new User(" ", "email@email.com", "dsdsadasdas");
-            var badUser2 = new User("Nome teste", "email", "dsdsadasdas");
-            var badUser3 = new User("Nome teste", "email@email.com", "dsds");
+            var okUser = UserBuilder.New().Build();
+            var badUserFirst = UserBuilder.New().WithName(" ").Build();
+            var badUserSecond = UserBuilder.New().WithEmail("mail").Build(); 
+            var badUserThird = UserBuilder.New().WithPassword("xablau").Build();
 
-            var resultValidation1 = new UserValidator().Validate(okUser);
-            var resultValidation2 = new UserValidator().Validate(badUser1);
-            var resultValidation3 = new UserValidator().Validate(badUser2);
-            var resultValidation4 = new UserValidator().Validate(badUser3);
+            var resultValidationOk = new UserValidator().Validate(okUser);
+            var resultValidationFirst = new UserValidator().Validate(badUserFirst);
+            var resultValidationSecond = new UserValidator().Validate(badUserSecond);
+            var resultValidationThird = new UserValidator().Validate(badUserThird);
 
-            Assert.True(resultValidation1.IsValid);
-            Assert.False(resultValidation2.IsValid);
-            Assert.False(resultValidation3.IsValid);
-            Assert.False(resultValidation4.IsValid);
+            Assert.True(resultValidationOk.IsValid);
+            Assert.False(resultValidationFirst.IsValid);
+            Assert.False(resultValidationSecond.IsValid);
+            Assert.False(resultValidationThird.IsValid);
         }
 
         [Fact]
-        public void TestValidationUserExist()
+        public void TestValidationUserExistUser()
         {
-            var user1 = new User("Nome teste", "email1@email.com", "dsdsadasdas");
-            var user2 = new User("Nome teste", "email1@email.com", "3242343243242");
-
-            new UserRepository().Create(user1);
-
-            var resultValidation1 = new UserExistValidator().Validate(user1.Id);
-            var resultValidation2 = new UserExistValidator().Validate(user2.Id);
-
-            Assert.True(resultValidation1.IsValid);
-            Assert.False(resultValidation2.IsValid);
+            var userFirst = UserBuilder.New().Build();
+            var userSecond =  UserBuilder.New().Build();
+            new UserRepository().Create(userFirst);
+            var resultValidationFirst = new UserExistValidator().Validate(userFirst.Id);
+            var resultValidationSecond = new UserExistValidator().Validate(userSecond.Id);
+            Assert.True(resultValidationFirst.IsValid);
+            Assert.False(resultValidationSecond.IsValid);
         }
     }
 }

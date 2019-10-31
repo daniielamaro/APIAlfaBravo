@@ -2,6 +2,10 @@
 using Application.Entity;
 using Domain;
 using Infrastructure.Repository;
+using Infrastructure.Repository.CommentDB;
+using Infrastructure.Repository.PublicationDB;
+using Infrastructure.Repository.TopicDB;
+using Infrastructure.Repository.UserDB;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -15,11 +19,7 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestEntityCreate()
         {
-            var comment = new Comment(
-                new User("nome", "email@email.com", "password"),
-                "Conteudo",
-                Guid.NewGuid()
-            );
+            var comment = CommentBuilder.New().Build();
 
             var mockTeste = new Mock<ICreateDB<Comment>>();
 
@@ -57,11 +57,7 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestEntityUpdate()
         {
-            var comment = new Comment(
-                new User("nome", "email@email.com", "password"),
-                "Conteudo",
-                Guid.NewGuid()
-            );
+            var comment = CommentBuilder.New().Build();
 
             var mockTeste = new Mock<IUpdateDB<Comment>>();
 
@@ -75,11 +71,7 @@ namespace XUnitTestAlfa.Application
         [Fact]
         public void TestEntityDelete()
         {
-            var comment = new Comment(
-                new User("nome", "email@email.com", "password"),
-                "Conteudo",
-                Guid.NewGuid()
-            );
+            var comment = CommentBuilder.New().Build();
 
             var mockTeste = new Mock<IDeleteDB<Comment>>();
 
@@ -91,96 +83,55 @@ namespace XUnitTestAlfa.Application
         }
 
         [Fact]
-        public void TestValidationComment()
+        public void TestValidationCommentWithValidResult()
         {
-            var okUser = new User("Nome teste", "email123@email.com", "123456789");
+            var okUser = UserBuilder.New().Build();
             new UserRepository().Create(okUser);
 
-            var badUser = new User("Nome teste", "", "12345");
-
-            var topic = new Topic("topico");
-            new TopicRepository().Create(topic);
-
-            var okPublication = new Publication(
-                okUser,
-                "Titulo",
-                "Conteudo",
-                topic
-            );
-            new PublicationRepository().Create(okPublication);
-
-            var badPublication = new Publication(
-                badUser,
-                "Titulo",
-                "Conteudo",
-                topic
-            );
-
-            var okComment = new Comment(
-                okUser,
-                "Conteudo",
-                okPublication.Id
-            );
-
-            var badComment1 = new Comment(
-                badUser,
-                "Conteudo",
-                okPublication.Id
-            );
-
-            var badComment2 = new Comment(
-                okUser,
-                "   ",
-                okPublication.Id
-            );
-
-            var badComment3 = new Comment(
-                okUser,
-                "Conteudo",
-                badPublication.Id
-            );
+            var okComment = CommentBuilder.New().Build();
 
             var resultValidation1 = new CommentValidator().Validate(okComment);
-            var resultValidation2 = new CommentValidator().Validate(badComment1);
-            var resultValidation3 = new CommentValidator().Validate(badComment2);
-            var resultValidation4 = new CommentValidator().Validate(badComment3);
 
             Assert.True(resultValidation1.IsValid);
+
+        }
+        
+        [Fact]
+        public void TestValidationCommentWithInvalidTopic()
+        {
+            var okUser = UserBuilder.New().Build();
+            new UserRepository().Create(okUser);
+
+            var badComment1 = CommentBuilder.New().WithContent("  ").Build();
+            
+            var resultValidation2 = new CommentValidator().Validate(badComment1);
+            
             Assert.False(resultValidation2.IsValid);
-            Assert.False(resultValidation3.IsValid);
-            Assert.False(resultValidation4.IsValid);
+
+        }
+
+        [Fact]
+        public void TestValidationCommentWithInvalidPublicationId()
+        {
+            var okUser = UserBuilder.New().Build();
+            new UserRepository().Create(okUser);
+
+            var badComment1 = CommentBuilder.New().WithPublicationId(Guid.Parse("00000000-0000-0000-0000-000000000000")).Build();
+            
+            var resultValidation2 = new CommentValidator().Validate(badComment1);
+            
+            Assert.False(resultValidation2.IsValid);
+
         }
 
         [Fact]
         public void TestValidationCommentExist()
         {
-            var user = new User("Nome teste", "email123@email.com", "123456789");
-            new UserRepository().Create(user);
+            var okComment = CommentBuilder.New().Build();
+            new CreateComment().CreateNewRegister(okComment);
 
-            var topic = new Topic("topico");
-            new TopicRepository().Create(topic);
-
-            var publication = new Publication(
-                user,
-                "Titulo",
-                "Conteudo",
-                topic
-            );
-            new PublicationRepository().Create(publication);
-
-            var okComment = new Comment(
-                user,
-                "Conteudo",
-                publication.Id
-            );
-            new CommentRepository().Create(okComment);
-
-            var badComment = new Comment(
-                user,
-                "Conteudo",
-                publication.Id
-            );
-
+            var badComment = CommentBuilder.New().WithContent("SomeRandomContent").Build();
+          
             var resultValidation1 = new CommentExistValidator().Validate(okComment.Id);
             var resultValidation2 = new CommentExistValidator().Validate(badComment.Id);
 

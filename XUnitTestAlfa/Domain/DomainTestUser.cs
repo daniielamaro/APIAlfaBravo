@@ -9,9 +9,13 @@ namespace XUnitTestAlfa.Domain
     public class DomainTestUser
     {
         [Fact]
-        public void TestCreateWithoutId()
+        public void TestCreateWithoutIdUser()
         {
-            User user = new User("Nome teste", "email@email.com", "senha");
+            var user = UserBuilder.New()
+                .WithName("Nome teste")
+                .WithEmail("email@email.com")
+                .WithPassword("senha")
+                .Build();
 
             Assert.True(user.Id != Guid.Empty && user.Id != null);
             Assert.True(user.Name == "Nome teste");
@@ -20,9 +24,14 @@ namespace XUnitTestAlfa.Domain
         }
 
         [Fact]
-        public void TestCreateWithId()
+        public void TestCreateWithIdUser()
         {
-            User user = new User(new Guid(), "Nome teste", "email@email.com", "senha");
+            var user = UserBuilder.New()
+                .WithId(Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                .WithName("Nome teste")
+                .WithEmail("email@email.com")
+                .WithPassword("senha")
+                .Build();
 
             Assert.True(user.Id == Guid.Parse("00000000-0000-0000-0000-000000000000"));
             Assert.True(user.Name == "Nome teste");
