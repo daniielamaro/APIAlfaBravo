@@ -3212,23 +3212,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\DanielGA\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\MozartMS\\.nuget\\packages\\": {},
+>>>>>>> feature-mozart
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
       "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj",
+      "projectName": "Infrastructure",
+      "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\obj\\",
+>>>>>>> feature-mozart
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> feature-mozart
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3241,8 +3257,13 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
+=======
+            "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj"
+>>>>>>> feature-mozart
             }
           }
         }

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
@@ -12,12 +13,29 @@
         "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\obj\\",
+=======
+    "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\obj\\",
+>>>>>>> feature-mozart
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> feature-mozart
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,6 +80,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -70,12 +89,26 @@
         "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\obj\\",
+=======
+    "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\obj\\",
+>>>>>>> feature-mozart
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> feature-mozart
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,8 +121,13 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
+=======
+              "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj"
+>>>>>>> feature-mozart
               }
             }
           }

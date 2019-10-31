@@ -1,5 +1,9 @@
 {
   "version": 1,
+<<<<<<< HEAD
   "dgSpecHash": "+ckNjrh1sAGEeWl+CQ25q30GNkuU7ixODTCoWX3qkSvPSXGsEwyARq9g0/3D7zI3GTq2LCp95B+MhMDHGcrJCA==",
+=======
+  "dgSpecHash": "lrF+zLjWlIYhr2+ub9pCk5yRbtghDNK7eLbbntPvPUqPpEB2UhuNmqPBCrqoRxUqYwRNgPwEggCoABKajK+ByQ==",
+>>>>>>> feature-mozart
   "success": true
 }
