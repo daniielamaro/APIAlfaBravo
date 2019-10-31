@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\Application.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -73,20 +73,20 @@
         }
       }
     },
-    "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -131,20 +131,20 @@
         }
       }
     },
-    "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -157,8 +157,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
               }
             }
           }
@@ -205,20 +205,20 @@
         }
       }
     },
-    "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\MozartMS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -231,8 +231,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\Application.csproj"
+              "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Application\\Application.csproj"
               }
             }
           }
