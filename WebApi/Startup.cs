@@ -41,8 +41,8 @@ namespace WebApi
                         },
                         Description = "API para blogs."
                     });
-                //var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
-                //c.IncludeXmlComments(path);
+                var path = Path.Combine(AppContext.BaseDirectory, "WebApi.xml");
+                c.IncludeXmlComments(path);
             });
 
             // Somente em produção

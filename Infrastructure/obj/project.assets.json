@@ -3212,23 +3212,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ThallitaSP\\.nuget\\packages\\": {},
+    "C:\\Users\\DanielGA\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\ThallitaSP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\DanielGA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ThallitaSP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DanielGA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3241,8 +3241,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\ThallitaSP\\Desktop\\APIAlfa\\APIAlfaBravo\\Domain\\Domain.csproj"
+            "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\DanielGA\\Desktop\\projeto\\APIAlfaBravo\\Domain\\Domain.csproj"
             }
           }
         }

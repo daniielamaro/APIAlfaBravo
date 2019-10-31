@@ -31,7 +31,14 @@ namespace Infrastructure.Repository.PublicationDB
 
         public Publication GetRegisterById(Guid id)
         {
-            return Context.Publications.Find(id);
+            Publication publication = Context.Publications
+                .Include(x => x.Autor)
+                .Include(x => x.Comments)
+                    .ThenInclude(c => c.Autor)
+                .Include(x => x.Topic)
+                .FirstOrDefault(x => x.Id == id);
+               
+            return publication;
         }
     }
 }

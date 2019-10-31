@@ -125,10 +125,21 @@ namespace XUnitTestAlfa.WebApi
         [Fact]
         public void PutReturnsBadRequest_TopicNotValid()
         {
-            var topic = TopicBuilder.New().Build();
-            creator.CreateNewRegister(topic);
+            var publication = PublicationBuilder.New().Build();
+            creator.CreateNewRegister(publication);
 
-            var result = controller.Put(topic.Id, "  ");
+            var result = controller.Put(publication.Id, "Titulo 1", "Conteudo", Guid.NewGuid());
+
+            Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public void PutReturnsBadRequest_PublicationNotValid()
+        {
+            var publication = PublicationBuilder.New().Build();
+            creator.CreateNewRegister(publication);
+
+            var result = controller.Put(publication.Id, "", "Conteudo", publication.Topic.Id);
 
             Assert.IsType<BadRequestObjectResult>(result.Result);
         }
@@ -136,10 +147,10 @@ namespace XUnitTestAlfa.WebApi
         [Fact]
         public void PutReturnsOk()
         {
-            var topic = TopicBuilder.New().Build();
-            creator.CreateNewRegister(topic);
+            var publication = PublicationBuilder.New().Build();
+            new CreatePublication().CreateNewRegister(publication);
 
-            var result = controller.Put(topic.Id, "Nome Put");
+            var result = controller.Put(publication.Id, "Nome Put", publication.Content, publication.Topic.Id);
 
             Assert.IsType<OkObjectResult>(result.Result);
         }
@@ -155,11 +166,10 @@ namespace XUnitTestAlfa.WebApi
         [Fact]
         public void DeleteReturnsOk()
         {
-            var topic = TopicBuilder.New().Build();
+            var publication = PublicationBuilder.New().Build();
+            creator.CreateNewRegister(publication);
 
-            creator.CreateNewRegister(topic);
-
-            var result = controller.Delete(topic.Id);
+            var result = controller.Delete(publication.Id);
 
             Assert.IsType<OkObjectResult>(result.Result);
         }
