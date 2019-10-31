@@ -15,21 +15,17 @@ namespace XUnitTestAlfa.WebApi
     {
 
         [Fact]
-        public void TestGet()
+        public void TestGetById()
         {
-            User user1 = new User("nome primeiro", "email@email.com", "123456789");
-            User user2 = new User("nome segundo", "email2@email.com", "123456789");
-            User user3 = new User("nome terceiro", "email2@email.com", "123456789");
+            User user1 = new User("nome primeiro", "email1@email.com", "123456789");
             new CreateUser().CreateNewRegister(user1);
-            new CreateUser().CreateNewRegister(user2);
-            new CreateUser().CreateNewRegister(user3);
 
             var controller = new UsersController();
 
-            var result = controller.Get();
+            var result = controller.Get(user1.Id);
 
-            Assert.IsType<OkObjectResult>(result.Result);
-            Assert.True(result.Value.Count == 3);
+            Assert.IsType<User>(result.Result);
+            //Assert.True(result.Value == null);
         }
 
         [Fact]
@@ -37,12 +33,15 @@ namespace XUnitTestAlfa.WebApi
         {
             var controller = new UsersController();
 
-            var result = controller.Post("nome", "email@email.com", "123456897");
+            var result1 = controller.Post("nome", "email@email.com", "123456897");
+            var result2 = controller.Post("  ", "email2@email.com", "123456897");
+            var result3 = controller.Post("nome", "email3email.com", "123456897");
+            var result4 = controller.Post("nome", "email4@email.com", "123");
 
-            var user = result.Value;
-
-            Assert.IsType<CreatedAtActionResult>(result.Result);
-            Assert.True(user.Id == Guid.Empty || user.Id == null);
+            Assert.IsType<CreatedAtActionResult>(result1.Result);
+            Assert.IsType<BadRequestObjectResult>(result2.Result);
+            Assert.IsType<BadRequestObjectResult>(result3.Result);
+            Assert.IsType<BadRequestObjectResult>(result4.Result);
         }
     }
 }
