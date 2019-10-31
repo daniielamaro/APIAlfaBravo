@@ -21,6 +21,7 @@ namespace Domain
             Content = content;
             PublicationId = publicationId;
         }
+        
         public Comment(Guid id, User autor, string content, Guid publicationId)
         {
             Id = id;
