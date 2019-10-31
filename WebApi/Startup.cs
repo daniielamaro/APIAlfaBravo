@@ -46,10 +46,10 @@ namespace WebApi
             });
 
             // Somente em produção
-            ConfigMigration.Apply();  
+            //ConfigMigration.Apply();  
 
             // Somente para teste
-            //services.AddDistributedMemoryCache(); 
+            services.AddDistributedMemoryCache(); 
         }
 
         public void Configure(IApplicationBuilder app)

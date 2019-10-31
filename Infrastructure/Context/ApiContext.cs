@@ -25,14 +25,14 @@ namespace Infrastructure.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //Para a produção
-            optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
+            /*optionsBuilder.UseNpgsql("Host=db-postgres;Database=WebApiBlog;Username=postgres;Password=password", npgsqlOptionsAction: options =>
             {
                 options.EnableRetryOnFailure(2, TimeSpan.FromSeconds(5), new List<string>());
                 options.MigrationsHistoryTable("_MigrationHistory", "WebApiBlog");
-            }); 
+            }); */
 
             //Para os testes
-            //optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
+            optionsBuilder.UseInMemoryDatabase("InMemoryProvider");
         }
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
