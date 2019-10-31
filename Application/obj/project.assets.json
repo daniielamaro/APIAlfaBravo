@@ -8206,11 +8206,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Application\\Application.csproj",
+      "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\MozartMS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Application\\obj\\",
+      "outputPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8229,11 +8229,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Domain\\Domain.csproj"
+            "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\master\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\MozartMS\\Desktop\\projeto\\merge\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
