@@ -48,6 +48,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[4.9.4, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[8.5.0, )"
