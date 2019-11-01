@@ -5,6 +5,8 @@ using Application.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Application.Entity;
 using Application.BusinessRules;
+using Application.ConfigAutofac;
+using Autofac;
 
 namespace WebApi.Controllers
 {
@@ -19,13 +21,17 @@ namespace WebApi.Controllers
         private readonly ICommentRepository commentRepository;
         private readonly IUserRepository userRepository;
 
+        private readonly ConfigAutofacApplication ConfigInjection;
+
         /// <summary>
         /// Controller dos comentários
         /// </summary>
         public CommentsController()
         {
-            commentRepository = new CommentRepository();
-            userRepository = new UserRepository();
+            ConfigInjection = new ConfigAutofacApplication();
+
+            commentRepository = ConfigInjection.Container.Resolve<ICommentRepository>();
+            userRepository = ConfigInjection.Container.Resolve<IUserRepository>();
         }
 
         /// <summary>

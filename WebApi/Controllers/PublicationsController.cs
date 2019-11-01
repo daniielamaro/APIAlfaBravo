@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Application.BusinessRules;
+using Application.ConfigAutofac;
 using Application.Entity;
 using Application.Repository;
+using Autofac;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,14 +18,18 @@ namespace WebApi.Controllers
         private readonly IUserRepository userRepository;
         private readonly ITopicRepository topicRepository;
 
+        private readonly ConfigAutofacApplication ConfigInjection;
+
         /// <summary>
         /// Controller das publicações
         /// </summary>
         public PublicationsController()
         {
-            publicationRepository = new PublicationRepository();
-            userRepository = new UserRepository();
-            topicRepository = new TopicRepository();
+            ConfigInjection = new ConfigAutofacApplication();
+
+            publicationRepository = ConfigInjection.Container.Resolve<IPublicationRepository>();
+            userRepository = ConfigInjection.Container.Resolve<IUserRepository>();
+            topicRepository = ConfigInjection.Container.Resolve<ITopicRepository>();
         }
 
         /// <summary>
@@ -73,6 +79,8 @@ namespace WebApi.Controllers
             resultValidator = new PublicationValidator().Validate(publication);
             if (!resultValidator.IsValid)
                 return BadRequest(resultValidator.Errors);
+
+            publicationRepository.Create(publication);
 
             return CreatedAtAction("Get", new { id = publication.Id }, publication);
         }

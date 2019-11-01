@@ -1,5 +1,7 @@
 ﻿using Application.Repository;
+using Autofac;
 using Domain;
+using Infrastructure.ConfigAutofac;
 using Infrastructure.Context;
 using Infrastructure.Repository;
 using Infrastructure.Repository.UserDB;
@@ -17,12 +19,16 @@ namespace Application.Entity
         public IGetDB<User> Get;
         public IUpdateDB<User> Alter;
 
+        private readonly ConfigAutofacInfrastructure ConfigInjection;
+
         public UserRepository()
         {
-            Register = new CreateUser();
-            Remove = new DeleteUser();
-            Get = new GetUser();
-            Alter = new UpdateUser();
+            ConfigInjection = new ConfigAutofacInfrastructure();
+
+            Register = ConfigInjection.Container.Resolve<ICreateDB<User>>();
+            Remove = ConfigInjection.Container.Resolve<IDeleteDB<User>>();
+            Get = ConfigInjection.Container.Resolve<IGetDB<User>>();
+            Alter = ConfigInjection.Container.Resolve<IUpdateDB<User>>();
         }
 
         public UserRepository(ICreateDB<User> register)

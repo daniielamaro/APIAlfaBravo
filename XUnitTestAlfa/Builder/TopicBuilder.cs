@@ -8,19 +8,11 @@ public class TopicBuilder
 
     public static TopicBuilder New()
     {
-<<<<<<< HEAD
-        return new TopicBuilder()
-        {
-            Id = Guid.NewGuid(),
-            Name = "TestTopic",
-=======
         var random = new Random();
-
         return new TopicBuilder()
         {
             Id = Guid.NewGuid(),
-            Name = "TestTopic" + random.Next(1, 9999).ToString(),
->>>>>>> master
+            Name = "TestTopic" + random.Next(1, 9999).ToString()
         };
     }
 

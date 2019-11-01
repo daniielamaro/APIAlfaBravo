@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Application.Repository;
+using Autofac;
 using Domain;
+using Infrastructure.ConfigAutofac;
 using Infrastructure.Context;
 using Infrastructure.Repository;
 using Infrastructure.Repository.TopicDB;
@@ -18,12 +20,16 @@ namespace Application.Entity
         public IGetDB<Topic> Get;
         public IUpdateDB<Topic> Alter;
 
+        private readonly ConfigAutofacInfrastructure ConfigInjection;
+
         public TopicRepository()
         {
-            Register = new CreateTopic();
-            Remove = new DeleteTopic();
-            Get = new GetTopic();
-            Alter = new UpdateTopic();
+            ConfigInjection = new ConfigAutofacInfrastructure();
+
+            Register = ConfigInjection.Container.Resolve<ICreateDB<Topic>>();
+            Remove = ConfigInjection.Container.Resolve<IDeleteDB<Topic>>();
+            Get = ConfigInjection.Container.Resolve<IGetDB<Topic>>();
+            Alter = ConfigInjection.Container.Resolve<IUpdateDB<Topic>>();
         }
 
         public TopicRepository(ICreateDB<Topic> register)
