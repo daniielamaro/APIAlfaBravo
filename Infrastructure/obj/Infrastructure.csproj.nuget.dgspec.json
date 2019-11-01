@@ -103,6 +103,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[4.9.4, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[2.2.6, )"
