@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Application.BusinessRules;
+using Application.ConfigAutofac;
 using Application.Entity;
 using Application.Repository;
+using Autofac;
 using Domain;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +18,16 @@ namespace WebApi.Controllers
     {
 
         private readonly IUserRepository userRepository;
+        private readonly ConfigAutofacApplication ConfigInjection;
 
         /// <summary>
         /// Controller do usuário
         /// </summary>
         public UsersController()
         {
-            userRepository = new UserRepository();
+            ConfigInjection = new ConfigAutofacApplication();
+
+            userRepository = ConfigInjection.Container.Resolve<IUserRepository>();
         }
 
         /// <summary>
