@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:WebApi.Controllers.CommentsController">
+            <summary>
+            Classe Controller do Comentário
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CommentsController.#ctor">
+            <summary>
+            Controller dos comentários
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CommentsController.Get">
+            <summary>
+            Listar todos os comentários
+            </summary>
+            <response code="200">Lista de comentários encontrada</response>
+            <response code="400">Nenhuma lista de comentários encontrada</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.CommentsController.Get(System.Guid)">
+            <summary>
+            Buscar comentário
+            </summary>
+            <param name="id">Identificador do comentário</param>
+            <response code="200">Sucesso na busca por um comentário específico</response>
+            <response code="400">Erro ao buscar comentário</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.CommentsController.Post(System.Guid,System.String,System.Guid)">
+            <summary>
+            Criar comentário
+            </summary>
+            <param name="autorId">Identificador do autor</param>
+            <param name="content">Conteúdo do comentário</param>
+            <param name="publicationId">Identificador da publicação ao qual o comentário pertence</param>
+            <response code="200">Comentário criado com sucesso</response>
+            <response code="400">Erro na criação do comentário</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.CommentsController.Put(System.Guid,System.String)">
+            <summary>
+            Alterar comentário
+            </summary>
+            <param name="id">Indentificador do comentário</param>
+            <param name="content">Conteúdo do comentário</param>
+            <response code="200">Alteração feita com sucesso</response>
+            <response code="400">Erro na alteração do comentário</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.CommentsController.Delete(System.Guid)">
+            <summary>
+            Deletar comentário
+            </summary>
+            <param name="id">Identificador do comentário</param>
+            <response code="200">Sucesso ao excluir comentário</response>
+            <response code="400">Erro ao deletar comentário</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.PublicationsController.#ctor">
+            <summary>
+            Controller das publicações
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.PublicationsController.Get">
+            <summary>
+            Listar todas as publicações
+            </summary>
+            <response code="200">Lista de publicações encontrada</response>
+            <response code="400">Nenhuma lista de publicações encontrada</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.PublicationsController.Post(System.Guid,System.String,System.String,System.Guid)">
+            <summary>
+            Criar publicação
+            </summary>
+            <param name="autorId">Identificador do autor</param>
+            <param name="title">Título da publicação</param>
+            <param name="content">Conteúdo da publicação</param>
+            <param name="topicId">Categoria da qual a publicação pertence</param>
+            <response code="200">Sucesso na criação da publicação</response>
+            <response code="400">Erro na criação da publicação</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.PublicationsController.Get(System.Guid)">
+            <summary>
+            Buscar uma publicação pelo seu Id
+            </summary>
+            <param id="ID">ID da publicação</param>
+            <response code="200">Sucesso na busca da publicação</response>
+            <response code="400">Erro ao buscar publicação</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.PublicationsController.Put(System.Guid,System.String,System.String,System.Guid)">
+            <summary>
+            Alterar publicação
+            </summary>
+            <param name="id">Identificador da publicação</param>
+            <param name="title">Título da publicação</param>
+            <param name="content">Conteúdo da publicação</param>
+            <param name="topicId">Categoria da qual a publicação pertence ou será alterada</param>
+            <response code="200">Sucesso na alteração da publicação</response>
+            <response code="400">Erro ao tentar alterar a publicação</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.PublicationsController.Delete(System.Guid)">
+            <summary>
+            Deletar publicação
+            </summary>
+            <param name="id"></param>
+            <response code="200">Sucesso ao excluir publicação</response>
+            <response code="400">Erro ao tentar deletar a publicação</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.TopicController.#ctor">
+            <summary>
+            Criação de uma nova categoria
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.TopicController.Get">
+            <summary>
+            Listar todas as categorias
+            </summary>
+            <response code="200">Lista de tópicos encontrada</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.TopicController.Get(System.Guid)">
+            <summary>
+            Buscar categoria
+            </summary>
+            <param name="id">Identificador da categoria</param>
+            <response code="200">Sucesso na busca da categoria</response>
+            <response code="400">Erro ao tentar buscar a categoria</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.TopicController.Post(System.String)">
+            <summary>
+            Criar categoria
+            </summary>
+            <param name="name">Nome da categoria</param>
+            <response code="200">Sucesso ao criar cateogria</response>
+            <response code="400">Erro ao tentar criar categoria</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.TopicController.Put(System.Guid,System.String)">
+            <summary>
+            Alterar categoria
+            </summary>
+            <param name="id">Identificador </param>
+            <param name="name">Nome </param>
+            <response code="200">Sucesso ao buscar categoria</response>
+            <response code="400">Erro ao tentar buscar a categoria</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.TopicController.Delete(System.Guid)">
+            <summary>
+            Deletar categoria
+            </summary>
+            <param name="id"></param>
+            <response code="200">Sucesso ao deletar categoria</response>
+            <response code="400">Erro ao tentar deletar a categoria</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.#ctor">
+            <summary>
+            Controller do usuário
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.Get">
+            <summary>
+            Buscar todos os usuários
+            </summary>
+            <response code="200">Sucesso ao buscar usuários</response>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.Get(System.Guid)">
+            <summary>
+            Buscar usuário
+            </summary>
+            <param name="id">Identificador do usuário</param>
+            <response code="200">Sucesso ao buscar usuário</response>
+            <response code="400">Erro ao buscar usuário</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.Post(System.String,System.String,System.String)">
+            <summary>
+            Criar usuário
+            </summary>
+            <param name="name">Nome do usuário</param>
+            <param name="email">E-mail do usuário</param>
+            <param name="password">Senha do usuário</param>
+            <response code="200">Usuário criado com sucesso</response>
+            <response code="400">Erro ao criar usuário</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.Put(System.Guid,System.String,System.String,System.String)">
+            <summary>
+            Atualizar dados do usuário
+            </summary>
+            <param name="id">Identificador do usuário</param>
+            <param name="name">Nome do usuário</param>
+            <param name="email">E-mail do usuário</param>
+            <param name="password">Senha do usuário</param>
+            <response code="200">Alteração realizada com sucesso</response>
+            <response code="400">Erro ao atualizar usuário</response>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsersController.Delete(System.Guid)">
+            <summary>
+            Deletar usuário
+            </summary>
+            <param name="id">Idenfiticador do usuário</param>
+            <response code="200">Sucesso ao deletar usuário</response>
+            <response code="400">Erro ao deletar usuário</response>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
