@@ -1,5 +1,7 @@
 ﻿using Application.Repository;
+using Autofac;
 using Domain;
+using Infrastructure.ConfigAutofac;
 using Infrastructure.Repository;
 using Infrastructure.Repository.PublicationDB;
 using Microsoft.EntityFrameworkCore;
@@ -17,12 +19,16 @@ namespace Application.Entity
         public IGetDB<Publication> Get;
         public IUpdateDB<Publication> Alter;
 
+        private readonly ConfigAutofacInfrastructure ConfigInjection;
+
         public PublicationRepository()
         {
-            Register = new CreatePublication();
-            Remove = new DeletePublication();
-            Get = new GetPublication();
-            Alter = new UpdatePublication();
+            ConfigInjection = new ConfigAutofacInfrastructure();
+
+            Register = ConfigInjection.Container.Resolve<ICreateDB<Publication>>();
+            Remove = ConfigInjection.Container.Resolve<IDeleteDB<Publication>>();
+            Get = ConfigInjection.Container.Resolve<IGetDB<Publication>>();
+            Alter = ConfigInjection.Container.Resolve<IUpdateDB<Publication>>();
         }
 
         public PublicationRepository(ICreateDB<Publication> register)

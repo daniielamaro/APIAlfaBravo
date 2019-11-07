@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Application.Repository;
+using Autofac;
 using Domain;
+using Infrastructure.ConfigAutofac;
 using Infrastructure.Context;
 using Infrastructure.Repository;
 using Infrastructure.Repository.CommentDB;
@@ -18,12 +20,16 @@ namespace Application.Entity
         public IGetDB<Comment> Get;
         public IUpdateDB<Comment> Alter;
 
+        private readonly ConfigAutofacInfrastructure ConfigInjection;
+
         public CommentRepository()
         {
-            Register = new CreateComment();
-            Remove = new DeleteComment();
-            Get = new GetComment();
-            Alter = new UpdateComment();
+            ConfigInjection = new ConfigAutofacInfrastructure();
+
+            Register = ConfigInjection.Container.Resolve<ICreateDB<Comment>>();
+            Remove = ConfigInjection.Container.Resolve<IDeleteDB<Comment>>();
+            Get = ConfigInjection.Container.Resolve<IGetDB<Comment>>();
+            Alter = ConfigInjection.Container.Resolve<IUpdateDB<Comment>>();
         }
 
         public CommentRepository(ICreateDB<Comment> register)

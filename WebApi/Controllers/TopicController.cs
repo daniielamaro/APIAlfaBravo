@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Application.BusinessRules;
+using Application.ConfigAutofac;
 using Application.Entity;
 using Application.Repository;
+using Autofac;
 using Domain;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +18,16 @@ namespace WebApi.Controllers
     {
 
         private readonly ITopicRepository topicRepository;
+        private readonly ConfigAutofacApplication ConfigInjection;
 
         /// <summary>
         /// Criação de uma nova categoria
         /// </summary>
         public TopicController()
         {
-            topicRepository = new TopicRepository();
+            ConfigInjection = new ConfigAutofacApplication();
+
+            topicRepository = ConfigInjection.Container.Resolve<ITopicRepository>();
         }
 
         /// <summary>
